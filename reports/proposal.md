@@ -5,15 +5,20 @@ Target audience: Formula 1 Fans interested in analyzing the 2021 Season
 The 2021 Season for Formula 1 World Championship was an intense season filled with suspense and plot twists. Unfortunately, the results of the race are displayed on the official website through a series of clunky tables that are difficult to navigate and can be difficult to make comparisons or do analysis with, not to mention the data itself is presented in very plain manner with minimal flexibility or engagement. As data scientists in the industry who seek to present this data in a more informative and interesting way, we propose building a data visualization app that allows users to easily find overall information for the season, filter for specific teams, drivers, or tracks while being to see how they compare with each other, and clearly and concisely present key summary statistics and information for each race/team/driver. The app will greatly enhance the ease at which information can be accessed in an interactive way, while still presenting comprehensive information for the whole season of interest.
 
 # Section 2: Description of Data
-We will be visualizing Formula 1 data having multiple datasets for the year 2021. We will be looking at 5 datasets namely:
+We will be visualizing Formula 1 data having multiple datasets for the year 2021. We will be looking at 8 datasets namely:
 
-- The formula1_2021season_drivers.csv which provides personal information and their all time best stats and records in formula 1.
-- The formula1_2021season_calendar.csv contains information on each of the 22 tracks used in 2021. Information about lap records, track dimensions and information.
-- The formula1_2021season_raceResults.csv includes information about the final race positions, lap times and points of each f1 driver in all the races that happened in 2021.
-- The formula1_2021season_sprintQualifyingResults.csv includes information about the final race positions, lap times and points of each f1 driver in all the races that happened in 2021.
-- The formula1_2021season_teams.csv includes information about the 10 teams that participated in f1 2021 season.
+The following datasets are extracted from [kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020).
 
-The track map taken are extracted from f1.com and the flags of each country are taken from wikipedia.com
+- `lap_times.csv` which contains lap times of each individual laps for all the drivers. 
+- `pit_stops.csv` which contains the duration of pit stops, the lap in which the driver took it and the race_id.
+- races.csv which references the driver_id to the `lap_times.csv` and `pit_stops.csv` file
+- The `formula1_2021season_drivers.csv` which provides personal information and their all time best stats and records in formula 1.
+- The `formula1_2021season_calendar.csv` contains information on each of the 22 tracks used in 2021. Information about lap records, track dimensions, etc.
+- The `formula1_2021season_raceResults.csv` includes information about the final race positions, lap times and points of each f1 driver in all the races that happened in 2021.
+- The `formula1_2021season_sprintQualifyingResults.csv` includes information about the final race positions, lap times and points of each f1 driver in all the races that happened in 2021.
+- The `formula1_2021season_teams.csv` includes information about the 10 teams that participated in f1 2021 season, such as full team names and their records and achievements.
+
+The track maps taken are extracted from [f1.com](https://www.formula1.com) and the flags of each country are taken from [Wikipedia](https://en.wikipedia.org/wiki/Main_Page).
 
 
 # Section 3: Research Questions and Usage Scenarios
