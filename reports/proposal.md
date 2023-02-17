@@ -11,7 +11,12 @@ The following datasets are extracted from [kaggle](https://www.kaggle.com/datase
 
 - `lap_times.csv` which contains lap times of each individual laps for all the drivers. 
 - `pit_stops.csv` which contains the duration of pit stops, the lap in which the driver took it and the race_id.
-- races.csv which references the driver_id to the `lap_times.csv` and `pit_stops.csv` file
+- `circuits.csv` references the circuit_id to the `lap_times.csv` and `pit_stops.csv`.
+- `drivers.csv` references the driver_id to the `lap_times.csv` and `pit_stops.csv`.
+- `races.csv` which references all the collated data to the individual races of the 2021 f1 season.
+
+All this is done in the EDA notebook as well for reference
+
 - The `formula1_2021season_drivers.csv` which provides personal information and their all time best stats and records in formula 1.
 - The `formula1_2021season_calendar.csv` contains information on each of the 22 tracks used in 2021. Information about lap records, track dimensions, etc.
 - The `formula1_2021season_raceResults.csv` includes information about the final race positions, lap times and points of each f1 driver in all the races that happened in 2021.
