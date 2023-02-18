@@ -25,8 +25,8 @@ If you click on a race in the right column, the app will take you to the race pa
 [Race Page](img\sketch\race.jpg)  
 
 ## Contributing
-
+Interested in contributing? Check out the [contributing guidelines](CONTRIBUTING.md). Please note that this project is released with a [Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 ## License
-
+f1-2021-analysis was created by Tanmay Agarwal, Yingxin Song, Renzo Wijngaarden, and Eric Tsai. It is licensed under the terms of the MIT license.
 ## Credits
-
+The datasets used in this app are from [Formula 1 World Championship (1950 - 2022)](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020?select=lap_times.csv) on Kaggle and from [Formula 1 Datasets](https://github.com/toUpperCase78/formula1-datasets) on Github.
