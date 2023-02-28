@@ -23,6 +23,8 @@ ui <- fluidPage(
     # 
     # # Output is a datatable called 'table1'
     # dataTableOutput('table1')
+  
+  # checkbox to filter for drivers
   fluidRow(
     column(2,
            checkboxGroupInput(inputId = "driverSelect", 
@@ -31,17 +33,18 @@ ui <- fluidPage(
                               selected = c("Lewis Hamilton", "Carlos Sainz")),
            style="overflow-x: scroll; overflow-y: scroll"
     ),
+    # display line chart
     column(8,
            plotOutput("distPlot"),
            fluidRow(
-             sliderTextInput("Month","Select Month" , 
-                             choices = c("January", "February", "March", "April"), 
-                             selected = c("January", "February", "March", "April"), 
-                             animate = FALSE, grid = FALSE, 
-                             hide_min_max = FALSE, from_fixed = FALSE,
-                             to_fixed = FALSE, from_min = NULL, from_max = NULL, to_min = NULL,
-                             to_max = NULL, force_edges = FALSE, width = NULL, pre = NULL,
-                             post = NULL, dragRange = TRUE)
+             tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
+             sliderTextInput(inputId = "raceSlider",
+                             label = "Select races", 
+                             choices = unique(race_results$Track), 
+                             selected = c("Bahrain", "Abu Dhabi"),
+                             grid = TRUE, 
+                             from_fixed = TRUE,
+                             width = "100%")
            )
     ),
     column(2,
@@ -79,10 +82,13 @@ server <- function(input, output, session) {
     #                                      default = 'white')
     #     )
     # })
+  
+  # filter data frame for drivers based on selection
   drivers_plotting <- reactive({
     race_results |>
       filter(Driver %in% input$driverSelect)
   })
+  # draw the cumulative points line chart
   output$distPlot <- renderPlot({
     ggplot2::ggplot(drivers_plotting(), aes(x = Track, y = cumpoints, group = Driver, color = Driver)) +
       ggplot2::geom_line() + 
