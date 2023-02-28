@@ -1,8 +1,6 @@
 library(shiny)
 library(shinyWidgets)
 library(DT)
-library(readr)
-# library(dplyr)
 library(ggplot2)
 
 # Reload when saving the app
@@ -47,7 +45,7 @@ ui <- fluidPage(
            )
     ),
     column(2,
-           print("TEST")
+           print("This section for races!")
     )
   )
 )
@@ -86,9 +84,20 @@ server <- function(input, output, session) {
       filter(Driver %in% input$driverSelect)
   })
   output$distPlot <- renderPlot({
-    ggplot(drivers_plotting(), aes(x = Track, y = cumpoints, group = Driver, color = Driver)) +
-      geom_line() + 
-      geom_point()
+    ggplot2::ggplot(drivers_plotting(), aes(x = Track, y = cumpoints, group = Driver, color = Driver)) +
+      ggplot2::geom_line() + 
+      ggplot2::geom_point() +
+      labs(x = "GP", y = "Cumulative Points") +
+      ggtitle("Cumulative points gained over the season") +
+      theme(
+        plot.title = element_text(size = 31, face = "bold"),
+        axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 15, face = "bold"),
+        legend.text = element_text(size = 10, face = "bold"),
+        legend.title = element_blank(),
+        legend.position = "top",
+      )
   })
 }
 
