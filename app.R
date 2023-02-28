@@ -86,16 +86,16 @@ server <- function(input, output, session) {
   # filter data frame for drivers based on selection
   drivers_plotting <- reactive({
     race_results |>
-      filter(Driver %in% input$driverSelect)
+      dplyr::filter(Driver %in% input$driverSelect)
   })
   # draw the cumulative points line chart
   output$distPlot <- renderPlot({
     ggplot2::ggplot(drivers_plotting(), aes(x = Track, y = cumpoints, group = Driver, color = Driver)) +
       ggplot2::geom_line() + 
       ggplot2::geom_point() +
-      labs(x = "GP", y = "Cumulative Points") +
-      ggtitle("Cumulative points gained over the season") +
-      theme(
+      ggplot2::labs(x = "GP", y = "Cumulative Points") +
+      ggplot2::ggtitle("Cumulative points gained over the season") +
+      ggplot2::theme(
         plot.title = element_text(size = 31, face = "bold"),
         axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6),
         axis.text.y = element_text(size = 10),
