@@ -6,24 +6,23 @@ library(ggplot2)
 # Reload when saving the app
 options(shiny.autoreload = TRUE)
 
+# Load race results data
 race_results <- readr::read_csv("data/formula1_2021season_raceResults.csv")
 race_results$Track <- factor(race_results$Track, levels = unique(race_results$Track))
 race_results <- race_results |>
   dplyr::group_by(Driver) |>
   dplyr::mutate(cumpoints = cumsum(Points))
 
+# Load race names
+race_table <- race_results |>
+  dplyr::ungroup() |>
+  dplyr::select(Track) |>
+  dplyr::group_by(Track) |>
+  dplyr::distinct() |>
+  dplyr::rename(Race = 'Track')
+
 # Define UI for application that highlights rows in a table
 ui <- fluidPage(
-    # Add a slider called "highlight" to determine number of rows to highlight
-    # sliderInput(inputId = 'highlight',
-    #             label = 'Slide to highlight table',
-    #             min = 1,
-    #             max = 5,
-    #             value = 1),
-    # 
-    # # Output is a datatable called 'table1'
-    # dataTableOutput('table1')
-  
   # checkbox to filter for drivers
   fluidRow(
     column(2,
@@ -41,48 +40,50 @@ ui <- fluidPage(
              sliderTextInput(inputId = "raceSlider",
                              label = "Select races", 
                              choices = unique(race_results$Track), 
-                             selected = c("Bahrain", "Abu Dhabi"),
+                             selected = c("Bahrain", "Italy"),
                              grid = TRUE, 
                              from_fixed = TRUE,
                              width = "100%")
            )
     ),
+    # Table of Races that interacts with raceSlider
     column(2,
-           print("This section for races!")
+           dataTableOutput('Races')
     )
   )
 )
 
 # Define server logic required to make and highlight a table
 server <- function(input, output, session) {
-    # Example data
-    # df <- faithful[1:5,]
-    # 
-    # # match data with color
-    # vals <- reactiveValues(
-    #     eruptions = df[, 1],
-    #     row_color = rep('white', 5)
-    # )
-    # 
-    # # Change row color depending on the number of highlighted rows
-    # observeEvent(input$highlight, {
-    #     vals$eruptions <-
-    #         c(vals$eruptions[1:input$highlight],
-    #           vals$eruptions[input$highlight+1:length(vals$eruptions)])
-    #     vals$row_color <- c(rep('yellow', input$highlight),
-    #                         rep('white', length(vals$eruptions) - input$highlight))
-    # })
-    # 
-    # # draw the table with the specified number of rows highlighted
-    # output$table1 <- renderDataTable({
-    #     datatable(df) |> formatStyle(
-    #         'eruptions', target = 'row',
-    #         backgroundColor = styleEqual(vals$eruptions,
-    #                                      vals$row_color,
-    #                                      default = 'white')
-    #     )
-    # })
-  
+    # Initialize race names and colors
+    highlight_races <- reactiveValues()
+    highlight_races$races <- as.character(race_table$Race)
+    highlight_races$row_color <- reactive({rep('white', length(highlight_races$races))})
+    
+    
+    # Change row color depending on the slider race selections
+    observeEvent(input$raceSlider, {
+      start_race <- which(highlight_races$races == input$raceSlider[1])
+      end_race <- which(highlight_races$races == input$raceSlider[2])
+      highlight_races$races <- c(highlight_races$races[start_race:end_race],
+                                 highlight_races$races[!(highlight_races$races %in% highlight_races$races[start_race:end_race])])
+      highlight_races$row_color <- c(rep('pink', length(highlight_races$races[start_race:end_race])),
+                                     rep('white', length(highlight_races$races) - length(highlight_races$races[start_race:end_race])))
+    })
+
+    # Create the table with the specified rows highlighted
+    output$Races <- renderDataTable({
+        datatable(race_table, 
+                  options = list("pageLength" = 22,
+                                 "searching" = FALSE,
+                                 "lengthChange"= FALSE)) |> formatStyle(
+        'Race', target = 'row',
+        backgroundColor = styleEqual(levels = highlight_races$races,
+                                     values = highlight_races$row_color,
+                                     default = "white")
+        )
+    })
+
   # filter data frame for drivers based on selection
   drivers_plotting <- reactive({
     race_results |>
