@@ -87,16 +87,20 @@ server <- function(input, output, session) {
           Race = colDef(
             cell = function(value, index) {
               city_name <- race_table$City[index]
+              race_index <- which(highlight_races$races == value)
+              color <- highlight_races$row_color[race_index]
               div(
-                div(style = list(fontWeight = 600), value),
-                div(style = list(fontSize = "12px"), city_name)
+                div(style = list(fontWeight = 600,
+                                 background = color), value),
+                div(style = list(fontSize = "12px",
+                                 background = color), city_name)
               )
             }
           ),
           Country = colDef(show = FALSE),
           City = colDef(show = FALSE)
-        )
-        
+        ),
+        pagination = FALSE
         )
     })
     
