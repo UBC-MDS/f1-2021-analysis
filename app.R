@@ -13,7 +13,7 @@ race_results <- race_results |>
   dplyr::group_by(Driver) |>
   dplyr::mutate(cumpoints = cumsum(Points))
 
-# Load Race names and index
+# Load race names
 race_table <- readr::read_csv("data/formula1_2021season_raceResults.csv")
 race_table$Track <- factor(race_table$Track, levels = unique(race_table$Track))
 race_table <- race_table |>
@@ -23,16 +23,6 @@ race_table <- race_table |>
 
 # Define UI for application that highlights rows in a table
 ui <- fluidPage(
-    # Add a slider called "highlight" to determine number of rows to highlight
-    # sliderInput(inputId = 'highlight',
-    #             label = 'Slide to highlight table',
-    #             min = 1,
-    #             max = 5,
-    #             value = 1),
-    # 
-    # # Output is a datatable called 'table1'
-    # dataTableOutput('table1')
-  
   # checkbox to filter for drivers
   fluidRow(
     column(2,
@@ -56,6 +46,7 @@ ui <- fluidPage(
                              width = "100%")
            )
     ),
+    # Table of Races that interacts with raceSlider
     column(2,
            dataTableOutput('Races')
     )
