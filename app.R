@@ -96,13 +96,13 @@ server <- function(input, output, session) {
 
     # Create the table with the specified rows highlighted
     output$Races <- renderDataTable({
-        datatable(race_table) #|> formatStyle(
-            # 'Track', target = 'row',
-            # backgroundColor = styleEqual(levels = highlight_races$races,
-            #                              values = highlight_races$row_color,
-            #                              default = "white"),
-            # options = list("pageLength" = 22)
-        #)
+        datatable(race_table) |> formatStyle(
+        'Track', target = 'row',
+        backgroundColor = styleEqual(levels = highlight_races$races,
+                                     values = highlight_races$row_color,
+                                     default = "white"),
+        options = list("pageLength" = 22)
+        )
     })
 
   # filter data frame for drivers based on selection
