@@ -14,12 +14,10 @@ race_results <- race_results |>
   dplyr::mutate(cumpoints = cumsum(Points))
 
 # Load race names
-race_table <- readr::read_csv("data/formula1_2021season_raceResults.csv")
-race_table$Track <- factor(race_table$Track, levels = unique(race_table$Track))
-race_table <- race_table |>
+race_table <- race_results |>
+  dplyr::ungroup() |>
   dplyr::select(Track) |>
   dplyr::group_by(Track) |>
-  dplyr::mutate(Race = dplyr::cur_group_id(), .before=1) |>
   dplyr::distinct()
 
 # Define UI for application that highlights rows in a table
