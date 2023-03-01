@@ -83,6 +83,19 @@ server <- function(input, output, session) {
     output$Races <- renderReactable({
       reactable(
         race_table,
+        columns = list(
+          Race = colDef(
+            cell = function(value, index) {
+              city_name <- race_table$City[index]
+              div(
+                div(style = list(fontWeight = 600), value),
+                div(style = list(fontSize = "12px"), city_name)
+              )
+            }
+          ),
+          Country = colDef(show = FALSE),
+          City = colDef(show = FALSE)
+        )
         
         )
     })
