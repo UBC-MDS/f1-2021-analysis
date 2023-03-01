@@ -19,10 +19,7 @@ race_table$Track <- factor(race_table$Track, levels = unique(race_table$Track))
 race_table <- race_table |>
   dplyr::select(Track) |>
   dplyr::group_by(Track) |>
-  dplyr::mutate(Race = dplyr::cur_group_id(), .before=1) |>
-  dplyr::distinct() #|>
-  # dplyr::ungroup() |>
-  # dplyr::slice(1:5)
+  dplyr::distinct()
 
 # Define UI for application that highlights rows in a table
 ui <- fluidPage(
@@ -72,17 +69,6 @@ server <- function(input, output, session) {
       races = as.character(race_table$Track),
       row_color = rep('white', length(races))
     )
-    # Get indices of the selected races
-    # selected_races <- reactiveValues({
-    #   start_race <- which(races == input$raceSlider[1])
-    #   end_race <- which(races == input$raceSlider[2])
-    #   })
-    # end_race <- reactive({
-    #   which(races == input$raceSlider[2])
-    #   })
-    # selected_races <- reactive({highlight_races$races[start_race:end_race]})
-    
-    num_races <- reactive({end_race - start_race + 1})
     
     # Change row color depending on the slider race selections
     observeEvent(input$raceSlider, {
