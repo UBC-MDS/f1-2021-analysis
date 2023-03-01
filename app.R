@@ -18,7 +18,8 @@ race_table <- race_results |>
   dplyr::ungroup() |>
   dplyr::select(Track) |>
   dplyr::group_by(Track) |>
-  dplyr::distinct()
+  dplyr::distinct() |>
+  dplyr::rename(Race = 'Track')
 
 # Define UI for application that highlights rows in a table
 ui <- fluidPage(
@@ -56,7 +57,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
     # Initialize race names and colors
     highlight_races <- reactiveValues()
-    highlight_races$races <- as.character(race_table$Track)
+    highlight_races$races <- as.character(race_table$Race)
     highlight_races$row_color <- reactive({rep('white', length(highlight_races$races))})
     
     
@@ -76,7 +77,7 @@ server <- function(input, output, session) {
                   options = list("pageLength" = 22,
                                  "searching" = FALSE,
                                  "lengthChange"= FALSE)) |> formatStyle(
-        'Track', target = 'row',
+        'Race', target = 'row',
         backgroundColor = styleEqual(levels = highlight_races$races,
                                      values = highlight_races$row_color,
                                      default = "white")
