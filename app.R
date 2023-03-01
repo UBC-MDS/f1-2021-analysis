@@ -40,7 +40,7 @@ ui <- fluidPage(
              sliderTextInput(inputId = "raceSlider",
                              label = "Select races", 
                              choices = unique(race_results$Track), 
-                             selected = c("Bahrain", "Spain"),
+                             selected = c("Bahrain", "Italy"),
                              grid = TRUE, 
                              from_fixed = TRUE,
                              width = "100%")
@@ -67,18 +67,20 @@ server <- function(input, output, session) {
       end_race <- which(races == input$raceSlider[2])
       highlight_races$races <- c(highlight_races$races[start_race:end_race],
                                  highlight_races$races[!(highlight_races$races %in% highlight_races$races[start_race:end_race])])
-      highlight_races$row_color <- c(rep('yellow', length(highlight_races$races[start_race:end_race])),
+      highlight_races$row_color <- c(rep('pink', length(highlight_races$races[start_race:end_race])),
                                      rep('white', length(highlight_races$races) - length(highlight_races$races[start_race:end_race])))
     })
 
     # Create the table with the specified rows highlighted
     output$Races <- renderDataTable({
-        datatable(race_table) |> formatStyle(
+        datatable(race_table, 
+                  options = list("pageLength" = 22,
+                                 "searching" = FALSE,
+                                 "lengthChange"= FALSE)) |> formatStyle(
         'Track', target = 'row',
         backgroundColor = styleEqual(levels = highlight_races$races,
                                      values = highlight_races$row_color,
-                                     default = "white"),
-        options = list("pageLength" = 22)
+                                     default = "white")
         )
     })
 
