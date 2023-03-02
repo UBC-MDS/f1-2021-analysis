@@ -13,7 +13,12 @@ options(shiny.autoreload = TRUE)
 
 # Loading the Race results data
 race_results <- readr::read_csv("data/formula1_2021season_raceResults.csv")
+race_results <- race_results |>
+  dplyr::mutate(Track = dplyr::case_when(Track == "Netherlands" ~ "Dutch",
+                                         Track == "Brazil" ~ "Sao Paulo",
+                                         TRUE ~ Track))
 race_results$Track <- factor(race_results$Track, levels = unique(race_results$Track))
+
 
 # Get cumulative points of each driver over the season
 driver_results <- race_results |>
@@ -30,13 +35,6 @@ team_results <- race_results |>
 laptimes <- readr::read_csv("data/2021_all_laps_info.csv")
 
 # Load race names
-# race_table <- race_results |>
-#   dplyr::ungroup() |>
-#   dplyr::select(Track) |>
-#   dplyr::group_by(Track) |>
-#   dplyr::distinct() |>
-#   dplyr::rename(Race = 'Track')
-
 race_table <- readr::read_csv("data/formula1_2021season_calendar.csv") |>
   dplyr::rename(Race = 'GP Name')
 race_table$Race <- factor(race_table$Race, levels = unique(race_table$Race))
@@ -103,7 +101,6 @@ ui <- navbarPage("Formula 1 Dashboard",
                             ),
                      # Table of Races that interacts with raceSlider
                      column(2,
-                            # dataTableOutput('Races')
                             reactableOutput("Races")
                      )
                      )),
@@ -152,19 +149,6 @@ server <- function(input, output, session) {
     highlight_races$row_color <- c(rep('pink', length(highlight_races$races[start_race:end_race])),
                                    rep('white', length(highlight_races$races) - length(highlight_races$races[start_race:end_race])))
   })
-  
-  # Create the table with the specified rows highlighted
-  # output$Races <- renderDataTable({
-  #   datatable(race_table, 
-  #             options = list("pageLength" = 22,
-  #                            "searching" = FALSE,
-  #                            "lengthChange"= FALSE)) |> formatStyle(
-  #                              'Race', target = 'row',
-  #                              backgroundColor = styleEqual(levels = highlight_races$races,
-  #                                                           values = highlight_races$row_color,
-  #                                                           default = "white")
-  #                            )
-  # })
   
   output$Races <- renderReactable({
     reactable(
