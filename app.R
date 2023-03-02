@@ -4,7 +4,7 @@ library(DT)
 library(shinythemes)
 library(shinyWidgets)
 library(ggplot2)
-
+library(reactable)
 
 
 
@@ -30,12 +30,18 @@ team_results <- race_results |>
 laptimes <- readr::read_csv("data/2021_all_laps_info.csv")
 
 # Load race names
-race_table <- race_results |>
-  dplyr::ungroup() |>
-  dplyr::select(Track) |>
-  dplyr::group_by(Track) |>
-  dplyr::distinct() |>
-  dplyr::rename(Race = 'Track')
+# race_table <- race_results |>
+#   dplyr::ungroup() |>
+#   dplyr::select(Track) |>
+#   dplyr::group_by(Track) |>
+#   dplyr::distinct() |>
+#   dplyr::rename(Race = 'Track')
+
+race_table <- readr::read_csv("data/formula1_2021season_calendar.csv") |>
+  dplyr::rename(Race = 'GP Name')
+race_table$Race <- factor(race_table$Race, levels = unique(race_table$Race))
+race_table <- race_table |>
+  dplyr::select(Country, City, Race)
 
 ui <- navbarPage("Formula 1 Dashboard",
                  theme = shinytheme("lumen"),
@@ -95,30 +101,10 @@ ui <- navbarPage("Formula 1 Dashboard",
                                      )
                               )
                             ),
-                            # column(2,
-                            #        checkboxGroupInput(inputId = "driverSelect", 
-                            #                           label = "Select drivers:", 
-                            #                           choices = unique(race_results$Driver), 
-                            #                           selected = c("Lewis Hamilton", "Carlos Sainz")),
-                            #        style="overflow-x: scroll; overflow-y: scroll"
-                            # ),
-                            # # display line chart
-                            # column(8,
-                            #        plotOutput("distPlot"),
-                            #        fluidRow(
-                            #          tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
-                            #          sliderTextInput(inputId = "raceSlider",
-                            #                          label = "Select races", 
-                            #                          choices = unique(race_results$Track), 
-                            #                          selected = c("Bahrain", "Italy"),
-                            #                          grid = TRUE, 
-                            #                          from_fixed = TRUE,
-                            #                          width = "100%")
-                            #        )
-                            # ),
-                            # Table of Races that interacts with raceSlider
+                     # Table of Races that interacts with raceSlider
                      column(2,
-                            dataTableOutput('Races')
+                            # dataTableOutput('Races')
+                            reactableOutput("Races")
                      )
                      )),
                  tabPanel('Panel 2',
@@ -168,16 +154,40 @@ server <- function(input, output, session) {
   })
   
   # Create the table with the specified rows highlighted
-  output$Races <- renderDataTable({
-    datatable(race_table, 
-              options = list("pageLength" = 22,
-                             "searching" = FALSE,
-                             "lengthChange"= FALSE)) |> formatStyle(
-                               'Race', target = 'row',
-                               backgroundColor = styleEqual(levels = highlight_races$races,
-                                                            values = highlight_races$row_color,
-                                                            default = "white")
-                             )
+  # output$Races <- renderDataTable({
+  #   datatable(race_table, 
+  #             options = list("pageLength" = 22,
+  #                            "searching" = FALSE,
+  #                            "lengthChange"= FALSE)) |> formatStyle(
+  #                              'Race', target = 'row',
+  #                              backgroundColor = styleEqual(levels = highlight_races$races,
+  #                                                           values = highlight_races$row_color,
+  #                                                           default = "white")
+  #                            )
+  # })
+  
+  output$Races <- renderReactable({
+    reactable(
+      race_table,
+      columns = list(
+        Race = colDef(
+          cell = function(value, index) {
+            city_name <- race_table$City[index]
+            race_index <- which(highlight_races$races == value)
+            color <- highlight_races$row_color[race_index]
+            div(
+              div(style = list(fontWeight = 600,
+                               background = color), value),
+              div(style = list(fontSize = "12px",
+                               background = color), city_name)
+            )
+          }
+        ),
+        Country = colDef(show = FALSE),
+        City = colDef(show = FALSE)
+      ),
+      pagination = FALSE
+    )
   })
   
   # filter data frame for drivers based on selection
