@@ -89,18 +89,27 @@ server <- function(input, output, session) {
               city_name <- race_table$City[index]
               race_index <- which(highlight_races$races == value)
               color <- highlight_races$row_color[race_index]
-              div(
-                div(style = list(fontWeight = 600,
-                                 background = color), value),
-                div(style = list(fontSize = "12px",
-                                 background = color), city_name)
+              image <- htmltools::img(src = sprintf("flags/%s.png", value), 
+                           style = "height: 24px;", 
+                           alt = value)
+              htmltools::tagList(
+                htmltools::div(style = "display: inline-block; float:left; width: 65px;", 
+                  image),
+                htmltools::div(
+                  htmltools::div(style = list(fontWeight = 600), value),
+                  htmltools::div(style = list(fontSize = "12px"), city_name),
+                style = list(background = color)
+              )
+              # value
               )
             }
           ),
           Country = colDef(show = FALSE),
           City = colDef(show = FALSE)
         ),
-        pagination = FALSE
+        pagination = FALSE,
+        compact = TRUE,
+        class = "padding: 0px; border-collapse: collapse; border-spacing: 0;"
         )
     })
     

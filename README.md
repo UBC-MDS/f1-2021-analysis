@@ -29,4 +29,4 @@ Interested in contributing? Check out the [contributing guidelines](CONTRIBUTING
 ## License
 f1-2021-analysis was created by Tanmay Agarwal, Yingxin Song, Renzo Wijngaarden, and Eric Tsai. It is licensed under the terms of the MIT license.
 ## Credits
-The datasets used in this app are from [Formula 1 World Championship (1950 - 2022)](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020?select=lap_times.csv) on Kaggle and from [Formula 1 Datasets](https://github.com/toUpperCase78/formula1-datasets) on Github.
+The datasets used in this app are from [Formula 1 World Championship (1950 - 2022)](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020?select=lap_times.csv) on Kaggle and from [Formula 1 Datasets](https://github.com/toUpperCase78/formula1-datasets) on Github. The flag images are from [the country flags repository on GitHub](https://github.com/hampusborgos/country-flags).
