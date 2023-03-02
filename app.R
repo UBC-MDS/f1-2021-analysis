@@ -11,16 +11,22 @@ library(ggplot2)
 
 options(shiny.autoreload = TRUE)
 
-#Loading the Race results data
+# Loading the Race results data
 race_results <- readr::read_csv("data/formula1_2021season_raceResults.csv")
 race_results$Track <- factor(race_results$Track, levels = unique(race_results$Track))
 
-#Mutating the race results data 
-race_results_updated <- race_results |>
+# Get cumulative points of each driver over the season
+driver_results <- race_results |>
   dplyr::group_by(Driver) |>
   dplyr::mutate(cumpoints = cumsum(Points))
 
-#Loading the lap info data
+# Load team cumulative points
+team_results <- race_results |>
+  dplyr::group_by(Team, Track) |>
+  dplyr::summarise(team_pt = sum(Points)) |>
+  dplyr::mutate(team_cp = cumsum(team_pt))
+
+# Loading the lap info data
 laptimes <- readr::read_csv("data/2021_all_laps_info.csv")
 
 # Load race names
@@ -33,36 +39,88 @@ race_table <- race_results |>
 
 ui <- navbarPage("Formula 1 Dashboard",
                  theme = shinytheme("lumen"),
-                 tabPanel("Panel 1",
-                          
-                          # checkbox to filter for drivers
-                          fluidRow(
-                            column(2,
-                                   checkboxGroupInput(inputId = "driverSelect", 
-                                                      label = "Select drivers:", 
-                                                      choices = unique(race_results$Driver), 
-                                                      selected = c("Lewis Hamilton", "Carlos Sainz")),
-                                   style="overflow-x: scroll; overflow-y: scroll"
+                 tabPanel(
+                   "Panel 1",
+                   # checkbox to filter for drivers
+                   fluidRow(
+                     column(10, 
+                            tabsetPanel(
+                              tabPanel("Driver",
+                                       fluidRow(
+                                         column(2,
+                                                checkboxGroupInput(inputId = "driverSelect", 
+                                                                   label = "Select drivers:", 
+                                                                   choices = unique(driver_results$Driver), 
+                                                                   selected = c("Lewis Hamilton", "Carlos Sainz")),
+                                                style="overflow-x: scroll; overflow-y: scroll",
+                                         ),
+                                         column(10,
+                                                plotOutput("distPlot"),
+                                                fluidRow(
+                                                  tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
+                                                  sliderTextInput(inputId = "raceSlider",
+                                                                  label = "Select races",
+                                                                  choices = unique(driver_results$Track),
+                                                                  selected = c("Bahrain", "Abu Dhabi"),
+                                                                  grid = TRUE,
+                                                                  from_fixed = TRUE,
+                                                                  width = "100%")
+                                                )
+                                          )
+                                       ),
+                                     ),
+                              tabPanel("Teams",
+                                       fluidRow(
+                                         column(2, 
+                                                checkboxGroupInput(inputId = "teamSelect",
+                                                                   label = "Select teams:",
+                                                                   choices = unique(team_results$Team),
+                                                                   selected = c("McLaren Mercedes")),
+                                                style="overflow-x: scroll; overflow-y: scroll"
+                                         ),
+                                         column(10,
+                                                plotOutput("teamPointsPlot"),
+                                                fluidRow(
+                                                         tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
+                                                         sliderTextInput(inputId = "raceSlider",
+                                                                         label = "Select races",
+                                                                         choices = unique(driver_results$Track),
+                                                                         selected = c("Bahrain", "Abu Dhabi"),
+                                                                         grid = TRUE,
+                                                                         from_fixed = TRUE,
+                                                                         width = "100%")
+                                                )
+                                         )
+                                       )
+                                     )
+                              )
                             ),
-                            # display line chart
-                            column(8,
-                                   plotOutput("distPlot"),
-                                   fluidRow(
-                                     tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
-                                     sliderTextInput(inputId = "raceSlider",
-                                                     label = "Select races", 
-                                                     choices = unique(race_results$Track), 
-                                                     selected = c("Bahrain", "Italy"),
-                                                     grid = TRUE, 
-                                                     from_fixed = TRUE,
-                                                     width = "100%")
-                                   )
-                            ),
+                            # column(2,
+                            #        checkboxGroupInput(inputId = "driverSelect", 
+                            #                           label = "Select drivers:", 
+                            #                           choices = unique(race_results$Driver), 
+                            #                           selected = c("Lewis Hamilton", "Carlos Sainz")),
+                            #        style="overflow-x: scroll; overflow-y: scroll"
+                            # ),
+                            # # display line chart
+                            # column(8,
+                            #        plotOutput("distPlot"),
+                            #        fluidRow(
+                            #          tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
+                            #          sliderTextInput(inputId = "raceSlider",
+                            #                          label = "Select races", 
+                            #                          choices = unique(race_results$Track), 
+                            #                          selected = c("Bahrain", "Italy"),
+                            #                          grid = TRUE, 
+                            #                          from_fixed = TRUE,
+                            #                          width = "100%")
+                            #        )
+                            # ),
                             # Table of Races that interacts with raceSlider
-                            column(2,
-                                   dataTableOutput('Races')
-                            )
-                          )),
+                     column(2,
+                            dataTableOutput('Races')
+                     )
+                     )),
                  tabPanel('Panel 2',
                           fluidRow(
                             # Dropdown for grand prix
@@ -124,15 +182,36 @@ server <- function(input, output, session) {
   
   # filter data frame for drivers based on selection
   drivers_plotting <- reactive({
-    race_results_updated |>
+    driver_results |>
       dplyr::filter(Driver %in% input$driverSelect)
   })
-  
-  
-  # draw the cumulative points line chart
+  # draw the cumulative points line chart for drivers
   output$distPlot <- renderPlot({
     ggplot2::ggplot(drivers_plotting(), aes(x = Track, y = cumpoints, group = Driver, color = Driver)) +
       ggplot2::geom_line() + 
+      ggplot2::geom_point() +
+      ggplot2::labs(x = "GP", y = "Cumulative Points") +
+      ggplot2::ggtitle("Cumulative points gained over the season") +
+      ggplot2::theme(
+        plot.title = element_text(size = 31, face = "bold"),
+        axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 15, face = "bold"),
+        legend.text = element_text(size = 10, face = "bold"),
+        legend.title = element_blank(),
+        legend.position = "top",
+      )
+  })
+  
+  # filter data frame for teams based on selection
+  teams_plotting <- reactive({
+    team_results |>
+      dplyr::filter(Team %in% input$teamSelect)
+  })
+  # draw the cumulative points line chart for teams
+  output$teamPointsPlot <- renderPlot({
+    ggplot2::ggplot(teams_plotting(), aes(x = Track, y = team_cp, group = Team, color = Team)) +
+      ggplot2::geom_line() +
       ggplot2::geom_point() +
       ggplot2::labs(x = "GP", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
@@ -184,8 +263,8 @@ server <- function(input, output, session) {
         legend.text = element_text(size = 10, face = "bold"),
         legend.title = element_blank(),
         legend.position = "top")
-    
   })
+  
   
 }
 
