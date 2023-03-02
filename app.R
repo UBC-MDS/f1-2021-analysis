@@ -1,8 +1,11 @@
 library(shiny)
 library(bslib)
 library(DT)
-library(dplyr)
 library(shinythemes)
+library(shinyWidgets)
+library(ggplot2)
+
+
 
 
 
