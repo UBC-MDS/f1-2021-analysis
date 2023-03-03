@@ -114,35 +114,41 @@ ui <- navbarPage("Formula 1 Dashboard",
                  tabPanel('Race Information',
                           fluidRow(
                             # Dropdown for grand prix
-                            column(3, 
-                              fluidRow(
-                                column(12,
-                                selectInput(
-                                  inputId = 'gp',
-                                  label = 'Choose Grand Prix',
-                                  choices = unique(race_results$GP),
-                                  selected = "Bahrain Grand Prix",
-                              )
-                            )),
-                            fluidRow(
-                              column(3,
-                                  tableOutput("gp_facts_table")))
-                            ), 
+                            column(3,
+                                   fluidRow(column(
+                                     12,
+                                     selectInput(
+                                       inputId = 'gp',
+                                       label = 'Choose Grand Prix',
+                                       choices = unique(race_results$GP),
+                                       selected = "Bahrain Grand Prix",
+                                     )
+                                   )),
+                                   fluidRow(column(
+                                     12,
+                                     align="center",
+                                     imageOutput("track_layout")
+                                   )),
+                                   fluidRow(# GP facts table
+                                     column(
+                                       12,
+                                       tableOutput("gp_facts_table")
+                                     )),
+                                   
+                                   ),
+                                    
                             # Dropdown for driver
-                          #   column(6, selectInput(inputId = 'driver',
-                          #                         label = 'Choose Driver',
-                          #                         choices = unique(race_results$Driver),
-                          #                         selected = "Lewis Hamilton"))
+                            #   column(6, selectInput(inputId = 'driver',
+                            #                         label = 'Choose Driver',
+                            #                         choices = unique(race_results$Driver),
+                            #                         selected = "Lewis Hamilton"))
                             # Table output
                             column(6,
                                    DT::DTOutput(outputId = 'race_results_table')),
-                            column(6,
-                                   # plotOutput("lap_times_plot")
-                            )
+                            # column(6,
+                            #        # plotOutput("lap_times_plot"))
 
-                          )
-                          
-                 )
+                            ))
 )
 
 server <- function(input, output, session) {
@@ -308,7 +314,6 @@ server <- function(input, output, session) {
   
   
   ##Functions for Panel 2 here
-  ############################################################################################################
   output$gp_facts_table <- renderTable({
     facts <- subset(calendar, calendar$"GP Name" == input$gp)
     row.names(facts) <- facts$"GP Name"
@@ -330,6 +335,17 @@ server <- function(input, output, session) {
       rownames_to_column("Circuit")
     transpose
   })
+  
+  output$track_layout <- renderImage({
+    filename <- normalizePath(file.path('./www/tracks',
+                                        paste(input$gp, '.png', sep='')))
+    
+    # Return a list containing the filename and alt text
+    list(src = filename,
+         alt = paste(input$gp))
+    
+  }, deleteFile = FALSE)
+  imageOutput("track_layout", height = "100px")
   
   
   # Filter data frame for Grand Prix based on selection
