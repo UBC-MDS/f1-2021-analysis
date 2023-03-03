@@ -90,15 +90,18 @@ server <- function(input, output, session) {
               race_index <- which(highlight_races$races == value)
               color <- highlight_races$row_color[race_index]
               image <- htmltools::img(src = sprintf("flags/%s.png", value), 
-                           style = "height: 24px;", 
+                           style = "height: 24px; padding: top; margin: top;", 
                            alt = value)
               htmltools::tagList(
-                htmltools::div(style = "display: inline-block; float:left; width: 65px;", 
+                htmltools::div(style = "display: inline-block; float:left; width: 75px; padding-top: 10px; padding-left: 10px;", 
                   image),
                 htmltools::div(
                   htmltools::div(style = list(fontWeight = 600), value),
                   htmltools::div(style = list(fontSize = "12px"), city_name),
-                style = list(background = color)
+                style = list(background = color, borderStyle = "solid", 
+                             marginBottom = '0px', marginTop = '0px',
+                             borderCollapse= 'separate',
+                             borderSpacing= '0 0px')
               )
               # value
               )
@@ -109,7 +112,7 @@ server <- function(input, output, session) {
         ),
         pagination = FALSE,
         compact = TRUE,
-        class = "padding: 0px; border-collapse: collapse; border-spacing: 0;"
+        style = "padding: 0px; border-collapse: collapse; border-spacing: 0;"
         )
     })
     
