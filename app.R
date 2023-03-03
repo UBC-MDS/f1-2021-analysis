@@ -5,6 +5,7 @@ library(shinythemes)
 library(shinyWidgets)
 library(ggplot2)
 library(reactable)
+library(tidyverse)
 
 
 
@@ -33,6 +34,9 @@ team_results <- race_results |>
 
 # Loading the lap info data
 laptimes <- readr::read_csv("data/2021_all_laps_info.csv")
+
+# Load calendar
+calendar <- as.data.frame(readr::read_csv("data/formula1_2021season_calendar_GP.csv"))
 
 # Load race names
 race_table <- readr::read_csv("data/formula1_2021season_calendar.csv") |>
@@ -110,29 +114,41 @@ ui <- navbarPage("Formula 1 Dashboard",
                  tabPanel('Race Information',
                           fluidRow(
                             # Dropdown for grand prix
-                            column(6, selectInput(inputId = 'gp',
-                                                  label = 'Choose Grand Prix',
-                                                  choices = unique(race_results$GP),
-                                                  selected = "Bahrain Grand Prix",
-                            )),
+                            column(3,
+                                   fluidRow(column(
+                                     12,
+                                     selectInput(
+                                       inputId = 'gp',
+                                       label = 'Choose Grand Prix',
+                                       choices = unique(race_results$GP),
+                                       selected = "Bahrain Grand Prix",
+                                     )
+                                   )),
+                                   fluidRow(column(
+                                     12,
+                                     align="center",
+                                     imageOutput("track_layout", height="200px")
+                                   )),
+                                   fluidRow(# GP facts table
+                                     column(
+                                       12,
+                                       tableOutput("gp_facts_table")
+                                     )),
+                                   
+                                   ),
+                                    
                             # Dropdown for driver
-                            column(6, selectInput(inputId = 'driver',
-                                                  label = 'Choose Driver',
-                                                  choices = unique(race_results$Driver),
-                                                  selected = "Lewis Hamilton"))
-                          ),
-
-                          fluidRow(
+                            #   column(6, selectInput(inputId = 'driver',
+                            #                         label = 'Choose Driver',
+                            #                         choices = unique(race_results$Driver),
+                            #                         selected = "Lewis Hamilton"))
                             # Table output
                             column(6,
                                    DT::DTOutput(outputId = 'race_results_table')),
-                            column(6,
-                                   # plotOutput("lap_times_plot")
-                            )
+                            # column(6,
+                            #        # plotOutput("lap_times_plot"))
 
-                          )
-                          
-                 )
+                            ))
 )
 
 server <- function(input, output, session) {
@@ -298,6 +314,39 @@ server <- function(input, output, session) {
   
   
   ##Functions for Panel 2 here
+  output$gp_facts_table <- renderTable({
+    facts <- subset(calendar, calendar$"GP Name" == input$gp)
+    row.names(facts) <- facts$"GP Name"
+    facts <-
+      facts |> select(
+        "Round",
+        "Race Date",
+        "Country",
+        "City",
+        "Circuit Name",
+        "Circuit Length(km)",
+        "Number of Laps",
+        "Race Distance(km)",
+        "Turns",
+        "DRS Zones"
+      )
+    transpose <-
+      data.frame(t(facts)) |>
+      rownames_to_column("Circuit")
+    transpose
+  })
+  
+  output$track_layout <- renderImage({
+    filename <- normalizePath(file.path('./www/tracks',
+                                        paste(input$gp, '.png', sep='')))
+    
+    # Return a list containing the filename and alt text
+    list(src = filename,
+         alt = paste(input$gp))
+    
+  }, deleteFile = FALSE)
+  
+  
   # Filter data frame for Grand Prix based on selection
   filtered_race_results <- reactive(
     race_results |> 
@@ -312,7 +361,6 @@ server <- function(input, output, session) {
   
   # Render the race results table
   output$race_results_table <- DT::renderDT({
-    
     
     datatable(filtered_race_results())
     
