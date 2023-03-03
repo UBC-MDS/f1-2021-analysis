@@ -44,7 +44,7 @@ race_table <- race_table |>
 ui <- navbarPage("Formula 1 Dashboard",
                  theme = shinytheme("lumen"),
                  tabPanel(
-                   "Panel 1",
+                   "Season Highlights",
                    # checkbox to filter for drivers
                    fluidRow(
                      tabsetPanel(
@@ -107,7 +107,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                      )
                    )
                  ),
-                 tabPanel('Panel 2',
+                 tabPanel('Race Information',
                           fluidRow(
                             # Dropdown for grand prix
                             column(6, selectInput(inputId = 'gp',
