@@ -127,7 +127,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                    fluidRow(column(
                                      12,
                                      align="center",
-                                     imageOutput("track_layout")
+                                     imageOutput("track_layout", height="200px")
                                    )),
                                    fluidRow(# GP facts table
                                      column(
@@ -345,7 +345,6 @@ server <- function(input, output, session) {
          alt = paste(input$gp))
     
   }, deleteFile = FALSE)
-  imageOutput("track_layout", height = "100px")
   
   
   # Filter data frame for Grand Prix based on selection
