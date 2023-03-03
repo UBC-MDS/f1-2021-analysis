@@ -62,7 +62,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                                 plotOutput("distPlot"),
                                                 fluidRow(
                                                   tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
-                                                  sliderTextInput(inputId = "raceSlider",
+                                                  sliderTextInput(inputId = "raceSliderDrivers",
                                                                   label = "Select races",
                                                                   choices = unique(driver_results$Track),
                                                                   selected = c("Bahrain", "Abu Dhabi"),
@@ -141,9 +141,9 @@ server <- function(input, output, session) {
   
   
   # Change row color depending on the slider race selections
-  observeEvent(input$raceSlider, {
-    start_race <- which(highlight_races$races == input$raceSlider[1])
-    end_race <- which(highlight_races$races == input$raceSlider[2])
+  observeEvent(input$raceSliderDrivers, {
+    start_race <- which(highlight_races$races == input$raceSliderDrivers[1])
+    end_race <- which(highlight_races$races == input$raceSliderDrivers[2])
     highlight_races$races <- c(highlight_races$races[start_race:end_race],
                                highlight_races$races[!(highlight_races$races %in% highlight_races$races[start_race:end_race])])
     highlight_races$row_color <- c(rep('pink', length(highlight_races$races[start_race:end_race])),
@@ -176,8 +176,10 @@ server <- function(input, output, session) {
   
   # filter data frame for drivers based on selection
   drivers_plotting <- reactive({
+    last_race = input$raceSliderDrivers[2]
     driver_results |>
-      dplyr::filter(Driver %in% input$driverSelect)
+      dplyr::filter(Driver %in% input$driverSelect) |>
+      dplyr::filter(Track %in% highlight_races$races[1:which(highlight_races$races == last_race)])
   })
   # draw the cumulative points line chart for drivers
   output$distPlot <- renderPlot({
@@ -186,6 +188,8 @@ server <- function(input, output, session) {
       ggplot2::geom_point() +
       ggplot2::labs(x = "GP", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
+      ggplot2::scale_x_discrete(limits = unique(race_results$Track)) +
+      ggplot2::scale_y_continuous(limits = c(0, 400)) +
       ggplot2::theme(
         plot.title = element_text(size = 31, face = "bold"),
         axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6),
@@ -204,7 +208,6 @@ server <- function(input, output, session) {
       dplyr::filter(Team %in% input$teamSelect) |>
       dplyr::filter(Track %in% highlight_races$races[1:which(highlight_races$races == last_race)])
   })
-  
   # draw the cumulative points line chart for teams
   output$teamPointsPlot <- renderPlot({
     ggplot2::ggplot(teams_plotting(), aes(x = Track, y = team_cp, group = Team, color = Team)) +
