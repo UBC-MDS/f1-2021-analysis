@@ -46,64 +46,66 @@ ui <- navbarPage("Formula 1 Dashboard",
                  tabPanel(
                    "Panel 1",
                    # checkbox to filter for drivers
-
-                   tabsetPanel(
-                     tabPanel("Driver",
-                              fluidRow(
-                                column(2,
-                                  checkboxGroupInput(inputId = "driverSelect", 
-                                                     label = "Select drivers:", 
-                                                     choices = unique(driver_results$Driver), 
-                                                     selected = c("Lewis Hamilton", "Carlos Sainz")),
-                                    style="overflow-x: scroll; overflow-y: scroll",
+                   fluidRow(
+                     tabsetPanel(
+                       tabPanel("Driver",
+                                fluidRow(
+                                  column(2,
+                                    checkboxGroupInput(inputId = "driverSelect",
+                                                       label = "Select drivers:",
+                                                       choices = unique(driver_results$Driver),
+                                                       selected = c("Lewis Hamilton", "Carlos Sainz")),
+                                      style="overflow-x: scroll; overflow-y: scroll",
+                                  ),
+                                  column(8,
+                                         plotOutput("distPlot"),
+                                         fluidRow(
+                                           tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
+                                           sliderTextInput(inputId = "raceSliderDrivers",
+                                                           label = "Select races",
+                                                           choices = unique(driver_results$Track),
+                                                           selected = c("Bahrain", "Abu Dhabi"),
+                                                           grid = TRUE,
+                                                           from_fixed = TRUE,
+                                                           width = "100%")
+                                         )
+                                  ),
+                                  # Table of Races that interacts with raceSliderDrivers
+                                  column(2,
+                                         reactableOutput("Races")
+                                  )
                                 ),
-                                column(8,
-                                       plotOutput("distPlot"),
-                                       fluidRow(
-                                         tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
-                                         sliderTextInput(inputId = "raceSliderDrivers",
-                                                         label = "Select races",
-                                                         choices = unique(driver_results$Track),
-                                                         selected = c("Bahrain", "Abu Dhabi"),
-                                                         grid = TRUE,
-                                                         from_fixed = TRUE,
-                                                         width = "100%")
-                                       )
-                                ),
-                                # Table of Races that interacts with raceSliderDrivers
-                                column(2,
-                                       reactableOutput("Races")
+                       ),
+                       tabPanel("Teams",
+                                fluidRow(
+                                  column(2,
+                                         checkboxGroupInput(inputId = "teamSelect",
+                                                            label = "Select teams:",
+                                                            choices = unique(team_results$Team),
+                                                            selected = c("McLaren Mercedes")),
+                                           style="overflow-x: scroll; overflow-y: scroll"
+                                  ),
+                                  column(8,
+                                         plotOutput("teamPointsPlot"),
+                                         fluidRow(
+                                           tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
+                                           sliderTextInput(inputId = "raceSliderTeams",
+                                                           label = "Select races",
+                                                           choices = unique(driver_results$Track),
+                                                           selected = c("Bahrain", "Abu Dhabi"),
+                                                           grid = TRUE,
+                                                           from_fixed = TRUE,
+                                                           width = "100%")
+                                         )
+                                  ),
+                                  # Table of Races that interacts with raceSliderTeams
+                                  column(2,
+                                         reactableOutput("RacesTeamsTab")
+                                  )
                                 )
-                              ),
-                     ),
-                     tabPanel("Teams",
-                              fluidRow(
-                                column(2, 
-                                       checkboxGroupInput(inputId = "teamSelect",
-                                                          label = "Select teams:",
-                                                          choices = unique(team_results$Team),
-                                                          selected = c("McLaren Mercedes")),
-                                         style="overflow-x: scroll; overflow-y: scroll"
-                                ),
-                                column(8,
-                                       plotOutput("teamPointsPlot"),
-                                       fluidRow(
-                                         tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
-                                         sliderTextInput(inputId = "raceSliderTeams",
-                                                         label = "Select races",
-                                                         choices = unique(driver_results$Track),
-                                                         selected = c("Bahrain", "Abu Dhabi"),
-                                                         grid = TRUE,
-                                                         from_fixed = TRUE,
-                                                         width = "100%")
-                                       )
-                                ),
-                                # Table of Races that interacts with raceSliderTeams
-                                column(2,
-                                       reactableOutput("RacesTeamsTab")
-                                )
-                              )
+                       )
                      )
+                   )
                  ),
                  tabPanel('Panel 2',
                           fluidRow(
@@ -119,7 +121,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                                   choices = unique(race_results$Driver),
                                                   selected = "Lewis Hamilton"))
                           ),
-                          
+
                           fluidRow(
                             # Table output
                             column(6,
@@ -127,11 +129,10 @@ ui <- navbarPage("Formula 1 Dashboard",
                             column(6,
                                    # plotOutput("lap_times_plot")
                             )
-                            
+
                           )
                           
                  )
-                 ),
 )
 
 server <- function(input, output, session) {
