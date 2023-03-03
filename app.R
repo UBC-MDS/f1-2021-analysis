@@ -54,11 +54,10 @@ ui <- navbarPage("Formula 1 Dashboard",
                                     checkboxGroupInput(inputId = "driverSelect",
                                                        label = "Select drivers:",
                                                        choices = unique(driver_results$Driver),
-                                                       selected = c("Lewis Hamilton", "Carlos Sainz")),
-                                      style="overflow-x: scroll; overflow-y: scroll",
+                                                       selected = c("Lewis Hamilton", "Carlos Sainz"))
                                   ),
                                   column(8,
-                                         plotOutput("distPlot"),
+                                         plotOutput("distPlot", height = "480px"),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
                                            sliderTextInput(inputId = "raceSliderDrivers",
@@ -82,11 +81,10 @@ ui <- navbarPage("Formula 1 Dashboard",
                                          checkboxGroupInput(inputId = "teamSelect",
                                                             label = "Select teams:",
                                                             choices = unique(team_results$Team),
-                                                            selected = c("McLaren Mercedes")),
-                                           style="overflow-x: scroll; overflow-y: scroll"
+                                                            selected = c("McLaren Mercedes"))
                                   ),
                                   column(8,
-                                         plotOutput("teamPointsPlot"),
+                                         plotOutput("teamPointsPlot", height = "480px"),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
                                            sliderTextInput(inputId = "raceSliderTeams",
@@ -254,12 +252,11 @@ server <- function(input, output, session) {
     ggplot2::ggplot(drivers_plotting(), aes(x = Track, y = cumpoints, group = Driver, color = Driver)) +
       ggplot2::geom_line() + 
       ggplot2::geom_point() +
-      ggplot2::labs(x = "GP", y = "Cumulative Points") +
+      ggplot2::labs(x = "Race", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
-      ggplot2::scale_x_discrete(limits = gp_list) +
       ggplot2::scale_y_continuous(limits = c(0, 400)) +
       ggplot2::theme(
-        plot.title = element_text(size = 31, face = "bold"),
+        plot.title = element_text(size = 25, face = "bold"),
         axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6),
         axis.text.y = element_text(size = 10),
         axis.title = element_text(size = 15, face = "bold"),
@@ -281,12 +278,11 @@ server <- function(input, output, session) {
     ggplot2::ggplot(teams_plotting(), aes(x = Track, y = team_cp, group = Team, color = Team)) +
       ggplot2::geom_line() +
       ggplot2::geom_point() +
-      ggplot2::labs(x = "GP", y = "Cumulative Points") +
+      ggplot2::labs(x = "Race", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
-      ggplot2::scale_x_discrete(limits = gp_list) +
       ggplot2::scale_y_continuous(limits = c(0, 650)) +
       ggplot2::theme(
-        plot.title = element_text(size = 31, face = "bold"),
+        plot.title = element_text(size = 25, face = "bold"),
         axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6),
         axis.text.y = element_text(size = 10),
         axis.title = element_text(size = 15, face = "bold"),
