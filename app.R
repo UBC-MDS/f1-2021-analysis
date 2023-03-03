@@ -86,7 +86,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                                 plotOutput("teamPointsPlot"),
                                                 fluidRow(
                                                          tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
-                                                         sliderTextInput(inputId = "raceSlider",
+                                                         sliderTextInput(inputId = "raceSliderTeams",
                                                                          label = "Select races",
                                                                          choices = unique(driver_results$Track),
                                                                          selected = c("Bahrain", "Abu Dhabi"),
@@ -199,9 +199,12 @@ server <- function(input, output, session) {
   
   # filter data frame for teams based on selection
   teams_plotting <- reactive({
+    last_race = input$raceSliderTeams[2]
     team_results |>
-      dplyr::filter(Team %in% input$teamSelect)
+      dplyr::filter(Team %in% input$teamSelect) |>
+      dplyr::filter(Track %in% highlight_races$races[1:which(highlight_races$races == last_race)])
   })
+  
   # draw the cumulative points line chart for teams
   output$teamPointsPlot <- renderPlot({
     ggplot2::ggplot(teams_plotting(), aes(x = Track, y = team_cp, group = Team, color = Team)) +
@@ -209,6 +212,8 @@ server <- function(input, output, session) {
       ggplot2::geom_point() +
       ggplot2::labs(x = "GP", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
+      ggplot2::scale_x_discrete(limits = unique(race_results$Track)) +
+      ggplot2::scale_y_continuous(limits = c(0, 650)) +
       ggplot2::theme(
         plot.title = element_text(size = 31, face = "bold"),
         axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6),
