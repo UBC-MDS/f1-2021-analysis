@@ -14,10 +14,15 @@ options(shiny.autoreload = TRUE)
 
 # Loading the Race results data
 race_results <- readr::read_csv("data/formula1_2021season_raceResults.csv", col_types=c(`Fastest Lap`="character"))
+race_results <- race_results |>
+  dplyr::mutate(Track = dplyr::case_when(Track == "Netherlands" ~ "Dutch",
+                                         Track == "Brazil" ~ "Sao Paulo",
+                                         TRUE ~ Track))
 race_results$Track <- factor(race_results$Track, levels = unique(race_results$Track))
 # race_results$`Fastest Lap` = paste0('00:0', race_results$`Fastest Lap`)
 # race_results$`Fastest Lap` = lubridate::hms(race_results$`Fastest Lap`)
 race_results$flag <- ifelse(race_results$`+1 Pt` =='Yes', 1, 0)
+
 
 gp_list <- unique(as.character(race_results$Track))
 
