@@ -141,7 +141,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                             #                         choices = unique(race_results$Driver),
                             #                         selected = "Lewis Hamilton"))
                             # Table output
-                            column(6,
+                            column(9,
                                    DT::DTOutput(outputId = 'race_results_table')),
                             # column(6,
                             #        # plotOutput("lap_times_plot"))
@@ -349,7 +349,7 @@ server <- function(input, output, session) {
       dplyr::filter(GP == input$gp) |> 
       dplyr::select(-GP, -Track)  |> 
       dplyr::mutate(Position = as.integer(Position)) |> 
-      dplyr::select(Driver, Team, Position, `Time/Retired`, Laps,
+      dplyr::select(Driver, No, Team, Position, `Time/Retired`, Laps,
                     `Starting Grid`, Points, `Fastest Lap`, flag) 
     
   )
@@ -373,7 +373,7 @@ server <- function(input, output, session) {
               selection = "none"
     ) |> 
       formatStyle(
-        'flag', target = 'row', 
+        'Fastest Lap', 'flag', 
         backgroundColor = styleEqual(c(1), c('#B138DD'))
       )
     
