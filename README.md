@@ -2,7 +2,9 @@
 
 ## Welcome!
 
-Whether you consider yourself a true Formula 1 veteran, or this is the first time you've heard of the sport, we bid you welcome to our dashboard! Firstly, a quick overview of what you can find on this page:
+Whether you consider yourself a true Formula 1 veteran, or this is the first time you've heard of the sport, we bid you welcome to: [our dashboard!](https://eric1208.shinyapps.io/f1-2021-analysis/)  
+
+Firstly, a quick overview of what you can find on this page:
 
 - [Visualising the Formula 1 2021 Season](#visualising-the-formula-1-2021-season)
   - [Welcome!](#welcome)
@@ -42,7 +44,17 @@ The second page is the Race Information tab. In the top left there is a dropdown
 
 
 ## The Contributing Guidelines
-Do you have ideas on how we can improve our dashboard, and are you interested in contributing? Check out the [contributing guidelines](CONTRIBUTING.md)! Please note that this project is released with a [Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+Do you have ideas on how we can improve our dashboard, and are you interested in contributing? We'd love to see your suggestions! To make changes locally just clone the repo, navigate to the top folder, and run the app:
+
+```
+git clone git@github.com:UBC-MDS/f1-2021-analysis.git # If SSH is set up
+
+cd f1-2021-analysis
+
+RScript app.R
+```
+
+Check out the [contributing guidelines](CONTRIBUTING.md) if you're looking to make additions to our project! Please note that this project is released with a [Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 ## The License
 `f1-2021-analysis` was created by Tanmay Agarwal, Yingxin Song, Renzo Wijngaarden, and Eric Tsai. It is licensed under the terms of the MIT license.
 ## The Credits
