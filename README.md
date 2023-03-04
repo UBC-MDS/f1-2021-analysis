@@ -34,7 +34,7 @@ With all these developments throughout the season's calendar it can be hard to r
 
 ![Landing Page](/www/sketch/dashboard_demo_tab_1.gif)
 
-Our app opens on the Season Highlights page. On the left hand side you can either select Drivers or Teams: this selections determines what is shown in the cumulative season points plot to its right. Underneath the plot is a slider with which you can adjust the number of races shown in the plot. On the right hand side is a column with all the races that happened in 2021, in order of which they took place. Adjusting the slider will highlight here what races are currently included in the selection.
+Our app opens on the Season Highlights page. On the left hand side you can either select Drivers or Teams: this selections determines what is shown in the cumulative season points plot to its right. Underneath the plot is a slider with which you can adjust the number of races shown in the plot. On the right hand side is a table with all the races that happened in 2021, in order of which they took place. Adjusting the slider will highlight the races in the table that are currently included in the selection.
 
 ![Race Page](/www/sketch/dashboard_demo_tab_2.gif)  
 
