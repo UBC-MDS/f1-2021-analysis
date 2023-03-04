@@ -13,12 +13,12 @@ library(tidyverse)
 options(shiny.autoreload = TRUE)
 
 # Loading the Race results data
-race_results <- readr::read_csv("data/formula1_2021season_raceResults.csv")
-race_results <- race_results |>
-  dplyr::mutate(Track = dplyr::case_when(Track == "Netherlands" ~ "Dutch",
-                                         Track == "Brazil" ~ "Sao Paulo",
-                                         TRUE ~ Track))
+race_results <- readr::read_csv("data/formula1_2021season_raceResults.csv", col_types=c(`Fastest Lap`="character"))
 race_results$Track <- factor(race_results$Track, levels = unique(race_results$Track))
+# race_results$`Fastest Lap` = paste0('00:0', race_results$`Fastest Lap`)
+# race_results$`Fastest Lap` = lubridate::hms(race_results$`Fastest Lap`)
+race_results$flag <- ifelse(race_results$`+1 Pt` =='Yes', 1, 0)
+
 gp_list <- unique(as.character(race_results$Track))
 
 # Get cumulative points of each driver over the season
@@ -141,7 +141,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                             #                         choices = unique(race_results$Driver),
                             #                         selected = "Lewis Hamilton"))
                             # Table output
-                            column(6,
+                            column(9,
                                    DT::DTOutput(outputId = 'race_results_table')),
                             # column(6,
                             #        # plotOutput("lap_times_plot"))
@@ -347,7 +347,11 @@ server <- function(input, output, session) {
   filtered_race_results <- reactive(
     race_results |> 
       dplyr::filter(GP == input$gp) |> 
-      dplyr::select(-GP) 
+      dplyr::select(-GP, -Track)  |> 
+      dplyr::mutate(Position = as.integer(Position)) |> 
+      dplyr::select(Driver, No, Team, Position, `Time/Retired`, Laps,
+                    `Starting Grid`, Points, `Fastest Lap`, flag) 
+    
   )
   
   # Filter the data frame for lap times based on selection
@@ -358,7 +362,21 @@ server <- function(input, output, session) {
   # Render the race results table
   output$race_results_table <- DT::renderDT({
     
-    datatable(filtered_race_results())
+    datatable(filtered_race_results(),
+              options = list("pageLength" = 20,
+                             "paging" = FALSE,
+                             "scrollY" = '800px',
+                             "scrollX" = 'TRUE',
+                             "autoWidth" = TRUE,
+                             "columnDefs" = list(list(visible = FALSE, targets = c("flag")))
+              ),
+              selection = "none"
+    ) |> 
+      formatStyle(
+        'Fastest Lap', 'flag', 
+        backgroundColor = styleEqual(c(1), c('#B138DD'))
+      )
+    
     
   })
   
