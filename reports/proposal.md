@@ -36,6 +36,6 @@ Tom is an avid Formula 1 fan who wishes to explore in detail the 2021 Season of 
 
 # App Sketches
 
-![Landing Page](../img/sketch/season.jpg)
+![Landing Page](../www/sketch/season.jpg)
 
-![Race Page](../img/sketch/race.jpg)
+![Race Page](../www/sketch/race.jpg)
