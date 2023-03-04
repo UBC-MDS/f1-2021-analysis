@@ -15,8 +15,8 @@ options(shiny.autoreload = TRUE)
 # Loading the Race results data
 race_results <- readr::read_csv("data/formula1_2021season_raceResults.csv", col_types=c(`Fastest Lap`="character"))
 race_results$Track <- factor(race_results$Track, levels = unique(race_results$Track))
-race_results$`Fastest Lap` = paste0('00:0', race_results$`Fastest Lap`)
-race_results$`Fastest Lap` = lubridate::hms(race_results$`Fastest Lap`)
+# race_results$`Fastest Lap` = paste0('00:0', race_results$`Fastest Lap`)
+# race_results$`Fastest Lap` = lubridate::hms(race_results$`Fastest Lap`)
 race_results$flag <- ifelse(race_results$`+1 Pt` =='Yes', 1, 0)
 
 gp_list <- unique(as.character(race_results$Track))
@@ -366,13 +366,15 @@ server <- function(input, output, session) {
               options = list("pageLength" = 20,
                              "paging" = FALSE,
                              "scrollY" = '800px',
-                             "autoWidth" = TRUE
+                             "scrollX" = 'TRUE',
+                             "autoWidth" = TRUE,
+                             "columnDefs" = list(list(visible = FALSE, targets = c("flag")))
               ),
               selection = "none"
     ) |> 
       formatStyle(
         'flag', target = 'row', 
-        backgroundColor = styleEqual(c(1), c('green'))
+        backgroundColor = styleEqual(c(1), c('#B138DD'))
       )
     
     
