@@ -2,7 +2,7 @@
 
 ## Welcome!
 
-Whether you consider yourself a true Formula 1 veteran, or this is th first time you've heard of the sport, we bid you welcome to our dashboard! Firstly a quick overview of what you can find on this page:
+Whether you consider yourself a true Formula 1 veteran, or this is the first time you've heard of the sport, we bid you welcome to our dashboard! Firstly, a quick overview of what you can find on this page:
 
 - [Visualising the Formula 1 2021 Season](#visualising-the-formula-1-2021-season)
   - [Welcome!](#welcome)
