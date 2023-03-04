@@ -117,7 +117,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                      12,
                                      selectInput(
                                        inputId = 'gp',
-                                       label = 'Choose Grand Prix',
+                                       label = 'Choose Race',
                                        choices = unique(race_results$GP),
                                        selected = "Bahrain Grand Prix",
                                      )
@@ -141,7 +141,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                             #                         choices = unique(race_results$Driver),
                             #                         selected = "Lewis Hamilton"))
                             # Table output
-                            column(9,
+                            column(8,
                                    DT::DTOutput(outputId = 'race_results_table')),
                             # column(6,
                             #        # plotOutput("lap_times_plot"))
@@ -328,7 +328,8 @@ server <- function(input, output, session) {
       )
     transpose <-
       data.frame(t(facts)) |>
-      rownames_to_column("Circuit")
+      rownames_to_column("Race")
+    colnames(transpose) <- c("Race", input$gp)
     transpose
   })
   
