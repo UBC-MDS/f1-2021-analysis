@@ -60,22 +60,32 @@ ui <- navbarPage("Formula 1 Dashboard",
                        tabPanel("Driver",
                                 fluidRow(
                                   column(2,
-                                    checkboxGroupInput(inputId = "driverSelect",
-                                                       label = "Select drivers:",
-                                                       choices = unique(driver_results$Driver),
-                                                       selected = c("Lewis Hamilton", "Carlos Sainz"))
+                                         virtualSelectInput(
+                                           inputId = "driverSelect", 
+                                           label = "Select drivers:", 
+                                           choices = sort(unique(driver_results$Driver)),
+                                           selected = c("Lewis Hamilton", "Carlos Sainz"),
+                                           showValueAsTags = TRUE,
+                                           multiple = TRUE,
+                                           noOfDisplayValues = 5,
+                                           
+                                         ),
                                   ),
+                                  
                                   column(8,
                                          plotOutput("distPlot", height = "480px"),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
-                                           sliderTextInput(inputId = "raceSliderDrivers",
-                                                           label = "Select races",
-                                                           choices = unique(driver_results$Track),
-                                                           selected = c("Bahrain", "Abu Dhabi"),
-                                                           grid = TRUE,
-                                                           from_fixed = TRUE,
-                                                           width = "100%")
+                                           sliderTextInput(
+                                             inputId = "raceSliderDrivers", 
+                                             label = "Select races:", 
+                                             selected = c("Abu Dhabi"),
+                                             grid = TRUE, 
+                                             force_edges = TRUE,
+                                             choices = unique(driver_results$Track),
+                                             width = "100%"
+                                           )
+                                           
                                          )
                                   ),
                                   # Table of Races that interacts with raceSliderDrivers
@@ -87,10 +97,14 @@ ui <- navbarPage("Formula 1 Dashboard",
                        tabPanel("Teams",
                                 fluidRow(
                                   column(2,
-                                         checkboxGroupInput(inputId = "teamSelect",
-                                                            label = "Select teams:",
-                                                            choices = unique(team_results$Team),
-                                                            selected = c("McLaren Mercedes"))
+                                         virtualSelectInput(
+                                           inputId = "teamSelect", 
+                                           label = "Select teams:", 
+                                           choices = sort(unique(team_results$Team)),
+                                           selected = c("McLaren Mercedes"),
+                                           showValueAsTags = TRUE,
+                                           multiple = TRUE,
+                                           noOfDisplayValues = 5),
                                   ),
                                   column(8,
                                          plotOutput("teamPointsPlot", height = "480px"),
@@ -99,9 +113,8 @@ ui <- navbarPage("Formula 1 Dashboard",
                                            sliderTextInput(inputId = "raceSliderTeams",
                                                            label = "Select races",
                                                            choices = unique(driver_results$Track),
-                                                           selected = c("Bahrain", "Abu Dhabi"),
+                                                           selected = c("Abu Dhabi"),
                                                            grid = TRUE,
-                                                           from_fixed = TRUE,
                                                            width = "100%")
                                          )
                                   ),
@@ -165,8 +178,8 @@ server <- function(input, output, session) {
   
   # Change row color depending on the slider race selections
   observeEvent(input$raceSliderDrivers, {
-    start_race <- which(highlight_races$races == input$raceSliderDrivers[1])
-    end_race <- which(highlight_races$races == input$raceSliderDrivers[2])
+    start_race <- 1
+    end_race <- which(highlight_races$races == input$raceSliderDrivers[1])
     highlight_races$races <- c(highlight_races$races[start_race:end_race],
                                highlight_races$races[!(highlight_races$races %in% highlight_races$races[start_race:end_race])])
     highlight_races$row_color <- c(rep('pink', length(highlight_races$races[start_race:end_race])),
@@ -216,8 +229,8 @@ server <- function(input, output, session) {
   
   # Change row color depending on the slider race selections for the teams tab
   observeEvent(input$raceSliderTeams, {
-    start_race <- which(highlight_races_teams_tab$races == input$raceSliderTeams[1])
-    end_race <- which(highlight_races_teams_tab$races == input$raceSliderTeams[2])
+    start_race <- 1
+    end_race <- which(highlight_races_teams_tab$races == input$raceSliderTeams[1])
     highlight_races_teams_tab$races <- c(highlight_races_teams_tab$races[start_race:end_race],
                                            highlight_races_teams_tab$races[!(highlight_races_teams_tab$races %in% 
                                                                                  highlight_races_teams_tab$races[start_race:end_race])])
@@ -263,7 +276,7 @@ server <- function(input, output, session) {
   
   # filter data frame for drivers based on selection
   drivers_plotting <- reactive({
-    last_race = input$raceSliderDrivers[2]
+    last_race = input$raceSliderDrivers[1]
     driver_results |>
       dplyr::filter(Driver %in% input$driverSelect) |>
       dplyr::filter(Track %in% gp_list[1:which(gp_list == last_race)])
@@ -289,7 +302,7 @@ server <- function(input, output, session) {
   
   # filter data frame for teams based on selection
   teams_plotting <- reactive({
-    last_race = input$raceSliderTeams[2]
+    last_race = input$raceSliderTeams[1]
     team_results |>
       dplyr::filter(Team %in% input$teamSelect) |>
       dplyr::filter(Track %in% gp_list[1:which(gp_list == last_race)])
