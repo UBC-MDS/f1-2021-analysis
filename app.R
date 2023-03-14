@@ -60,11 +60,18 @@ ui <- navbarPage("Formula 1 Dashboard",
                        tabPanel("Driver",
                                 fluidRow(
                                   column(2,
-                                    checkboxGroupInput(inputId = "driverSelect",
-                                                       label = "Select drivers:",
-                                                       choices = unique(driver_results$Driver),
-                                                       selected = c("Lewis Hamilton", "Carlos Sainz"))
+                                         virtualSelectInput(
+                                           inputId = "driverSelect", 
+                                           label = "Select drivers:", 
+                                           choices = sort(unique(driver_results$Driver)),
+                                           selected = c("Lewis Hamilton", "Carlos Sainz"),
+                                           showValueAsTags = TRUE,
+                                           multiple = TRUE,
+                                           noOfDisplayValues = 5,
+                                           
+                                         ),
                                   ),
+                                  
                                   column(8,
                                          plotOutput("distPlot", height = "480px"),
                                          fluidRow(
@@ -90,10 +97,14 @@ ui <- navbarPage("Formula 1 Dashboard",
                        tabPanel("Teams",
                                 fluidRow(
                                   column(2,
-                                         checkboxGroupInput(inputId = "teamSelect",
-                                                            label = "Select teams:",
-                                                            choices = unique(team_results$Team),
-                                                            selected = c("McLaren Mercedes"))
+                                         virtualSelectInput(
+                                           inputId = "teamSelect", 
+                                           label = "Select teams:", 
+                                           choices = sort(unique(team_results$Team)),
+                                           selected = c("McLaren Mercedes"),
+                                           showValueAsTags = TRUE,
+                                           multiple = TRUE,
+                                           noOfDisplayValues = 5),
                                   ),
                                   column(8,
                                          plotOutput("teamPointsPlot", height = "480px"),
