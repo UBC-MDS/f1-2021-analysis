@@ -52,7 +52,12 @@ race_table <- race_table |>
   dplyr::select(Country, City, Race)
 
 ui <- navbarPage("Formula 1 Dashboard",
-                 theme = shinytheme("lumen"),
+                 theme = bs_theme(
+                   bg = "#101010", 
+                   fg = "#FDF7F7", 
+                   primary = "#FF0000",
+                   danger = "#ED79F9"
+                 ),
                  tabPanel(
                    "Season Highlights",
                    # checkbox to filter for drivers
@@ -90,6 +95,8 @@ ui <- navbarPage("Formula 1 Dashboard",
                                 )
                        ),
                        tabPanel("Teams",
+                                tags$head(tags$style( HTML(' .nav {margin-left:10px;}'))),
+                                div(style = "margin-left: 20px; margin-right: 20px;",
                                 fluidRow(
                                   column(2,
                                          checkboxGroupInput(inputId = "teamSelect",
@@ -114,6 +121,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                   column(2,
                                          reactableOutput("RacesTeamsTab") |> withSpinner(color="#0dc5c1")
                                   )
+                                )
                                 )
                        )
                      )
@@ -187,6 +195,15 @@ server <- function(input, output, session) {
   
   # Create the table with the specified rows highlighted
   output$Races <- renderReactable({
+    
+    options(reactable.theme = reactableTheme(
+      color = "hsl(0, 100%, 0%)",
+      backgroundColor = "hsl(233, 9%, 19%)"),
+      headerStyle = list(
+        background = "hsl(294, 91%, 73%)"
+      )
+      )
+    
     reactable(
       race_table,
       columns = list(
@@ -212,7 +229,11 @@ server <- function(input, output, session) {
             )
             },
           align = "center",
-          headerStyle = list(fontSize = "24px")
+          headerStyle = list(fontSize = "24px", 
+                             background = "#101010",
+                             color = "#FDF7F7"
+                             ),
+          sortable = FALSE,
         ),
         Country = colDef(show = FALSE),
         City = colDef(show = FALSE)
@@ -242,6 +263,15 @@ server <- function(input, output, session) {
   
   # Render table for the teams tab
   output$RacesTeamsTab <- renderReactable({
+    
+    options(reactable.theme = reactableTheme(
+      color = "hsl(0, 100%, 0%)",
+      backgroundColor = "hsl(233, 9%, 19%)"),
+      headerStyle = list(
+        background = "hsl(294, 91%, 73%)"
+      )
+    )
+    
     reactable(
       race_table,
       columns = list(
@@ -267,7 +297,11 @@ server <- function(input, output, session) {
             )
           },
           align = "center",
-          headerStyle = list(fontSize = "24px")
+          headerStyle = list(fontSize = "24px",
+                             background = "#101010",
+                             color = "#FDF7F7"
+                             ),
+          sortable = FALSE,
         ),
         Country = colDef(show = FALSE),
         City = colDef(show = FALSE)
