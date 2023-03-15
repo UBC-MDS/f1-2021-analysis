@@ -196,15 +196,18 @@ server <- function(input, output, session) {
                              marginBottom = '0px', marginTop = '0px',
                              borderCollapse= 'separate',
                              borderSpacing= '0 0px')
-              )
+                )
             )
-          }
+            },
+          align = "center",
+          headerStyle = list(fontSize = "24px")
         ),
         Country = colDef(show = FALSE),
         City = colDef(show = FALSE)
       ),
       pagination = FALSE,
       compact = TRUE,
+      height = 600,
       style = "padding: 0px; border-collapse: collapse; border-spacing: 0;"
     )
   })
@@ -250,13 +253,16 @@ server <- function(input, output, session) {
                              borderSpacing= '0 0px')
               )
             )
-          }
+          },
+          align = "center",
+          headerStyle = list(fontSize = "24px")
         ),
         Country = colDef(show = FALSE),
         City = colDef(show = FALSE)
       ),
       pagination = FALSE,
       compact = TRUE,
+      height=600,
       style = "padding: 0px; border-collapse: collapse; border-spacing: 0;"
     )
   })
