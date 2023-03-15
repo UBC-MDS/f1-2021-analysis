@@ -6,7 +6,7 @@ library(shinyWidgets)
 library(ggplot2)
 library(reactable)
 library(tidyverse)
-
+library(insight)
 
 
 
@@ -117,41 +117,60 @@ ui <- navbarPage("Formula 1 Dashboard",
                  ),
                  tabPanel('Race Information',
                           fluidRow(
-                            # Dropdown for grand prix
                             column(3,
+                                   # Dropdown for grand prix
                                    fluidRow(column(
                                      12,
-                                     selectInput(
-                                       inputId = 'gp',
-                                       label = 'Choose Race',
-                                       choices = unique(race_results$GP),
-                                       selected = "Bahrain Grand Prix",
-                                     )
+                                     align = "center",
+                                     uiOutput("selector")
                                    )),
+                                   # Previous and next buttons
+                                   fluidRow(column(
+                                     5, 
+                                     align = "center",
+                                     tags$div(class="row", tags$div(uiOutput("prevBin")))
+                                     ),
+                                   column(3),
+                                   column(
+                                     4,
+                                     align = "center",
+                                     tags$div(class="row", tags$div(uiOutput("nextBin")))
+                                     )),
+                                   # Track map image
                                    fluidRow(column(
                                      12,
                                      align="center",
-                                     imageOutput("track_layout", height="200px")
-                                   )),
-                                   fluidRow(# GP facts table
-                                     column(
-                                       12,
-                                       tableOutput("gp_facts_table")
+                                     imageOutput("track_layout", height="150px")
                                      )),
-                                   
+                                   # GP facts table
+                                   fluidRow(
+                                     column(1),
+                                     column(
+                                     11,
+                                     tableOutput("gp_facts_table")
+                                     )),
                                    ),
-                                    
-                            # Dropdown for driver
-                            #   column(6, selectInput(inputId = 'driver',
-                            #                         label = 'Choose Driver',
-                            #                         choices = unique(race_results$Driver),
-                            #                         selected = "Lewis Hamilton"))
                             # Table output
                             column(8,
-                                   DT::DTOutput(outputId = 'race_results_table')),
-                            # column(6,
-                            #        # plotOutput("lap_times_plot"))
-
+                                   fluidRow(column(
+                                     12,
+                                     DT::DTOutput(outputId = 'race_results_table')
+                                     )),
+                                   # Legend
+                                   fluidRow(column(
+                                     2, 
+                                     align = "center",
+                                     style = "background-color:pink",
+                                     span(textOutput("legend1"), style = "color:black")
+                                     ),
+                                   column(8),
+                                   column(
+                                     2,
+                                     align = "center",
+                                     style = "background-color:#B138DD",
+                                     span(textOutput("legend2"), style = "color:black")
+                                     ))
+                                   )
                             ))
 )
 
@@ -373,7 +392,7 @@ server <- function(input, output, session) {
               rownames = F,
               options = list("pageLength" = 15,
                              "paging" = F,
-                             "scrollY" = '600px',
+                             "scrollY" = '550px',
                              "scrollX" = 'TRUE',
                              "rownames" = 'FALSE',
                              "columnDefs" = list(list(visible = FALSE, targets = c("flag", "dnf")))
@@ -410,6 +429,46 @@ server <- function(input, output, session) {
         legend.position = "top")
   })
   
+  # Dropdown race select
+  output$selector <- renderUI({
+    selectInput(
+      inputId = 'gp',
+      label = 'Choose Race',
+      choices = unique(race_results$GP),
+      selected = "Bahrain Grand Prix",
+    )
+  })
+  
+  # Previous/Next buttons
+  output$prevBin <- renderUI({
+    actionButton("prevBin", 
+                 label = "Previous")
+  })
+  output$nextBin <- renderUI({
+    actionButton("nextBin", 
+                 label = "Next")
+  })
+  
+  observeEvent(input$prevBin, {
+    current <- which(unique(race_results$GP) == input$gp)
+    if(current > 1){
+      updateSelectInput(session, "gp",
+                        choices = unique(race_results$GP),
+                        selected = unique(race_results$GP)[current - 1])
+    }
+  })
+  observeEvent(input$nextBin, {
+    current <- which(unique(race_results$GP) == input$gp)
+    if(current < length(unique(race_results$GP))){
+      updateSelectInput(session, "gp",
+                        choices = unique(race_results$GP),
+                        selected = unique(race_results$GP)[current + 1])
+    }
+  })
+  
+  # Legend 
+  output$legend1 <- renderText({"DNF/DNS"})
+  output$legend2 <- renderText({"Fastest Lap"})
   
 }
 
