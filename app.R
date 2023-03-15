@@ -22,6 +22,7 @@ race_results$Track <- factor(race_results$Track, levels = unique(race_results$Tr
 # race_results$`Fastest Lap` = paste0('00:0', race_results$`Fastest Lap`)
 # race_results$`Fastest Lap` = lubridate::hms(race_results$`Fastest Lap`)
 race_results$flag <- ifelse(race_results$`+1 Pt` =='Yes', 1, 0)
+race_results$dnf <- ifelse(race_results$`Time/Retired`=='DNF' | race_results$`Time/Retired`=='DNS', 1, 0)
 
 
 gp_list <- unique(as.character(race_results$Track))
@@ -356,7 +357,7 @@ server <- function(input, output, session) {
       dplyr::select(-GP, -Track)  |> 
       dplyr::mutate(Position = as.integer(Position)) |> 
       dplyr::select(Driver, No, Team, Position, `Time/Retired`, Laps,
-                    `Starting Grid`, Points, `Fastest Lap`, flag) 
+                    `Starting Grid`, Points, `Fastest Lap`, flag, dnf) 
     
   )
   
@@ -369,18 +370,24 @@ server <- function(input, output, session) {
   output$race_results_table <- DT::renderDT({
     
     datatable(filtered_race_results(),
-              options = list("pageLength" = 20,
-                             "paging" = FALSE,
-                             "scrollY" = '800px',
+              rownames = F,
+              options = list("pageLength" = 15,
+                             "paging" = F,
+                             "scrollY" = '600px',
                              "scrollX" = 'TRUE',
-                             "autoWidth" = TRUE,
-                             "columnDefs" = list(list(visible = FALSE, targets = c("flag")))
+                             "rownames" = 'FALSE',
+                             "columnDefs" = list(list(visible = FALSE, targets = c("flag", "dnf")))
               ),
               selection = "none"
     ) |> 
       formatStyle(
         'Fastest Lap', 'flag', 
         backgroundColor = styleEqual(c(1), c('#B138DD'))
+      ) |>
+      formatStyle(
+        'dnf', 
+        target = 'row',
+        backgroundColor = styleEqual(1, 'pink')
       )
     
     
