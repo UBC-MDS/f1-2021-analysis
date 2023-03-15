@@ -111,9 +111,7 @@ tags$head(
                                   ),
                                   # Table of Races that interacts with raceSliderDrivers
                                   column(2,
-                                         reactableOutput("Races") |> 
-                                           withSpinner(color="#FF0000",
-                                                       image = "UI/200w.gif")
+                                         reactableOutput("Races")
                                   )
                                 ),
                                 )
@@ -129,7 +127,8 @@ tags$head(
                                                             selected = c("McLaren Mercedes"))
                                   ),
                                   column(8,
-                                         plotOutput("teamPointsPlot", height = "480px") |> withSpinner(color="#FF0000"),
+                                         plotOutput("teamPointsPlot", height = "480px") |> withSpinner(color="#FF0000",
+                                                                                                       image = "UI/200w.gif"),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
                                            sliderTextInput(inputId = "raceSliderTeams",
@@ -143,7 +142,7 @@ tags$head(
                                   ),
                                   # Table of Races that interacts with raceSliderTeams
                                   column(2,
-                                         reactableOutput("RacesTeamsTab") |> withSpinner(color="#FF0000")
+                                         reactableOutput("RacesTeamsTab")
                                   )
                                 )
                                 )
@@ -167,14 +166,12 @@ tags$head(
                                    fluidRow(column(
                                      12,
                                      align="center",
-                                     imageOutput("track_layout", height="200px") |> 
-                                       withSpinner(color="#FF0000")
+                                     imageOutput("track_layout", height="200px") 
                                    )),
                                    fluidRow(# GP facts table
                                      column(
                                        12,
-                                       tableOutput("gp_facts_table") |>
-                                         withSpinner(color="#FF0000")
+                                       tableOutput("gp_facts_table")
                                      )),
                                    
                                    ),
@@ -188,7 +185,7 @@ tags$head(
                             column(8,
                                    shinycssloaders::withSpinner(
                                    DT::DTOutput(outputId = 'race_results_table'),
-                                   color="#FF0000"
+                                   color="#FF0000", image = "UI/200w.gif"
                                    ),
                             )
                             # column(6,
