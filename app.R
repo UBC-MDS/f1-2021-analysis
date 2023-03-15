@@ -7,7 +7,7 @@ library(ggplot2)
 library(reactable)
 library(tidyverse)
 library(shinycssloaders)
-
+library(ggdark)
 
 
 
@@ -51,7 +51,13 @@ race_table$Race <- factor(race_table$Race, levels = unique(race_table$Race))
 race_table <- race_table |>
   dplyr::select(Country, City, Race)
 
-ui <- navbarPage("Formula 1 Dashboard",
+ui <- navbarPage(title = div(img(src = "UI/f1-logo.jpeg",
+                                 id = "logo",
+                                 height = "100px",
+                                 # width = "100px",
+                                 style = "position: relative; margin:-15px 0px -15px 0px; display:left-align;"),
+                             "Formula 1 Dashboard"
+),
                  theme = bs_theme(
                    bg = "#101010", 
                    fg = "#FDF7F7", 
@@ -75,7 +81,10 @@ ui <- navbarPage("Formula 1 Dashboard",
                                                        selected = c("Lewis Hamilton", "Carlos Sainz"))
                                   ),
                                   column(8,
-                                         plotOutput("distPlot", height = "480px") |> withSpinner(color="#FF0000"),
+                                         plotOutput("distPlot", height = "480px") |> 
+                                           withSpinner(color="#FF0000",
+                                                       image = "UI/200w.gif"
+                                                       ),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
                                            sliderTextInput(inputId = "raceSliderDrivers",
@@ -89,7 +98,9 @@ ui <- navbarPage("Formula 1 Dashboard",
                                   ),
                                   # Table of Races that interacts with raceSliderDrivers
                                   column(2,
-                                         reactableOutput("Races") |> withSpinner(color="#FF0000")
+                                         reactableOutput("Races") |> 
+                                           withSpinner(color="#FF0000",
+                                                       image = "UI/200w.gif")
                                   )
                                 ),
                                 )
@@ -328,6 +339,7 @@ server <- function(input, output, session) {
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
       ggplot2::scale_y_continuous(limits = c(0, 400)) +
+      ggdark::dark_theme_gray() +
       ggplot2::theme(
         plot.title = element_text(size = 25, face = "bold"),
         axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6),
@@ -354,6 +366,7 @@ server <- function(input, output, session) {
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
       ggplot2::scale_y_continuous(limits = c(0, 650)) +
+      ggdark::dark_theme_gray() +
       ggplot2::theme(
         plot.title = element_text(size = 25, face = "bold"),
         axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6),
