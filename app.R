@@ -75,7 +75,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                                        selected = c("Lewis Hamilton", "Carlos Sainz"))
                                   ),
                                   column(8,
-                                         plotOutput("distPlot", height = "480px") |> withSpinner(color="#0dc5c1"),
+                                         plotOutput("distPlot", height = "480px") |> withSpinner(color="#FF0000"),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
                                            sliderTextInput(inputId = "raceSliderDrivers",
@@ -89,7 +89,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                   ),
                                   # Table of Races that interacts with raceSliderDrivers
                                   column(2,
-                                         reactableOutput("Races") |> withSpinner(color="#0dc5c1")
+                                         reactableOutput("Races") |> withSpinner(color="#FF0000")
                                   )
                                 ),
                                 )
@@ -105,7 +105,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                                             selected = c("McLaren Mercedes"))
                                   ),
                                   column(8,
-                                         plotOutput("teamPointsPlot", height = "480px") |> withSpinner(color="#0dc5c1"),
+                                         plotOutput("teamPointsPlot", height = "480px") |> withSpinner(color="#FF0000"),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
                                            sliderTextInput(inputId = "raceSliderTeams",
@@ -119,7 +119,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                   ),
                                   # Table of Races that interacts with raceSliderTeams
                                   column(2,
-                                         reactableOutput("RacesTeamsTab") |> withSpinner(color="#0dc5c1")
+                                         reactableOutput("RacesTeamsTab") |> withSpinner(color="#FF0000")
                                   )
                                 )
                                 )
@@ -144,13 +144,13 @@ ui <- navbarPage("Formula 1 Dashboard",
                                      12,
                                      align="center",
                                      imageOutput("track_layout", height="200px") |> 
-                                       withSpinner(color="#0dc5c1")
+                                       withSpinner(color="#FF0000")
                                    )),
                                    fluidRow(# GP facts table
                                      column(
                                        12,
                                        tableOutput("gp_facts_table") |>
-                                         withSpinner(color="#0dc5c1")
+                                         withSpinner(color="#FF0000")
                                      )),
                                    
                                    ),
@@ -164,7 +164,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                             column(8,
                                    shinycssloaders::withSpinner(
                                    DT::DTOutput(outputId = 'race_results_table'),
-                                   color="#0dc5c1"
+                                   color="#FF0000"
                                    ),
                             )
                             # column(6,
