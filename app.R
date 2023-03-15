@@ -59,6 +59,9 @@ ui <- navbarPage("Formula 1 Dashboard",
                    fluidRow(
                      tabsetPanel(
                        tabPanel("Driver",
+                                tags$head(tags$style( HTML(' .nav {margin-left:10px;}'))),
+                                div(style = "margin-left: 20px; margin-right: 20px;",
+                                  
                                 fluidRow(
                                   column(2,
                                     checkboxGroupInput(inputId = "driverSelect",
@@ -84,6 +87,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                          reactableOutput("Races") |> withSpinner(color="#0dc5c1")
                                   )
                                 ),
+                                )
                        ),
                        tabPanel("Teams",
                                 fluidRow(
