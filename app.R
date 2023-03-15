@@ -51,26 +51,39 @@ race_table$Race <- factor(race_table$Race, levels = unique(race_table$Race))
 race_table <- race_table |>
   dplyr::select(Country, City, Race)
 
-ui <- navbarPage(title = div(img(src = "UI/f1-logo.jpeg",
+ui <- navbarPage(title = div(img(src = "UI/f1-logo.png",
                                  id = "logo",
-                                 height = "100px",
-                                 # width = "100px",
-                                 style = "position: relative; margin:-15px 0px -15px 0px; display:left-align;"),
+                                 # height = "150px",
+                                 width = "120px",
+                                 style = "position: static; padding-bottom: 0px; margin-right: 15px; display:left-align;"),
                              "Formula 1 Dashboard"
 ),
+tags$head(
+  tags$style(HTML(' .navbar {
+                          height: 80px;
+                          min-height:50px !important;
+                        }
+                      .navbar-nav > li > a, .navbar-brand {
+                            padding-top:1px !important; 
+                            padding-bottom:1px !important;
+                            height: 20px;
+                            }'))),
                  theme = bs_theme(
                    bg = "#101010", 
-                   fg = "#FDF7F7", 
-                   primary = "#FF0000",
-                   danger = "#ED79F9"
+                   fg = "#ebdddd", 
+                   primary = "#e00a07",
+                   danger = "#ED79F9",
+                   base_font = font_google("Prompt"),
+                   # secondary = "#101011",
                  ),
                  tabPanel(
                    "Season Highlights",
+                   tags$head(tags$style( HTML(' .nav {margin-top:50px;}'))),
                    # checkbox to filter for drivers
                    fluidRow(
                      tabsetPanel(
                        tabPanel("Driver",
-                                tags$head(tags$style( HTML(' .nav {margin-left:10px;}'))),
+                                tags$head(tags$style( HTML(' .nav {margin-left:10px; margin-top:-10px;}'))),
                                 div(style = "margin-left: 20px; margin-right: 20px;",
                                   
                                 fluidRow(
@@ -341,11 +354,11 @@ server <- function(input, output, session) {
       ggplot2::scale_y_continuous(limits = c(0, 400)) +
       ggdark::dark_theme_gray() +
       ggplot2::theme(
-        plot.title = element_text(size = 25, face = "bold"),
-        axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6),
-        axis.text.y = element_text(size = 10),
-        axis.title = element_text(size = 15, face = "bold"),
-        legend.text = element_text(size = 10, face = "bold"),
+        plot.title = element_text(size = 25, face = "bold", family = "Prompt"),
+        axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6, family = "Prompt"),
+        axis.text.y = element_text(size = 10, family = "Prompt"),
+        axis.title = element_text(size = 15, face = "bold", family = "Prompt"),
+        legend.text = element_text(size = 10, face = "bold", family = "Prompt"),
         legend.title = element_blank(),
         legend.position = "top",
       )
@@ -368,11 +381,11 @@ server <- function(input, output, session) {
       ggplot2::scale_y_continuous(limits = c(0, 650)) +
       ggdark::dark_theme_gray() +
       ggplot2::theme(
-        plot.title = element_text(size = 25, face = "bold"),
-        axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6),
-        axis.text.y = element_text(size = 10),
-        axis.title = element_text(size = 15, face = "bold"),
-        legend.text = element_text(size = 10, face = "bold"),
+        plot.title = element_text(size = 25, face = "bold", family = "Prompt"),
+        axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6, family = "Prompt"),
+        axis.text.y = element_text(size = 10, family = "Prompt"),
+        axis.title = element_text(size = 15, face = "bold", family = "Prompt"),
+        legend.text = element_text(size = 10, face = "bold", family = "Prompt"),
         legend.title = element_blank(),
         legend.position = "top",
       )
