@@ -6,6 +6,7 @@ library(shinyWidgets)
 library(ggplot2)
 library(reactable)
 library(tidyverse)
+library(shinycssloaders)
 
 
 
@@ -66,7 +67,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                                        selected = c("Lewis Hamilton", "Carlos Sainz"))
                                   ),
                                   column(8,
-                                         plotOutput("distPlot", height = "480px"),
+                                         plotOutput("distPlot", height = "480px") |> withSpinner(color="#0dc5c1"),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
                                            sliderTextInput(inputId = "raceSliderDrivers",
@@ -80,7 +81,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                   ),
                                   # Table of Races that interacts with raceSliderDrivers
                                   column(2,
-                                         reactableOutput("Races")
+                                         reactableOutput("Races") |> withSpinner(color="#0dc5c1")
                                   )
                                 ),
                        ),
@@ -93,7 +94,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                                             selected = c("McLaren Mercedes"))
                                   ),
                                   column(8,
-                                         plotOutput("teamPointsPlot", height = "480px"),
+                                         plotOutput("teamPointsPlot", height = "480px") |> withSpinner(color="#0dc5c1"),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
                                            sliderTextInput(inputId = "raceSliderTeams",
@@ -107,7 +108,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                   ),
                                   # Table of Races that interacts with raceSliderTeams
                                   column(2,
-                                         reactableOutput("RacesTeamsTab")
+                                         reactableOutput("RacesTeamsTab") |> withSpinner(color="#0dc5c1")
                                   )
                                 )
                        )
@@ -130,12 +131,14 @@ ui <- navbarPage("Formula 1 Dashboard",
                                    fluidRow(column(
                                      12,
                                      align="center",
-                                     imageOutput("track_layout", height="200px")
+                                     imageOutput("track_layout", height="200px") |> 
+                                       withSpinner(color="#0dc5c1")
                                    )),
                                    fluidRow(# GP facts table
                                      column(
                                        12,
-                                       tableOutput("gp_facts_table")
+                                       tableOutput("gp_facts_table") |>
+                                         withSpinner(color="#0dc5c1")
                                      )),
                                    
                                    ),
@@ -147,11 +150,16 @@ ui <- navbarPage("Formula 1 Dashboard",
                             #                         selected = "Lewis Hamilton"))
                             # Table output
                             column(8,
-                                   DT::DTOutput(outputId = 'race_results_table')),
+                                   shinycssloaders::withSpinner(
+                                   DT::DTOutput(outputId = 'race_results_table'),
+                                   color="#0dc5c1"
+                                   ),
+                            )
                             # column(6,
                             #        # plotOutput("lap_times_plot"))
 
                             ))
+                          
 )
 
 server <- function(input, output, session) {
@@ -322,6 +330,7 @@ server <- function(input, output, session) {
   
   ##Functions for Panel 2 here
   output$gp_facts_table <- renderTable({
+    Sys.sleep(0.1)
     facts <- subset(calendar, calendar$"GP Name" == input$gp)
     row.names(facts) <- facts$"GP Name"
     facts <-
@@ -345,6 +354,7 @@ server <- function(input, output, session) {
   })
   
   output$track_layout <- renderImage({
+    Sys.sleep(0.1)
     filename <- normalizePath(file.path('./www/tracks',
                                         paste(input$gp, '.png', sep='')))
     
@@ -373,7 +383,7 @@ server <- function(input, output, session) {
   
   # Render the race results table
   output$race_results_table <- DT::renderDT({
-    
+    Sys.sleep(0.1)
     datatable(filtered_race_results(),
               options = list("pageLength" = 20,
                              "paging" = FALSE,
