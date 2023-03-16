@@ -90,11 +90,15 @@ tags$head(
                                   
                                 fluidRow(
                                   column(2,
-                                    checkboxGroupInput(inputId = "driverSelect",
-                                                       label = "Select drivers:",
-                                                       choices = unique(driver_results$Driver),
-                                                       selected = c("Lewis Hamilton", "Carlos Sainz"))
+                                         checkboxGroupInput(
+                                           inputId = "driverSelect", 
+                                           label = "Select drivers:", 
+                                           choices = sort(unique(driver_results$Driver)),
+                                           selected = c("Lewis Hamilton", "Carlos Sainz")
+                                         ),
+                                        actionButton(inputId = "selectalldrivers", label = "Select All") ,
                                   ),
+                                  
                                   column(8,
                                          plotOutput("distPlot", height = "480px") |> 
                                            withSpinner(color="#FF0000",
@@ -102,13 +106,16 @@ tags$head(
                                                        ),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
-                                           sliderTextInput(inputId = "raceSliderDrivers",
-                                                           label = "Select races",
-                                                           choices = unique(driver_results$Track),
-                                                           selected = c("Bahrain", "Abu Dhabi"),
-                                                           grid = TRUE,
-                                                           from_fixed = TRUE,
-                                                           width = "100%")
+                                           sliderTextInput(
+                                             inputId = "raceSliderDrivers", 
+                                             label = "Select races:", 
+                                             selected = c("Abu Dhabi"),
+                                             grid = TRUE, 
+                                             force_edges = TRUE,
+                                             choices = unique(driver_results$Track),
+                                             width = "100%"
+                                           )
+                                           
                                          )
                                   ),
                                   # Table of Races that interacts with raceSliderDrivers
@@ -123,10 +130,15 @@ tags$head(
                                 div(style = "margin-left: 20px; margin-right: 20px;",
                                 fluidRow(
                                   column(2,
-                                         checkboxGroupInput(inputId = "teamSelect",
-                                                            label = "Select teams:",
-                                                            choices = unique(team_results$Team),
-                                                            selected = c("McLaren Mercedes"))
+                                         checkboxGroupInput(
+                                           inputId = "teamSelect", 
+                                           label = "Select teams:", 
+                                           choices = sort(unique(team_results$Team)),
+                                           selected = c("McLaren Mercedes"),
+                                           ),
+                                         actionButton(inputId = "selectall", label = "Select All") ,
+                                         
+                                         
                                   ),
                                   column(8,
                                          plotOutput("teamPointsPlot", height = "480px") |> withSpinner(color="#FF0000",
@@ -136,9 +148,8 @@ tags$head(
                                            sliderTextInput(inputId = "raceSliderTeams",
                                                            label = "Select races",
                                                            choices = unique(driver_results$Track),
-                                                           selected = c("Bahrain", "Abu Dhabi"),
+                                                           selected = c("Abu Dhabi"),
                                                            grid = TRUE,
-                                                           from_fixed = TRUE,
                                                            width = "100%")
                                          )
                                   ),
@@ -199,15 +210,15 @@ tags$head(
                                    fluidRow(column(
                                      2, 
                                      align = "center",
-                                     style = "background-color:pink",
-                                     span(textOutput("legend1"), style = "color:black")
+                                     style = "background-color:#A83349; padding: 10px;",
+                                     span(textOutput("legend1"), style = "color:black;")
                                      ),
                                    column(8),
                                    column(
                                      2,
                                      align = "center",
                                      style = "background-color:#B138DD",
-                                     span(textOutput("legend2"), style = "color:black")
+                                     span(textOutput("legend2"), style = "color:black;")
                                      ))
                                    )
                             ))
@@ -225,8 +236,8 @@ server <- function(input, output, session) {
   
   # Change row color depending on the slider race selections
   observeEvent(input$raceSliderDrivers, {
-    start_race <- which(highlight_races$races == input$raceSliderDrivers[1])
-    end_race <- which(highlight_races$races == input$raceSliderDrivers[2])
+    start_race <- 1
+    end_race <- which(highlight_races$races == input$raceSliderDrivers[1])
     highlight_races$races <- c(highlight_races$races[start_race:end_race],
                                highlight_races$races[!(highlight_races$races %in% highlight_races$races[start_race:end_race])])
     highlight_races$row_color <- c(rep('pink', length(highlight_races$races[start_race:end_race])),
@@ -292,8 +303,8 @@ server <- function(input, output, session) {
   
   # Change row color depending on the slider race selections for the teams tab
   observeEvent(input$raceSliderTeams, {
-    start_race <- which(highlight_races_teams_tab$races == input$raceSliderTeams[1])
-    end_race <- which(highlight_races_teams_tab$races == input$raceSliderTeams[2])
+    start_race <- 1
+    end_race <- which(highlight_races_teams_tab$races == input$raceSliderTeams[1])
     highlight_races_teams_tab$races <- c(highlight_races_teams_tab$races[start_race:end_race],
                                            highlight_races_teams_tab$races[!(highlight_races_teams_tab$races %in% 
                                                                                  highlight_races_teams_tab$races[start_race:end_race])])
@@ -301,6 +312,38 @@ server <- function(input, output, session) {
                                    rep('white', length(highlight_races_teams_tab$races) - length(highlight_races_teams_tab$races[start_race:end_race])))
   })
   
+  observe({
+    if(input$selectall == 0) return(NULL) 
+    else if (input$selectall%%2 == 0)
+    {
+      updateCheckboxGroupInput(session,"teamSelect","Select teams:", 
+                               choices = sort(unique(team_results$Team)),
+)
+    }
+    else
+    {
+      updateCheckboxGroupInput(session,"teamSelect","Select teams:",
+                               choices = sort(unique(team_results$Team)),
+                               selected=unique(team_results$Team))
+    }
+  })
+  
+  observe({
+    if(input$selectalldrivers == 0) return(NULL) 
+    else if (input$selectalldrivers%%2 == 0)
+    {
+      updateCheckboxGroupInput(session,"driverSelect","Select drivers:", 
+                               choices = sort(unique(driver_results$Driver)),
+      )
+    }
+    else
+    {
+      updateCheckboxGroupInput(session,"driverSelect","Select drivers:",
+                               choices = sort(unique(driver_results$Driver)),
+                               selected=unique(driver_results$Driver))
+    }
+  })
+
   # Render table for the teams tab
   output$RacesTeamsTab <- renderReactable({
     
@@ -355,7 +398,7 @@ server <- function(input, output, session) {
   
   # filter data frame for drivers based on selection
   drivers_plotting <- reactive({
-    last_race = input$raceSliderDrivers[2]
+    last_race = input$raceSliderDrivers[1]
     driver_results |>
       dplyr::filter(Driver %in% input$driverSelect) |>
       dplyr::filter(Track %in% gp_list[1:which(gp_list == last_race)])
@@ -382,7 +425,7 @@ server <- function(input, output, session) {
   
   # filter data frame for teams based on selection
   teams_plotting <- reactive({
-    last_race = input$raceSliderTeams[2]
+    last_race = input$raceSliderTeams[1]
     team_results |>
       dplyr::filter(Team %in% input$teamSelect) |>
       dplyr::filter(Track %in% gp_list[1:which(gp_list == last_race)])
@@ -477,12 +520,13 @@ server <- function(input, output, session) {
     ) |> 
       formatStyle(
         'Fastest Lap', 'flag', 
+        target = 'row',
         backgroundColor = styleEqual(c(1), c('#B138DD'))
       ) |>
       formatStyle(
         'dnf', 
         target = 'row',
-        backgroundColor = styleEqual(1, 'pink')
+        backgroundColor = styleEqual(1, c('#A83349'))
       )
     
     
@@ -544,7 +588,7 @@ server <- function(input, output, session) {
   
   # Legend 
   output$legend1 <- renderText({"DNF/DNS"})
-  output$legend2 <- renderText({"Fastest Lap"})
+  output$legend2 <- renderText({"Overall Fastest Lap"})
   
 }
 
