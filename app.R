@@ -8,6 +8,7 @@ library(reactable)
 library(tidyverse)
 library(shinycssloaders)
 library(ggdark)
+library(insight)
 
 
 
@@ -23,6 +24,7 @@ race_results$Track <- factor(race_results$Track, levels = unique(race_results$Tr
 # race_results$`Fastest Lap` = paste0('00:0', race_results$`Fastest Lap`)
 # race_results$`Fastest Lap` = lubridate::hms(race_results$`Fastest Lap`)
 race_results$flag <- ifelse(race_results$`+1 Pt` =='Yes', 1, 0)
+race_results$dnf <- ifelse(race_results$`Time/Retired`=='DNF' | race_results$`Time/Retired`=='DNS', 1, 0)
 
 
 gp_list <- unique(as.character(race_results$Track))
@@ -152,45 +154,62 @@ tags$head(
                  ),
                  tabPanel('Race Information',
                           fluidRow(
-                            # Dropdown for grand prix
                             column(3,
+                                   # Dropdown for grand prix
                                    fluidRow(column(
                                      12,
-                                     selectInput(
-                                       inputId = 'gp',
-                                       label = 'Choose Race',
-                                       choices = unique(race_results$GP),
-                                       selected = "Bahrain Grand Prix",
-                                     )
+                                     align = "center",
+                                     uiOutput("selector")
                                    )),
+                                   # Previous and next buttons
+                                   fluidRow(column(
+                                     5, 
+                                     align = "center",
+                                     tags$div(class="row", tags$div(uiOutput("prevBin")))
+                                     ),
+                                   column(3),
+                                   column(
+                                     4,
+                                     align = "center",
+                                     tags$div(class="row", tags$div(uiOutput("nextBin")))
+                                     )),
+                                   # Track map image
                                    fluidRow(column(
                                      12,
                                      align="center",
-                                     imageOutput("track_layout", height="200px") 
-                                   )),
-                                   fluidRow(# GP facts table
-                                     column(
-                                       12,
-                                       tableOutput("gp_facts_table")
+                                     imageOutput("track_layout", height="150px")
                                      )),
-                                   
+                                   # GP facts table
+                                   fluidRow(
+                                     column(1),
+                                     column(
+                                     11,
+                                     tableOutput("gp_facts_table")
+                                     )),
                                    ),
-                                    
-                            # Dropdown for driver
-                            #   column(6, selectInput(inputId = 'driver',
-                            #                         label = 'Choose Driver',
-                            #                         choices = unique(race_results$Driver),
-                            #                         selected = "Lewis Hamilton"))
                             # Table output
                             column(8,
-                                   shinycssloaders::withSpinner(
-                                   DT::DTOutput(outputId = 'race_results_table'),
-                                   color="#FF0000", image = "UI/200w.gif"
-                                   ),
-                            )
-                            # column(6,
-                            #        # plotOutput("lap_times_plot"))
-
+                                   fluidRow(column(
+                                     12,
+                                     shinycssloaders::withSpinner(
+                                     DT::DTOutput(outputId = 'race_results_table'),
+                                     color="#FF0000", image = "UI/200w.gif")
+                                     )),
+                                   # Legend
+                                   fluidRow(column(
+                                     2, 
+                                     align = "center",
+                                     style = "background-color:pink",
+                                     span(textOutput("legend1"), style = "color:black")
+                                     ),
+                                   column(8),
+                                   column(
+                                     2,
+                                     align = "center",
+                                     style = "background-color:#B138DD",
+                                     span(textOutput("legend2"), style = "color:black")
+                                     ))
+                                   )
                             ))
                           
 )
@@ -433,7 +452,7 @@ server <- function(input, output, session) {
       dplyr::select(-GP, -Track)  |> 
       dplyr::mutate(Position = as.integer(Position)) |> 
       dplyr::select(Driver, No, Team, Position, `Time/Retired`, Laps,
-                    `Starting Grid`, Points, `Fastest Lap`, flag) 
+                    `Starting Grid`, Points, `Fastest Lap`, flag, dnf) 
     
   )
   
@@ -446,18 +465,24 @@ server <- function(input, output, session) {
   output$race_results_table <- DT::renderDT({
     Sys.sleep(0.1)
     datatable(filtered_race_results(),
-              options = list("pageLength" = 20,
-                             "paging" = FALSE,
-                             "scrollY" = '800px',
+              rownames = F,
+              options = list("pageLength" = 15,
+                             "paging" = F,
+                             "scrollY" = '550px',
                              "scrollX" = 'TRUE',
-                             "autoWidth" = TRUE,
-                             "columnDefs" = list(list(visible = FALSE, targets = c("flag")))
+                             "rownames" = 'FALSE',
+                             "columnDefs" = list(list(visible = FALSE, targets = c("flag", "dnf")))
               ),
               selection = "none"
     ) |> 
       formatStyle(
         'Fastest Lap', 'flag', 
         backgroundColor = styleEqual(c(1), c('#B138DD'))
+      ) |>
+      formatStyle(
+        'dnf', 
+        target = 'row',
+        backgroundColor = styleEqual(1, 'pink')
       )
     
     
@@ -480,6 +505,46 @@ server <- function(input, output, session) {
         legend.position = "top")
   })
   
+  # Dropdown race select
+  output$selector <- renderUI({
+    selectInput(
+      inputId = 'gp',
+      label = 'Choose Race',
+      choices = unique(race_results$GP),
+      selected = "Bahrain Grand Prix",
+    )
+  })
+  
+  # Previous/Next buttons
+  output$prevBin <- renderUI({
+    actionButton("prevBin", 
+                 label = "Previous")
+  })
+  output$nextBin <- renderUI({
+    actionButton("nextBin", 
+                 label = "Next")
+  })
+  
+  observeEvent(input$prevBin, {
+    current <- which(unique(race_results$GP) == input$gp)
+    if(current > 1){
+      updateSelectInput(session, "gp",
+                        choices = unique(race_results$GP),
+                        selected = unique(race_results$GP)[current - 1])
+    }
+  })
+  observeEvent(input$nextBin, {
+    current <- which(unique(race_results$GP) == input$gp)
+    if(current < length(unique(race_results$GP))){
+      updateSelectInput(session, "gp",
+                        choices = unique(race_results$GP),
+                        selected = unique(race_results$GP)[current + 1])
+    }
+  })
+  
+  # Legend 
+  output$legend1 <- renderText({"DNF/DNS"})
+  output$legend2 <- renderText({"Fastest Lap"})
   
 }
 
