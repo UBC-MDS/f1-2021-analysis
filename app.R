@@ -60,16 +60,13 @@ ui <- navbarPage("Formula 1 Dashboard",
                        tabPanel("Driver",
                                 fluidRow(
                                   column(2,
-                                         virtualSelectInput(
+                                         checkboxGroupInput(
                                            inputId = "driverSelect", 
                                            label = "Select drivers:", 
                                            choices = sort(unique(driver_results$Driver)),
-                                           selected = c("Lewis Hamilton", "Carlos Sainz"),
-                                           showValueAsTags = TRUE,
-                                           multiple = TRUE,
-                                           noOfDisplayValues = 5,
-                                           
+                                           selected = c("Lewis Hamilton", "Carlos Sainz")
                                          ),
+                                        actionButton(inputId = "selectalldrivers", label = "Select All") ,
                                   ),
                                   
                                   column(8,
@@ -97,14 +94,15 @@ ui <- navbarPage("Formula 1 Dashboard",
                        tabPanel("Teams",
                                 fluidRow(
                                   column(2,
-                                         virtualSelectInput(
+                                         checkboxGroupInput(
                                            inputId = "teamSelect", 
                                            label = "Select teams:", 
                                            choices = sort(unique(team_results$Team)),
                                            selected = c("McLaren Mercedes"),
-                                           showValueAsTags = TRUE,
-                                           multiple = TRUE,
-                                           noOfDisplayValues = 5),
+                                           ),
+                                         actionButton(inputId = "selectall", label = "Select All") ,
+                                         
+                                         
                                   ),
                                   column(8,
                                          plotOutput("teamPointsPlot", height = "480px"),
@@ -238,6 +236,38 @@ server <- function(input, output, session) {
                                    rep('white', length(highlight_races_teams_tab$races) - length(highlight_races_teams_tab$races[start_race:end_race])))
   })
   
+  observe({
+    if(input$selectall == 0) return(NULL) 
+    else if (input$selectall%%2 == 0)
+    {
+      updateCheckboxGroupInput(session,"teamSelect","Select teams:", 
+                               choices = sort(unique(team_results$Team)),
+)
+    }
+    else
+    {
+      updateCheckboxGroupInput(session,"teamSelect","Select teams:",
+                               choices = sort(unique(team_results$Team)),
+                               selected=unique(team_results$Team))
+    }
+  })
+  
+  observe({
+    if(input$selectalldrivers == 0) return(NULL) 
+    else if (input$selectalldrivers%%2 == 0)
+    {
+      updateCheckboxGroupInput(session,"driverSelect","Select drivers:", 
+                               choices = sort(unique(driver_results$Driver)),
+      )
+    }
+    else
+    {
+      updateCheckboxGroupInput(session,"driverSelect","Select drivers:",
+                               choices = sort(unique(driver_results$Driver)),
+                               selected=unique(driver_results$Driver))
+    }
+  })
+
   # Render table for the teams tab
   output$RacesTeamsTab <- renderReactable({
     reactable(
