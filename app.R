@@ -96,7 +96,13 @@ tags$head(
                                            choices = sort(unique(driver_results$Driver)),
                                            selected = c("Lewis Hamilton", "Carlos Sainz")
                                          ),
-                                        actionButton(inputId = "selectalldrivers", label = "Select All") ,
+                                         fluidRow(
+                                           column(6,
+                                                  actionButton(inputId = "selectalldrivers", label = "Select All", width = "95%")) ,
+                                        column(6,  
+                                               actionButton(inputId = "deselectalldrivers", label = "Deselect All"))
+                                        ),
+                                        
                                   ),
                                   
                                   column(8,
@@ -136,7 +142,12 @@ tags$head(
                                            choices = sort(unique(team_results$Team)),
                                            selected = c("McLaren Mercedes"),
                                            ),
-                                         actionButton(inputId = "selectall", label = "Select All") ,
+                                         fluidRow(
+                                           column(6,
+                                                  actionButton(inputId = "selectallteams", label = "Select All", width = "95%")) ,
+                                           column(6,  
+                                                  actionButton(inputId = "deselectallteams", label = "Deselect All"))
+                                         )
                                          
                                          
                                   ),
@@ -313,13 +324,8 @@ server <- function(input, output, session) {
   })
   
   observe({
-    if(input$selectall == 0) return(NULL) 
-    else if (input$selectall%%2 == 0)
-    {
-      updateCheckboxGroupInput(session,"teamSelect","Select teams:", 
-                               choices = sort(unique(team_results$Team)),
-)
-    }
+    if(input$selectallteams == 0) return(NULL) 
+    
     else
     {
       updateCheckboxGroupInput(session,"teamSelect","Select teams:",
@@ -329,18 +335,30 @@ server <- function(input, output, session) {
   })
   
   observe({
-    if(input$selectalldrivers == 0) return(NULL) 
-    else if (input$selectalldrivers%%2 == 0)
+    if(input$deselectallteams == 0) return(NULL) 
+    else
     {
-      updateCheckboxGroupInput(session,"driverSelect","Select drivers:", 
-                               choices = sort(unique(driver_results$Driver)),
-      )
-    }
+      updateCheckboxGroupInput(session,"teamSelect","Select teams:",
+                               choices = sort(unique(team_results$Team)))
+      }
+  })
+  
+  observe({
+    if(input$selectalldrivers == 0) return(NULL) 
     else
     {
       updateCheckboxGroupInput(session,"driverSelect","Select drivers:",
                                choices = sort(unique(driver_results$Driver)),
                                selected=unique(driver_results$Driver))
+    }
+  })
+  
+  observe({
+    if(input$deselectalldrivers == 0) return(NULL) 
+    else
+    {
+      updateCheckboxGroupInput(session,"driverSelect","Select drivers:",
+                               choices = sort(unique(driver_results$Driver)))
     }
   })
 
