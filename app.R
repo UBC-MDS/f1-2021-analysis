@@ -401,7 +401,12 @@ server <- function(input, output, session) {
         legend.title = element_blank(),
         legend.position = "top",
       )
-    driver_plot <- ggplotly(driver_plot, tooltip = c("x", "text", "color"))
+    driver_plot <- ggplotly(driver_plot, tooltip = c("x", "text", "color")) |>
+      layout(legend = list(
+        itemclick = FALSE,
+        itemdoubleclick = FALSE,
+        groupclick = FALSE
+      ))
   })
   
   # filter data frame for teams based on selection
@@ -438,7 +443,12 @@ server <- function(input, output, session) {
         legend.title = element_blank(),
         legend.position = "top",
       )
-    teams_plot <- ggplotly(teams_plot, tooltip = c("x", "text", "color"))
+    teams_plot <- ggplotly(teams_plot, tooltip = c("x", "text", "color")) |>
+      layout(legend = list(
+        itemclick = FALSE,
+        itemdoubleclick = FALSE,
+        groupclick = FALSE
+      ))
   })
   
   
