@@ -56,10 +56,11 @@ race_table <- race_table |>
 ui <- navbarPage(title = div(img(src = "UI/f1-logo.png",
                                  id = "logo",
                                  # height = "150px",
-                                 width = "120px",
-                                 style = "position: static; padding-bottom: 0px; margin-right: 15px; display:left-align;"),
-                             "Formula 1 Dashboard"
-),
+                                 width = "150px",
+                                 style = "position: relative; padding-bottom: 0px; 
+                                 margin-right: 5px; display:left-align;"),
+                             "Formula 1 Dashboard",
+                             style = "margin-top: 30px; font-weight: bold; font-size: 25px"),
 tags$head(
   tags$style(HTML(' .navbar {
                           height: 80px;
@@ -210,16 +211,17 @@ tags$head(
                                    fluidRow(column(
                                      2, 
                                      align = "center",
-                                     style = "background-color:#A83349; padding: 10px; margin-top: 10px; margin-left: 10px;",
+                                     style = "background-color:#A83349; padding: 10px; margin-top: 20px; margin-left: 12px;",
                                      span(textOutput("legend1"), style = "color:black;")
                                      ),
                                    column(8),
                                    column(
                                      2,
                                      align = "center",
-                                     style = "background-color:#B138DD; margin-top: 10px; margin-left: -20px;",
+                                     style = "background-color:#B138DD; margin-top: 20px; margin-left: -24px;",
                                      span(textOutput("legend2"), style = "color:black;")
-                                     ))
+                                     )), 
+                                   style = "margin-left: 20px;"
                                    )
                             ))
                           
