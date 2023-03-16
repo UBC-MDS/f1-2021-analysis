@@ -210,15 +210,15 @@ tags$head(
                                    fluidRow(column(
                                      2, 
                                      align = "center",
-                                     style = "background-color:pink",
-                                     span(textOutput("legend1"), style = "color:black")
+                                     style = "background-color:#A83349; padding: 10px;",
+                                     span(textOutput("legend1"), style = "color:black;")
                                      ),
                                    column(8),
                                    column(
                                      2,
                                      align = "center",
                                      style = "background-color:#B138DD",
-                                     span(textOutput("legend2"), style = "color:black")
+                                     span(textOutput("legend2"), style = "color:black;")
                                      ))
                                    )
                             ))
@@ -520,12 +520,13 @@ server <- function(input, output, session) {
     ) |> 
       formatStyle(
         'Fastest Lap', 'flag', 
+        target = 'row',
         backgroundColor = styleEqual(c(1), c('#B138DD'))
       ) |>
       formatStyle(
         'dnf', 
         target = 'row',
-        backgroundColor = styleEqual(1, 'pink')
+        backgroundColor = styleEqual(1, c('#A83349'))
       )
     
     
@@ -587,7 +588,7 @@ server <- function(input, output, session) {
   
   # Legend 
   output$legend1 <- renderText({"DNF/DNS"})
-  output$legend2 <- renderText({"Fastest Lap"})
+  output$legend2 <- renderText({"Overall Fastest Lap"})
   
 }
 
