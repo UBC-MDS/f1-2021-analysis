@@ -210,14 +210,14 @@ tags$head(
                                    fluidRow(column(
                                      2, 
                                      align = "center",
-                                     style = "background-color:#A83349; padding: 10px;",
+                                     style = "background-color:#A83349; padding: 10px; margin-top: 10px; margin-left: 10px;",
                                      span(textOutput("legend1"), style = "color:black;")
                                      ),
                                    column(8),
                                    column(
                                      2,
                                      align = "center",
-                                     style = "background-color:#B138DD",
+                                     style = "background-color:#B138DD; margin-top: 10px; margin-left: -20px;",
                                      span(textOutput("legend2"), style = "color:black;")
                                      ))
                                    )
@@ -411,7 +411,7 @@ server <- function(input, output, session) {
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
       ggplot2::scale_y_continuous(limits = c(0, 400)) +
-      ggdark::dark_theme_gray() +
+      ggdark::dark_theme_classic() +
       ggplot2::theme(
         plot.title = element_text(size = 25, face = "bold", family = "Prompt"),
         axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6, family = "Prompt"),
@@ -514,7 +514,9 @@ server <- function(input, output, session) {
                              "scrollY" = '550px',
                              "scrollX" = 'TRUE',
                              "rownames" = 'FALSE',
-                             "columnDefs" = list(list(visible = FALSE, targets = c("flag", "dnf")))
+                             "columnDefs" = list(list(visible = FALSE, targets = c("flag", "dnf"))),
+                             "pagination" = FALSE,
+                             "info" = FALSE
               ),
               selection = "none"
     ) |> 
