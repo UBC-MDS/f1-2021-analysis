@@ -117,8 +117,7 @@ tags$head(
                                              choices = unique(driver_results$Track),
                                              width = "100%"
                                            )
-                                           
-                                         )
+                                         ),
                                   ),
                                   # Table of Races that interacts with raceSliderDrivers
                                   column(2,
@@ -148,7 +147,7 @@ tags$head(
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
                                            sliderTextInput(inputId = "raceSliderTeams",
-                                                           label = "Select races",
+                                                           label = "Select races:",
                                                            choices = unique(driver_results$Track),
                                                            selected = c("Abu Dhabi"),
                                                            grid = TRUE,
@@ -405,16 +404,23 @@ server <- function(input, output, session) {
     driver_results |>
       dplyr::filter(Driver %in% input$driverSelect) |>
       dplyr::filter(Track %in% gp_list[1:which(gp_list == last_race)])
+    
   })
+
   # draw the cumulative points line chart for drivers
   output$distPlot <- renderPlotly({
     driver_plot <- ggplot2::ggplot(drivers_plotting(), aes(x = Track,
                                                            y = cumpoints, 
                                                            group = Driver, 
                                                            color = Driver,
-                                                           text = paste("Cumulative Points:", cumpoints))) +
-      ggplot2::geom_line() + 
-      ggplot2::geom_point() +
+                                                           text = paste("Cumulative Points:", cumpoints)))
+    if (nrow(drivers_plotting()) == 0) {
+      driver_plot <- driver_plot + ggplot2::geom_blank()
+    } else {
+      driver_plot <- driver_plot + ggplot2::geom_line() + 
+        ggplot2::geom_point()
+    }
+      driver_plot <- driver_plot + 
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
       ggplot2::scale_y_continuous(limits = c(0, 400)) +
@@ -444,9 +450,14 @@ server <- function(input, output, session) {
                                                         y = team_cp, 
                                                         group = Team, 
                                                         color = Team,
-                                                        text = paste("Cumulative Points:", team_cp))) +
-      ggplot2::geom_line() +
-      ggplot2::geom_point() +
+                                                        text = paste("Cumulative Points:", team_cp)))
+    if (nrow(teams_plotting()) == 0) {
+      teams_plot <- teams_plot + ggplot2::geom_blank()
+    } else {
+      teams_plot <- teams_plot + ggplot2::geom_line() +
+        ggplot2::geom_point()
+    }
+    teams_plot <- teams_plot + 
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
       ggplot2::scale_y_continuous(limits = c(0, 650)) +
