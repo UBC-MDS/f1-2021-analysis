@@ -438,7 +438,7 @@ server <- function(input, output, session) {
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
       ggplot2::scale_y_continuous(limits = c(0, 650)) +
-      ggdark::dark_theme_gray() +
+      ggdark::dark_theme_classic() +
       ggplot2::theme(
         plot.title = element_text(size = 25, face = "bold", family = "Prompt"),
         axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6, family = "Prompt"),
