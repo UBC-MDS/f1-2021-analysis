@@ -9,6 +9,7 @@ library(tidyverse)
 library(shinycssloaders)
 library(ggdark)
 library(insight)
+library(plotly)
 
 
 
@@ -101,7 +102,7 @@ tags$head(
                                   ),
                                   
                                   column(8,
-                                         plotOutput("distPlot", height = "480px") |> 
+                                         plotlyOutput("distPlot", height = "480px") |> 
                                            withSpinner(color="#FF0000",
                                                        image = "UI/200w.gif"
                                                        ),
@@ -142,7 +143,7 @@ tags$head(
                                          
                                   ),
                                   column(8,
-                                         plotOutput("teamPointsPlot", height = "480px") |> withSpinner(color="#FF0000",
+                                         plotlyOutput("teamPointsPlot", height = "480px") |> withSpinner(color="#FF0000",
                                                                                                        image = "UI/200w.gif"),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
@@ -406,8 +407,12 @@ server <- function(input, output, session) {
       dplyr::filter(Track %in% gp_list[1:which(gp_list == last_race)])
   })
   # draw the cumulative points line chart for drivers
-  output$distPlot <- renderPlot({
-    ggplot2::ggplot(drivers_plotting(), aes(x = Track, y = cumpoints, group = Driver, color = Driver)) +
+  output$distPlot <- renderPlotly({
+    driver_plot <- ggplot2::ggplot(drivers_plotting(), aes(x = Track,
+                                                           y = cumpoints, 
+                                                           group = Driver, 
+                                                           color = Driver,
+                                                           text = paste("Cumulative Points:", cumpoints))) +
       ggplot2::geom_line() + 
       ggplot2::geom_point() +
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
@@ -423,6 +428,7 @@ server <- function(input, output, session) {
         legend.title = element_blank(),
         legend.position = "top",
       )
+    driver_plot <- ggplotly(driver_plot, tooltip = c("x", "text", "color"))
   })
   
   # filter data frame for teams based on selection
@@ -433,8 +439,12 @@ server <- function(input, output, session) {
       dplyr::filter(Track %in% gp_list[1:which(gp_list == last_race)])
   })
   # draw the cumulative points line chart for teams
-  output$teamPointsPlot <- renderPlot({
-    ggplot2::ggplot(teams_plotting(), aes(x = Track, y = team_cp, group = Team, color = Team)) +
+  output$teamPointsPlot <- renderPlotly({
+    teams_plot <- ggplot2::ggplot(teams_plotting(), aes(x = Track, 
+                                                        y = team_cp, 
+                                                        group = Team, 
+                                                        color = Team,
+                                                        text = paste("Cumulative Points:", team_cp))) +
       ggplot2::geom_line() +
       ggplot2::geom_point() +
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
@@ -450,6 +460,7 @@ server <- function(input, output, session) {
         legend.title = element_blank(),
         legend.position = "top",
       )
+    teams_plot <- ggplotly(teams_plot, tooltip = c("x", "text", "color"))
   })
   
   
