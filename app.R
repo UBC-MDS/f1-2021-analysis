@@ -379,7 +379,8 @@ server <- function(input, output, session) {
                                                            y = cumpoints, 
                                                            group = Driver, 
                                                            color = Driver,
-                                                           text = paste("Cumulative Points:", cumpoints)))
+                                                           text = paste("Team:", Team, 
+                                                                        "\nCumulative Points:", cumpoints)))
     if (nrow(drivers_plotting()) == 0) {
       driver_plot <- driver_plot + ggplot2::geom_blank()
     } else {
