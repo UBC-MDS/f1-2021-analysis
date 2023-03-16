@@ -9,6 +9,7 @@ library(tidyverse)
 library(shinycssloaders)
 library(ggdark)
 library(insight)
+library(plotly)
 
 
 
@@ -56,10 +57,11 @@ race_table <- race_table |>
 ui <- navbarPage(title = div(img(src = "UI/f1-logo.png",
                                  id = "logo",
                                  # height = "150px",
-                                 width = "120px",
-                                 style = "position: static; padding-bottom: 0px; margin-right: 15px; display:left-align;"),
-                             "Formula 1 Dashboard"
-),
+                                 width = "150px",
+                                 style = "position: relative; padding-bottom: 0px; 
+                                 margin-right: 5px; display:left-align;"),
+                             "Formula 1 Dashboard",
+                             style = "margin-top: 30px; font-weight: bold; font-size: 25px"),
 tags$head(
   tags$style(HTML(' .navbar {
                           height: 80px;
@@ -100,7 +102,7 @@ tags$head(
                                   ),
                                   
                                   column(8,
-                                         plotOutput("distPlot", height = "480px") |> 
+                                         plotlyOutput("distPlot", height = "480px") |> 
                                            withSpinner(color="#FF0000",
                                                        image = "UI/200w.gif"
                                                        ),
@@ -115,8 +117,7 @@ tags$head(
                                              choices = unique(driver_results$Track),
                                              width = "100%"
                                            )
-                                           
-                                         )
+                                         ),
                                   ),
                                   # Table of Races that interacts with raceSliderDrivers
                                   column(2,
@@ -141,12 +142,12 @@ tags$head(
                                          
                                   ),
                                   column(8,
-                                         plotOutput("teamPointsPlot", height = "480px") |> withSpinner(color="#FF0000",
+                                         plotlyOutput("teamPointsPlot", height = "480px") |> withSpinner(color="#FF0000",
                                                                                                        image = "UI/200w.gif"),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
                                            sliderTextInput(inputId = "raceSliderTeams",
-                                                           label = "Select races",
+                                                           label = "Select races:",
                                                            choices = unique(driver_results$Track),
                                                            selected = c("Abu Dhabi"),
                                                            grid = TRUE,
@@ -210,16 +211,17 @@ tags$head(
                                    fluidRow(column(
                                      2, 
                                      align = "center",
-                                     style = "background-color:#A83349; padding: 10px;",
+                                     style = "background-color:#A83349; padding: 10px; margin-top: 20px; margin-left: 12px;",
                                      span(textOutput("legend1"), style = "color:black;")
                                      ),
                                    column(8),
                                    column(
                                      2,
                                      align = "center",
-                                     style = "background-color:#B138DD",
+                                     style = "background-color:#B138DD; margin-top: 20px; margin-left: -24px;",
                                      span(textOutput("legend2"), style = "color:black;")
-                                     ))
+                                     )), 
+                                   style = "margin-left: 20px;"
                                    )
                             ))
                           
@@ -350,16 +352,27 @@ server <- function(input, output, session) {
     driver_results |>
       dplyr::filter(Driver %in% input$driverSelect) |>
       dplyr::filter(Track %in% gp_list[1:which(gp_list == last_race)])
+    
   })
+
   # draw the cumulative points line chart for drivers
-  output$distPlot <- renderPlot({
-    ggplot2::ggplot(drivers_plotting(), aes(x = Track, y = cumpoints, group = Driver, color = Driver)) +
-      ggplot2::geom_line() + 
-      ggplot2::geom_point() +
+  output$distPlot <- renderPlotly({
+    driver_plot <- ggplot2::ggplot(drivers_plotting(), aes(x = Track,
+                                                           y = cumpoints, 
+                                                           group = Driver, 
+                                                           color = Driver,
+                                                           text = paste("Cumulative Points:", cumpoints)))
+    if (nrow(drivers_plotting()) == 0) {
+      driver_plot <- driver_plot + ggplot2::geom_blank()
+    } else {
+      driver_plot <- driver_plot + ggplot2::geom_line() + 
+        ggplot2::geom_point()
+    }
+      driver_plot <- driver_plot + 
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
       ggplot2::scale_y_continuous(limits = c(0, 400)) +
-      ggdark::dark_theme_gray() +
+      ggdark::dark_theme_classic() +
       ggplot2::theme(
         plot.title = element_text(size = 25, face = "bold", family = "Prompt"),
         axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6, family = "Prompt"),
@@ -369,6 +382,7 @@ server <- function(input, output, session) {
         legend.title = element_blank(),
         legend.position = "top",
       )
+    driver_plot <- ggplotly(driver_plot, tooltip = c("x", "text", "color"))
   })
   
   # filter data frame for teams based on selection
@@ -379,14 +393,23 @@ server <- function(input, output, session) {
       dplyr::filter(Track %in% gp_list[1:which(gp_list == last_race)])
   })
   # draw the cumulative points line chart for teams
-  output$teamPointsPlot <- renderPlot({
-    ggplot2::ggplot(teams_plotting(), aes(x = Track, y = team_cp, group = Team, color = Team)) +
-      ggplot2::geom_line() +
-      ggplot2::geom_point() +
+  output$teamPointsPlot <- renderPlotly({
+    teams_plot <- ggplot2::ggplot(teams_plotting(), aes(x = Track, 
+                                                        y = team_cp, 
+                                                        group = Team, 
+                                                        color = Team,
+                                                        text = paste("Cumulative Points:", team_cp)))
+    if (nrow(teams_plotting()) == 0) {
+      teams_plot <- teams_plot + ggplot2::geom_blank()
+    } else {
+      teams_plot <- teams_plot + ggplot2::geom_line() +
+        ggplot2::geom_point()
+    }
+    teams_plot <- teams_plot + 
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
       ggplot2::scale_y_continuous(limits = c(0, 650)) +
-      ggdark::dark_theme_gray() +
+      ggdark::dark_theme_classic() +
       ggplot2::theme(
         plot.title = element_text(size = 25, face = "bold", family = "Prompt"),
         axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6, family = "Prompt"),
@@ -396,6 +419,7 @@ server <- function(input, output, session) {
         legend.title = element_blank(),
         legend.position = "top",
       )
+    teams_plot <- ggplotly(teams_plot, tooltip = c("x", "text", "color"))
   })
   
   
@@ -462,7 +486,9 @@ server <- function(input, output, session) {
                              "scrollY" = '550px',
                              "scrollX" = 'TRUE',
                              "rownames" = 'FALSE',
-                             "columnDefs" = list(list(visible = FALSE, targets = c("flag", "dnf")))
+                             "columnDefs" = list(list(visible = FALSE, targets = c("flag", "dnf"))),
+                             "pagination" = FALSE,
+                             "info" = FALSE
               ),
               selection = "none"
     ) |> 
