@@ -233,36 +233,33 @@ server <- function(input, output, session) {
   highlight_races$races <- as.character(race_table$Race)
   highlight_races$row_color <- reactive({rep('white', length(highlight_races$races))})
   
-  
-  # Change row color depending on the slider race selections
-  observeEvent(input$raceSliderDrivers, {
+  # helper function to add row highlight based on slider race selection
+  add_highlight <- function(input_id, reactive_value) {
     start_race <- 1
-    end_race <- which(highlight_races$races == input$raceSliderDrivers[1])
-    highlight_races$races <- c(highlight_races$races[start_race:end_race],
-                               highlight_races$races[!(highlight_races$races %in% highlight_races$races[start_race:end_race])])
-    highlight_races$row_color <- c(rep('pink', length(highlight_races$races[start_race:end_race])),
-                                   rep('white', length(highlight_races$races) - length(highlight_races$races[start_race:end_race])))
-  })
+    end_race <- which(reactive_value$races == input_id[1])
+    reactive_value$races <- c(reactive_value$races[start_race:end_race],
+                              reactive_value$races[!(reactive_value$races %in% reactive_value$races[start_race:end_race])])
+    reactive_value$row_color <- c(rep('pink', length(reactive_value$races[start_race:end_race])),
+                                   rep('white', length(reactive_value$races) - length(reactive_value$races[start_race:end_race])))
+  }
   
-  # Create the table with the specified rows highlighted
-  output$Races <- renderReactable({
-    
+  # helper function to create the table for season's races
+  render_race_table <- function(reactive_value) {
     options(reactable.theme = reactableTheme(
       color = "hsl(0, 100%, 0%)",
       backgroundColor = "hsl(233, 9%, 19%)"),
       headerStyle = list(
         background = "hsl(294, 91%, 73%)"
       )
-      )
-    
+    )
     reactable(
       race_table,
       columns = list(
         Race = colDef(
           cell = function(value, index) {
             city_name <- race_table$City[index]
-            race_index <- which(highlight_races$races == value)
-            color <- highlight_races$row_color[race_index]
+            race_index <- which(reactive_value$races == value)
+            color <- reactive_value$row_color[race_index]
             image <- htmltools::img(src = sprintf("flags/%s.png", value), 
                                     style = "height: 24px; padding: top; margin: top;", 
                                     alt = value)
@@ -276,14 +273,14 @@ server <- function(input, output, session) {
                              marginBottom = '0px', marginTop = '0px',
                              borderCollapse= 'separate',
                              borderSpacing= '0 0px')
-                )
+              )
             )
-            },
+          },
           align = "center",
-          headerStyle = list(fontSize = "24px", 
+          headerStyle = list(fontSize = "24px",
                              background = "#101010",
                              color = "#FDF7F7"
-                             ),
+          ),
           sortable = FALSE,
         ),
         Country = colDef(show = FALSE),
@@ -291,10 +288,17 @@ server <- function(input, output, session) {
       ),
       pagination = FALSE,
       compact = TRUE,
-      height = 600,
+      height=600,
       style = "padding: 0px; border-collapse: collapse; border-spacing: 0;"
     )
-  })
+  }
+  
+  
+  # Change row color depending on the slider race selections
+  observeEvent(input$raceSliderDrivers, add_highlight(input$raceSliderDrivers, highlight_races))
+
+  # Create the table with the specified rows highlighted
+  output$Races <- renderReactable(render_race_table(highlight_races))
   
   # Initialize race names and colour for teams tab
   highlight_races_teams_tab <- reactiveValues()
@@ -302,15 +306,10 @@ server <- function(input, output, session) {
   highlight_races_teams_tab$row_color <- reactive({rep('white', length(highlight_races_teams_tab$races))})
   
   # Change row color depending on the slider race selections for the teams tab
-  observeEvent(input$raceSliderTeams, {
-    start_race <- 1
-    end_race <- which(highlight_races_teams_tab$races == input$raceSliderTeams[1])
-    highlight_races_teams_tab$races <- c(highlight_races_teams_tab$races[start_race:end_race],
-                                           highlight_races_teams_tab$races[!(highlight_races_teams_tab$races %in% 
-                                                                                 highlight_races_teams_tab$races[start_race:end_race])])
-    highlight_races_teams_tab$row_color <- c(rep('pink', length(highlight_races_teams_tab$races[start_race:end_race])),
-                                   rep('white', length(highlight_races_teams_tab$races) - length(highlight_races_teams_tab$races[start_race:end_race])))
-  })
+  observeEvent(input$raceSliderTeams, add_highlight(input$raceSliderTeams, highlight_races_teams_tab))
+  
+  # Render table for the teams tab
+  output$RacesTeamsTab <- renderReactable(render_race_table(highlight_races_teams_tab))
   
   observe({
     if(input$selectall == 0) return(NULL) 
@@ -344,57 +343,6 @@ server <- function(input, output, session) {
     }
   })
 
-  # Render table for the teams tab
-  output$RacesTeamsTab <- renderReactable({
-    
-    options(reactable.theme = reactableTheme(
-      color = "hsl(0, 100%, 0%)",
-      backgroundColor = "hsl(233, 9%, 19%)"),
-      headerStyle = list(
-        background = "hsl(294, 91%, 73%)"
-      )
-    )
-    
-    reactable(
-      race_table,
-      columns = list(
-        Race = colDef(
-          cell = function(value, index) {
-            city_name <- race_table$City[index]
-            race_index <- which(highlight_races_teams_tab$races == value)
-            color <- highlight_races_teams_tab$row_color[race_index]
-            image <- htmltools::img(src = sprintf("flags/%s.png", value), 
-                                    style = "height: 24px; padding: top; margin: top;", 
-                                    alt = value)
-            htmltools::tagList(
-              htmltools::div(style = "display: inline-block; float:left; width: 75px; padding-top: 10px; padding-left: 10px;", 
-                             image),
-              htmltools::div(
-                htmltools::div(style = list(fontWeight = 600), value),
-                htmltools::div(style = list(fontSize = "12px"), city_name),
-                style = list(background = color, borderStyle = "solid", 
-                             marginBottom = '0px', marginTop = '0px',
-                             borderCollapse= 'separate',
-                             borderSpacing= '0 0px')
-              )
-            )
-          },
-          align = "center",
-          headerStyle = list(fontSize = "24px",
-                             background = "#101010",
-                             color = "#FDF7F7"
-                             ),
-          sortable = FALSE,
-        ),
-        Country = colDef(show = FALSE),
-        City = colDef(show = FALSE)
-      ),
-      pagination = FALSE,
-      compact = TRUE,
-      height=600,
-      style = "padding: 0px; border-collapse: collapse; border-spacing: 0;"
-    )
-  })
   
   # filter data frame for drivers based on selection
   drivers_plotting <- reactive({
