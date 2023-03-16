@@ -6,6 +6,8 @@ library(shinyWidgets)
 library(ggplot2)
 library(reactable)
 library(tidyverse)
+library(shinycssloaders)
+library(ggdark)
 library(insight)
 
 
@@ -51,14 +53,41 @@ race_table$Race <- factor(race_table$Race, levels = unique(race_table$Race))
 race_table <- race_table |>
   dplyr::select(Country, City, Race)
 
-ui <- navbarPage("Formula 1 Dashboard",
-                 theme = shinytheme("lumen"),
+ui <- navbarPage(title = div(img(src = "UI/f1-logo.png",
+                                 id = "logo",
+                                 # height = "150px",
+                                 width = "120px",
+                                 style = "position: static; padding-bottom: 0px; margin-right: 15px; display:left-align;"),
+                             "Formula 1 Dashboard"
+),
+tags$head(
+  tags$style(HTML(' .navbar {
+                          height: 80px;
+                          min-height:50px !important;
+                        }
+                      .navbar-nav > li > a, .navbar-brand {
+                            padding-top:1px !important; 
+                            padding-bottom:1px !important;
+                            height: 20px;
+                            }'))),
+                 theme = bs_theme(
+                   bg = "#101010", 
+                   fg = "#ebdddd", 
+                   primary = "#e00a07",
+                   danger = "#ED79F9",
+                   base_font = font_google("Prompt"),
+                   # secondary = "#101011",
+                 ),
                  tabPanel(
                    "Season Highlights",
+                   tags$head(tags$style( HTML(' .nav {margin-top:50px;}'))),
                    # checkbox to filter for drivers
                    fluidRow(
                      tabsetPanel(
                        tabPanel("Driver",
+                                tags$head(tags$style( HTML(' .nav {margin-left:10px; margin-top:-10px;}'))),
+                                div(style = "margin-left: 20px; margin-right: 20px;",
+                                  
                                 fluidRow(
                                   column(2,
                                     checkboxGroupInput(inputId = "driverSelect",
@@ -67,7 +96,10 @@ ui <- navbarPage("Formula 1 Dashboard",
                                                        selected = c("Lewis Hamilton", "Carlos Sainz"))
                                   ),
                                   column(8,
-                                         plotOutput("distPlot", height = "480px"),
+                                         plotOutput("distPlot", height = "480px") |> 
+                                           withSpinner(color="#FF0000",
+                                                       image = "UI/200w.gif"
+                                                       ),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
                                            sliderTextInput(inputId = "raceSliderDrivers",
@@ -84,8 +116,11 @@ ui <- navbarPage("Formula 1 Dashboard",
                                          reactableOutput("Races")
                                   )
                                 ),
+                                )
                        ),
                        tabPanel("Teams",
+                                tags$head(tags$style( HTML(' .nav {margin-left:10px;}'))),
+                                div(style = "margin-left: 20px; margin-right: 20px;",
                                 fluidRow(
                                   column(2,
                                          checkboxGroupInput(inputId = "teamSelect",
@@ -94,7 +129,8 @@ ui <- navbarPage("Formula 1 Dashboard",
                                                             selected = c("McLaren Mercedes"))
                                   ),
                                   column(8,
-                                         plotOutput("teamPointsPlot", height = "480px"),
+                                         plotOutput("teamPointsPlot", height = "480px") |> withSpinner(color="#FF0000",
+                                                                                                       image = "UI/200w.gif"),
                                          fluidRow(
                                            tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
                                            sliderTextInput(inputId = "raceSliderTeams",
@@ -110,6 +146,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                   column(2,
                                          reactableOutput("RacesTeamsTab")
                                   )
+                                )
                                 )
                        )
                      )
@@ -154,7 +191,9 @@ ui <- navbarPage("Formula 1 Dashboard",
                             column(8,
                                    fluidRow(column(
                                      12,
-                                     DT::DTOutput(outputId = 'race_results_table')
+                                     shinycssloaders::withSpinner(
+                                     DT::DTOutput(outputId = 'race_results_table'),
+                                     color="#FF0000", image = "UI/200w.gif")
                                      )),
                                    # Legend
                                    fluidRow(column(
@@ -172,6 +211,7 @@ ui <- navbarPage("Formula 1 Dashboard",
                                      ))
                                    )
                             ))
+                          
 )
 
 server <- function(input, output, session) {
@@ -195,6 +235,15 @@ server <- function(input, output, session) {
   
   # Create the table with the specified rows highlighted
   output$Races <- renderReactable({
+    
+    options(reactable.theme = reactableTheme(
+      color = "hsl(0, 100%, 0%)",
+      backgroundColor = "hsl(233, 9%, 19%)"),
+      headerStyle = list(
+        background = "hsl(294, 91%, 73%)"
+      )
+      )
+    
     reactable(
       race_table,
       columns = list(
@@ -216,15 +265,22 @@ server <- function(input, output, session) {
                              marginBottom = '0px', marginTop = '0px',
                              borderCollapse= 'separate',
                              borderSpacing= '0 0px')
-              )
+                )
             )
-          }
+            },
+          align = "center",
+          headerStyle = list(fontSize = "24px", 
+                             background = "#101010",
+                             color = "#FDF7F7"
+                             ),
+          sortable = FALSE,
         ),
         Country = colDef(show = FALSE),
         City = colDef(show = FALSE)
       ),
       pagination = FALSE,
       compact = TRUE,
+      height = 600,
       style = "padding: 0px; border-collapse: collapse; border-spacing: 0;"
     )
   })
@@ -247,6 +303,15 @@ server <- function(input, output, session) {
   
   # Render table for the teams tab
   output$RacesTeamsTab <- renderReactable({
+    
+    options(reactable.theme = reactableTheme(
+      color = "hsl(0, 100%, 0%)",
+      backgroundColor = "hsl(233, 9%, 19%)"),
+      headerStyle = list(
+        background = "hsl(294, 91%, 73%)"
+      )
+    )
+    
     reactable(
       race_table,
       columns = list(
@@ -270,13 +335,20 @@ server <- function(input, output, session) {
                              borderSpacing= '0 0px')
               )
             )
-          }
+          },
+          align = "center",
+          headerStyle = list(fontSize = "24px",
+                             background = "#101010",
+                             color = "#FDF7F7"
+                             ),
+          sortable = FALSE,
         ),
         Country = colDef(show = FALSE),
         City = colDef(show = FALSE)
       ),
       pagination = FALSE,
       compact = TRUE,
+      height=600,
       style = "padding: 0px; border-collapse: collapse; border-spacing: 0;"
     )
   })
@@ -296,12 +368,13 @@ server <- function(input, output, session) {
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
       ggplot2::scale_y_continuous(limits = c(0, 400)) +
+      ggdark::dark_theme_gray() +
       ggplot2::theme(
-        plot.title = element_text(size = 25, face = "bold"),
-        axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6),
-        axis.text.y = element_text(size = 10),
-        axis.title = element_text(size = 15, face = "bold"),
-        legend.text = element_text(size = 10, face = "bold"),
+        plot.title = element_text(size = 25, face = "bold", family = "Prompt"),
+        axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6, family = "Prompt"),
+        axis.text.y = element_text(size = 10, family = "Prompt"),
+        axis.title = element_text(size = 15, face = "bold", family = "Prompt"),
+        legend.text = element_text(size = 10, face = "bold", family = "Prompt"),
         legend.title = element_blank(),
         legend.position = "top",
       )
@@ -322,12 +395,13 @@ server <- function(input, output, session) {
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
       ggplot2::ggtitle("Cumulative points gained over the season") +
       ggplot2::scale_y_continuous(limits = c(0, 650)) +
+      ggdark::dark_theme_gray() +
       ggplot2::theme(
-        plot.title = element_text(size = 25, face = "bold"),
-        axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6),
-        axis.text.y = element_text(size = 10),
-        axis.title = element_text(size = 15, face = "bold"),
-        legend.text = element_text(size = 10, face = "bold"),
+        plot.title = element_text(size = 25, face = "bold", family = "Prompt"),
+        axis.text.x = element_text(size = 10, angle = 20, vjust = 0.6, family = "Prompt"),
+        axis.text.y = element_text(size = 10, family = "Prompt"),
+        axis.title = element_text(size = 15, face = "bold", family = "Prompt"),
+        legend.text = element_text(size = 10, face = "bold", family = "Prompt"),
         legend.title = element_blank(),
         legend.position = "top",
       )
@@ -336,6 +410,7 @@ server <- function(input, output, session) {
   
   ##Functions for Panel 2 here
   output$gp_facts_table <- renderTable({
+    Sys.sleep(0.1)
     facts <- subset(calendar, calendar$"GP Name" == input$gp)
     row.names(facts) <- facts$"GP Name"
     facts <-
@@ -359,6 +434,7 @@ server <- function(input, output, session) {
   })
   
   output$track_layout <- renderImage({
+    Sys.sleep(0.1)
     filename <- normalizePath(file.path('./www/tracks',
                                         paste(input$gp, '.png', sep='')))
     
@@ -387,7 +463,7 @@ server <- function(input, output, session) {
   
   # Render the race results table
   output$race_results_table <- DT::renderDT({
-    
+    Sys.sleep(0.1)
     datatable(filtered_race_results(),
               rownames = F,
               options = list("pageLength" = 15,
