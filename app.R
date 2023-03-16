@@ -26,6 +26,41 @@ race_results$Track <- factor(race_results$Track, levels = unique(race_results$Tr
 # race_results$`Fastest Lap` = lubridate::hms(race_results$`Fastest Lap`)
 race_results$flag <- ifelse(race_results$`+1 Pt` =='Yes', 1, 0)
 race_results$dnf <- ifelse(race_results$`Time/Retired`=='DNF' | race_results$`Time/Retired`=='DNS', 1, 0)
+race_results$Driver <- factor(race_results$Driver, levels = unique(race_results$Driver))
+race_results$Team <- factor(race_results$Team, levels = unique(race_results$Team))
+
+race_results <- race_results |>
+  mutate(
+    team_color = case_when(
+      Team == "Mercedes" ~ "#00D2BE",
+      Team == "Red Bull Racing Honda" ~ "#0600EF",
+      Team == "McLaren Mercedes" ~ "#FF8700",
+      Team == "Ferrari" ~ "#DC0000",
+      Team == "AlphaTauri Honda" ~ "#2B4562",
+      Team == "Aston Martin Mercedes" ~ "#006F62",
+      Team == "Alfa Romeo Racing Ferrari" ~ "#900000",
+      Team == "Alpine Renault" ~ "#0090FF",
+      Team == "Williams Mercedes" ~ "#005AFF",
+      Team == "Haas Ferrari" ~ "#FFFFFF"),   # can't use white #FFFFFF # try F62039
+    line_type = case_when(
+      Driver %in% c("Lewis Hamilton", "Max Verstappen", "Lando Norris", 
+                    "Charles Leclerc", "Yuki Tsunoda", "Lance Stroll",
+                    "Kimi Raikkönen", "Esteban Ocon", "George Russell") ~ "solid",
+      Driver == "Robert Kubica" ~ "dashed",
+      TRUE ~ "dotted")
+    )
+
+# Add mapping for driver colour
+driver_colors <- race_results |>
+  filter(Track == "Bahrain") |>
+  select(Driver, team_color) |>
+  pull(team_color)
+driver_colors <- append(driver_colors, "#900000")
+names(driver_colors) <- levels(race_results$Driver)
+
+# add mapping for team colour
+team_colors = unique(race_results$team_color)
+names(team_colors) <- unique(race_results$Team)
 
 
 gp_list <- unique(as.character(race_results$Track))
@@ -412,11 +447,11 @@ server <- function(input, output, session) {
   })
   # draw the cumulative points line chart for teams
   output$teamPointsPlot <- renderPlotly({
-    teams_plot <- ggplot2::ggplot(teams_plotting(), aes(x = Track, 
-                                                        y = team_cp, 
-                                                        group = Team, 
-                                                        color = Team,
-                                                        text = paste("Cumulative Points:", team_cp)))
+    teams_plot <- ggplot2::ggplot(
+      teams_plotting(), aes(x = Track, y = team_cp, group = Team, color = Team, 
+                            text = paste("Cumulative Points:", team_cp))) +
+      scale_color_manual(values = team_colors)
+    
     if (nrow(teams_plotting()) == 0) {
       teams_plot <- teams_plot + ggplot2::geom_blank()
     } else {
