@@ -29,9 +29,10 @@ race_results$dnf <- ifelse(race_results$`Time/Retired`=='DNF' | race_results$`Ti
 race_results$Driver <- factor(race_results$Driver, levels = unique(race_results$Driver))
 race_results$Team <- factor(race_results$Team, levels = unique(race_results$Team))
 
+# create mapping for team color and line type
 race_results <- race_results |>
-  mutate(
-    team_color = case_when(
+  dplyr::mutate(
+    team_color = dplyr::case_when(
       Team == "Mercedes" ~ "#00D2BE",
       Team == "Red Bull Racing Honda" ~ "#0600EF",
       Team == "McLaren Mercedes" ~ "#FF8700",
@@ -41,8 +42,8 @@ race_results <- race_results |>
       Team == "Alfa Romeo Racing Ferrari" ~ "#900000",
       Team == "Alpine Renault" ~ "#0090FF",
       Team == "Williams Mercedes" ~ "#005AFF",
-      Team == "Haas Ferrari" ~ "#FFFFFF"),   # can't use white #FFFFFF # try F62039
-    line_type = case_when(
+      Team == "Haas Ferrari" ~ "#FFFFFF"),  
+    line_type = dplyr::case_when(
       Driver %in% c("Lewis Hamilton", "Max Verstappen", "Lando Norris", 
                     "Charles Leclerc", "Yuki Tsunoda", "Lance Stroll",
                     "Kimi Raikkönen", "Esteban Ocon", "George Russell") ~ "solid",
@@ -50,17 +51,25 @@ race_results <- race_results |>
       TRUE ~ "dotted")
     )
 
-# Add mapping for driver colour
+# Add mapping for color to driver
 driver_colors <- race_results |>
-  filter(Track == "Bahrain") |>
-  select(Driver, team_color) |>
-  pull(team_color)
+  dplyr::filter(Track == "Bahrain") |>
+  dplyr::select(Driver, team_color) |>
+  dplyr::pull(team_color)
 driver_colors <- append(driver_colors, "#900000")
 names(driver_colors) <- levels(race_results$Driver)
 
-# add mapping for team colour
-team_colors = unique(race_results$team_color)
+# add mapping for color to team
+team_colors <- unique(race_results$team_color)
 names(team_colors) <- unique(race_results$Team)
+
+# add mapping for line type to driver
+driver_linetype <- race_results |>
+  dplyr::filter(Track == "Bahrain") |>
+  dplyr::select(Driver, line_type) |>
+  dplyr::pull(line_type)
+driver_linetype <- append(driver_linetype, "dashed")
+names(driver_linetype) <- levels(race_results$Driver)
 
 
 gp_list <- unique(as.character(race_results$Track))
@@ -410,16 +419,18 @@ server <- function(input, output, session) {
 
   # draw the cumulative points line chart for drivers
   output$distPlot <- renderPlotly({
-    driver_plot <- ggplot2::ggplot(drivers_plotting(), aes(x = Track,
-                                                           y = cumpoints, 
-                                                           group = Driver, 
-                                                           color = Driver,
-                                                           text = paste("Cumulative Points:", cumpoints)))
+    driver_plot <- ggplot2::ggplot(
+      drivers_plotting(), aes(x = Track, y = cumpoints, group = Driver,
+                              color = Driver, linetype = Driver, 
+                              text = paste("Cumulative Points:", cumpoints))) 
+    
     if (nrow(drivers_plotting()) == 0) {
       driver_plot <- driver_plot + ggplot2::geom_blank()
     } else {
-      driver_plot <- driver_plot + ggplot2::geom_line() + 
-        ggplot2::geom_point()
+      driver_plot <- driver_plot + ggplot2::geom_line() +
+        ggplot2::geom_point() +
+        ggplot2::scale_color_manual(values = driver_colors) +
+        ggplot2::scale_linetype_manual(values = driver_linetype)
     }
       driver_plot <- driver_plot + 
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
