@@ -112,7 +112,7 @@ tags$head(
                           min-height:50px !important;
                         }
                       .navbar-nav > li > a, .navbar-brand {
-                            padding-top:1px !important; 
+                            padding-top:3px !important; 
                             padding-bottom:1px !important;
                             height: 20px;
                             }'))),
@@ -422,7 +422,8 @@ server <- function(input, output, session) {
     driver_plot <- ggplot2::ggplot(
       drivers_plotting(), aes(x = Track, y = cumpoints, group = Driver,
                               color = Driver, linetype = Driver, 
-                              text = paste("Cumulative Points:", cumpoints))) 
+                              text = paste("Team:", Team,
+                                           "\nCumulative Points:", cumpoints))) 
     
     if (nrow(drivers_plotting()) == 0) {
       driver_plot <- driver_plot + ggplot2::geom_blank()
@@ -446,7 +447,12 @@ server <- function(input, output, session) {
         legend.title = element_blank(),
         legend.position = "top",
       )
-    driver_plot <- ggplotly(driver_plot, tooltip = c("x", "text", "color"))
+    driver_plot <- ggplotly(driver_plot, tooltip = c("x", "text", "color")) |>
+      layout(legend = list(
+        itemclick = FALSE,
+        itemdoubleclick = FALSE,
+        groupclick = FALSE
+      ))
   })
   
   # filter data frame for teams based on selection
@@ -483,7 +489,12 @@ server <- function(input, output, session) {
         legend.title = element_blank(),
         legend.position = "top",
       )
-    teams_plot <- ggplotly(teams_plot, tooltip = c("x", "text", "color"))
+    teams_plot <- ggplotly(teams_plot, tooltip = c("x", "text", "color")) |>
+      layout(legend = list(
+        itemclick = FALSE,
+        itemdoubleclick = FALSE,
+        groupclick = FALSE
+      ))
   })
   
   
