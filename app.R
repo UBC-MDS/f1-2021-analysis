@@ -26,6 +26,50 @@ race_results$Track <- factor(race_results$Track, levels = unique(race_results$Tr
 # race_results$`Fastest Lap` = lubridate::hms(race_results$`Fastest Lap`)
 race_results$flag <- ifelse(race_results$`+1 Pt` =='Yes', 1, 0)
 race_results$dnf <- ifelse(race_results$`Time/Retired`=='DNF' | race_results$`Time/Retired`=='DNS', 1, 0)
+race_results$Driver <- factor(race_results$Driver, levels = unique(race_results$Driver))
+race_results$Team <- factor(race_results$Team, levels = unique(race_results$Team))
+
+# create mapping for team color and line type
+race_results <- race_results |>
+  dplyr::mutate(
+    team_color = dplyr::case_when(
+      Team == "Mercedes" ~ "#00D2BE",
+      Team == "Red Bull Racing Honda" ~ "#0600EF",
+      Team == "McLaren Mercedes" ~ "#FF8700",
+      Team == "Ferrari" ~ "#DC0000",
+      Team == "AlphaTauri Honda" ~ "#2B4562",
+      Team == "Aston Martin Mercedes" ~ "#006F62",
+      Team == "Alfa Romeo Racing Ferrari" ~ "#900000",
+      Team == "Alpine Renault" ~ "#0090FF",
+      Team == "Williams Mercedes" ~ "#005AFF",
+      Team == "Haas Ferrari" ~ "#FFFFFF"),  
+    line_type = dplyr::case_when(
+      Driver %in% c("Lewis Hamilton", "Max Verstappen", "Lando Norris", 
+                    "Charles Leclerc", "Yuki Tsunoda", "Lance Stroll",
+                    "Kimi Raikkönen", "Esteban Ocon", "George Russell") ~ "solid",
+      Driver == "Robert Kubica" ~ "dashed",
+      TRUE ~ "dotted")
+    )
+
+# Add mapping for color to driver
+driver_colors <- race_results |>
+  dplyr::filter(Track == "Bahrain") |>
+  dplyr::select(Driver, team_color) |>
+  dplyr::pull(team_color)
+driver_colors <- append(driver_colors, "#900000")
+names(driver_colors) <- levels(race_results$Driver)
+
+# add mapping for color to team
+team_colors <- unique(race_results$team_color)
+names(team_colors) <- unique(race_results$Team)
+
+# add mapping for line type to driver
+driver_linetype <- race_results |>
+  dplyr::filter(Track == "Bahrain") |>
+  dplyr::select(Driver, line_type) |>
+  dplyr::pull(line_type)
+driver_linetype <- append(driver_linetype, "dashed")
+names(driver_linetype) <- levels(race_results$Driver)
 
 
 gp_list <- unique(as.character(race_results$Track))
@@ -68,7 +112,7 @@ tags$head(
                           min-height:50px !important;
                         }
                       .navbar-nav > li > a, .navbar-brand {
-                            padding-top:1px !important; 
+                            padding-top:3px !important; 
                             padding-bottom:1px !important;
                             height: 20px;
                             }'))),
@@ -375,16 +419,19 @@ server <- function(input, output, session) {
 
   # draw the cumulative points line chart for drivers
   output$distPlot <- renderPlotly({
-    driver_plot <- ggplot2::ggplot(drivers_plotting(), aes(x = Track,
-                                                           y = cumpoints, 
-                                                           group = Driver, 
-                                                           color = Driver,
-                                                           text = paste("Cumulative Points:", cumpoints)))
+    driver_plot <- ggplot2::ggplot(
+      drivers_plotting(), aes(x = Track, y = cumpoints, group = Driver,
+                              color = Driver, linetype = Driver, 
+                              text = paste("Team:", Team,
+                                           "\nCumulative Points:", cumpoints))) 
+    
     if (nrow(drivers_plotting()) == 0) {
       driver_plot <- driver_plot + ggplot2::geom_blank()
     } else {
-      driver_plot <- driver_plot + ggplot2::geom_line() + 
-        ggplot2::geom_point()
+      driver_plot <- driver_plot + ggplot2::geom_line() +
+        ggplot2::geom_point() +
+        ggplot2::scale_color_manual(values = driver_colors) +
+        ggplot2::scale_linetype_manual(values = driver_linetype)
     }
       driver_plot <- driver_plot + 
       ggplot2::labs(x = "Race", y = "Cumulative Points") +
@@ -400,7 +447,12 @@ server <- function(input, output, session) {
         legend.title = element_blank(),
         legend.position = "top",
       )
-    driver_plot <- ggplotly(driver_plot, tooltip = c("x", "text", "color"))
+    driver_plot <- ggplotly(driver_plot, tooltip = c("x", "text", "color")) |>
+      layout(legend = list(
+        itemclick = FALSE,
+        itemdoubleclick = FALSE,
+        groupclick = FALSE
+      ))
   })
   
   # filter data frame for teams based on selection
@@ -412,11 +464,11 @@ server <- function(input, output, session) {
   })
   # draw the cumulative points line chart for teams
   output$teamPointsPlot <- renderPlotly({
-    teams_plot <- ggplot2::ggplot(teams_plotting(), aes(x = Track, 
-                                                        y = team_cp, 
-                                                        group = Team, 
-                                                        color = Team,
-                                                        text = paste("Cumulative Points:", team_cp)))
+    teams_plot <- ggplot2::ggplot(
+      teams_plotting(), aes(x = Track, y = team_cp, group = Team, color = Team, 
+                            text = paste("Cumulative Points:", team_cp))) +
+      scale_color_manual(values = team_colors)
+    
     if (nrow(teams_plotting()) == 0) {
       teams_plot <- teams_plot + ggplot2::geom_blank()
     } else {
@@ -437,7 +489,12 @@ server <- function(input, output, session) {
         legend.title = element_blank(),
         legend.position = "top",
       )
-    teams_plot <- ggplotly(teams_plot, tooltip = c("x", "text", "color"))
+    teams_plot <- ggplotly(teams_plot, tooltip = c("x", "text", "color")) |>
+      layout(legend = list(
+        itemclick = FALSE,
+        itemdoubleclick = FALSE,
+        groupclick = FALSE
+      ))
   })
   
   
