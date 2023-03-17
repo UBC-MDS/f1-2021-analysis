@@ -1,0 +1,14 @@
+name: f1-2021-analysis
+title: f1-2021-analysis
+username:
+account: eric1208
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8477099
+bundleId: 6915963
+url: https://eric1208.shinyapps.io/f1-2021-analysis/
+when: 1677953692.286
+lastSyncTime: 1677953692.28601
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: CODE_OF_CONDUCT.md|CONTRIBUTING.md|LICENSE|README.md|reports/proposal.md|src/F1_2021_Analysis.ipynb|test.Rmd
