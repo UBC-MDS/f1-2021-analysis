@@ -1,0 +1,4234 @@
+{
+  "input": {
+    ".clientValue-default-plotlyCrosstalkOpts": {
+      "on": "plotly_click",
+      "persistent": false,
+      "dynamic": false,
+      "selectize": false,
+      "opacityDim": 0.2,
+      "selected": {
+        "opacity": 1
+      },
+      "debounce": 0,
+      "color": [
+
+      ]
+    },
+    "Races__reactable__page": 1,
+    "Races__reactable__pageSize": 10,
+    "Races__reactable__pages": 1,
+    "Races__reactable__selected": null,
+    "Races__reactable__sorted": null,
+    "deselectalldrivers": 0,
+    "deselectallteams": 0,
+    "driverSelect": [
+      "Lewis Hamilton",
+      "Max Verstappen",
+      "Valtteri Bottas",
+      "Lando Norris",
+      "Sergio Perez",
+      "Charles Leclerc",
+      "Daniel Ricciardo",
+      "Carlos Sainz",
+      "Yuki Tsunoda",
+      "Lance Stroll",
+      "Kimi Raikkönen",
+      "Antonio Giovinazzi",
+      "Esteban Ocon",
+      "George Russell",
+      "Sebastian Vettel",
+      "Mick Schumacher",
+      "Pierre Gasly",
+      "Nicholas Latifi",
+      "Fernando Alonso",
+      "Nikita Mazepin",
+      "Robert Kubica"
+    ],
+    "plotly_afterplot-A": "\"distPlot\"",
+    "raceSliderDrivers": "Abu Dhabi",
+    "raceSliderTeams": "Abu Dhabi",
+    "selectalldrivers": 1,
+    "selectallteams": 0,
+    "teamSelect": "McLaren Mercedes"
+  },
+  "output": {
+    "Races": {
+      "x": {
+        "tag": {
+          "name": "Reactable",
+          "attribs": {
+            "data": {
+              "Country": [
+                "Bahrain",
+                "Italy",
+                "Portugal",
+                "Spain",
+                "Monaco",
+                "Azerbaijan",
+                "France",
+                "Austria",
+                "Austria",
+                "Great Britain",
+                "Hungary",
+                "Belgium",
+                "Netherlands",
+                "Italy",
+                "Russia",
+                "Turkey",
+                "United States",
+                "Mexico",
+                "Brazil",
+                "Qatar",
+                "Saudi Arabia",
+                "Abu Dhabi"
+              ],
+              "City": [
+                "Sakhir",
+                "Imola",
+                "Portimao",
+                "Catalunya",
+                "Monte Carlo",
+                "Baku",
+                "Le Castellet",
+                "Spielberg",
+                "Spielberg",
+                "Siverstone",
+                "Budapest",
+                "Spa-Francorchamps",
+                "Zandvoort",
+                "Monza",
+                "Sochi",
+                "Istanbul",
+                "Austin",
+                "Mexico City",
+                "Sao Paulo",
+                "Losail",
+                "Jeddah",
+                "Yas Island"
+              ],
+              "Race": [
+                "Bahrain",
+                "Emilia Romagna",
+                "Portugal",
+                "Spain",
+                "Monaco",
+                "Azerbaijan",
+                "France",
+                "Styria",
+                "Austria",
+                "Great Britain",
+                "Hungary",
+                "Belgium",
+                "Dutch",
+                "Italy",
+                "Russia",
+                "Turkey",
+                "United States",
+                "Mexico",
+                "Sao Paulo",
+                "Qatar",
+                "Saudi Arabia",
+                "Abu Dhabi"
+              ]
+            },
+            "columns": [
+              {
+                "id": "Country",
+                "name": "Country",
+                "type": "character",
+                "show": false
+              },
+              {
+                "id": "City",
+                "name": "City",
+                "type": "character",
+                "show": false
+              },
+              {
+                "id": "Race",
+                "name": "Race",
+                "type": "factor",
+                "sortable": false,
+                "cell": [
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Bahrain.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Bahrain"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Bahrain"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Sakhir"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Emilia Romagna.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Emilia Romagna"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Emilia Romagna"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Imola"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Portugal.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Portugal"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Portugal"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Portimao"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Spain.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Spain"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Spain"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Catalunya"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Monaco.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Monaco"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Monaco"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Monte Carlo"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Azerbaijan.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Azerbaijan"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Azerbaijan"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Baku"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/France.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "France"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "France"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Le Castellet"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Styria.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Styria"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Styria"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Spielberg"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Austria.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Austria"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Austria"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Spielberg"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Great Britain.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Great Britain"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Great Britain"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Siverstone"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Hungary.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Hungary"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Hungary"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Budapest"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Belgium.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Belgium"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Belgium"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Spa-Francorchamps"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Dutch.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Dutch"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Dutch"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Zandvoort"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Italy.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Italy"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Italy"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Monza"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Russia.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Russia"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Russia"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Sochi"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Turkey.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Turkey"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Turkey"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Istanbul"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/United States.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "United States"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "United States"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Austin"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Mexico.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Mexico"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Mexico"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Mexico City"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Sao Paulo.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Sao Paulo"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Sao Paulo"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Sao Paulo"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Qatar.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Qatar"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Qatar"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Losail"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Saudi Arabia.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Saudi Arabia"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Saudi Arabia"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Jeddah"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Fragment",
+                    "attribs": [
+
+                    ],
+                    "children": [
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "display": "inline-block",
+                            "float": "left",
+                            "width": "75px",
+                            "padding-top": "10px",
+                            "padding-left": "10px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "img",
+                            "attribs": {
+                              "src": "flags/Abu Dhabi.png",
+                              "style": {
+                                "height": "24px",
+                                "padding": "top",
+                                "margin": "top"
+                              },
+                              "alt": "Abu Dhabi"
+                            },
+                            "children": [
+
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "div",
+                        "attribs": {
+                          "style": {
+                            "background": "pink",
+                            "borderStyle": "solid",
+                            "marginBottom": "0px",
+                            "marginTop": "0px",
+                            "borderCollapse": "separate",
+                            "borderSpacing": "0 0px"
+                          }
+                        },
+                        "children": [
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontWeight": 600
+                              }
+                            },
+                            "children": [
+                              "Abu Dhabi"
+                            ]
+                          },
+                          {
+                            "name": "div",
+                            "attribs": {
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "children": [
+                              "Yas Island"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "align": "center",
+                "headerStyle": {
+                  "fontSize": "24px",
+                  "background": "#101010",
+                  "color": "#FDF7F7"
+                }
+              }
+            ],
+            "pagination": false,
+            "compact": true,
+            "style": {
+              "padding": "0px",
+              "border-collapse": "collapse",
+              "border-spacing": "0"
+            },
+            "height": "600px",
+            "theme": {
+              "color": "hsl(0, 100%, 0%)",
+              "backgroundColor": "hsl(233, 9%, 19%)"
+            },
+            "dataKey": "59c661b3aa852623210fa06243ea195f",
+            "static": false
+          },
+          "children": [
+
+          ]
+        },
+        "class": "reactR_markup"
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+
+      ]
+    },
+    "distPlot": {
+      "x": {
+        "data": [
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              25,
+              44,
+              69,
+              94,
+              101,
+              101,
+              119,
+              138,
+              150,
+              175,
+              193,
+              200.5,
+              219.5,
+              219.5,
+              244.5,
+              254.5,
+              273.5,
+              291.5,
+              316.5,
+              341.5,
+              367.5,
+              385.5
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 25",
+              "Track: Emilia Romagna<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 44",
+              "Track: Portugal<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 69",
+              "Track: Spain<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 94",
+              "Track: Monaco<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 101",
+              "Track: Azerbaijan<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 101",
+              "Track: France<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 119",
+              "Track: Styria<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 138",
+              "Track: Austria<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 150",
+              "Track: Great Britain<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 175",
+              "Track: Hungary<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 193",
+              "Track: Belgium<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 200.5",
+              "Track: Dutch<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 219.5",
+              "Track: Italy<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 219.5",
+              "Track: Russia<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 244.5",
+              "Track: Turkey<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 254.5",
+              "Track: United States<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 273.5",
+              "Track: Mexico<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 291.5",
+              "Track: Sao Paulo<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 316.5",
+              "Track: Qatar<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 341.5",
+              "Track: Saudi Arabia<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 367.5",
+              "Track: Abu Dhabi<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 385.5"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(0,210,190,1)",
+              "dash": "solid"
+            },
+            "hoveron": "points",
+            "name": "Lewis Hamilton",
+            "legendgroup": "Lewis Hamilton",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(0,210,190,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(0,210,190,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              18,
+              43,
+              61,
+              80,
+              105,
+              105,
+              131,
+              156,
+              182,
+              182,
+              184,
+              196.5,
+              221.5,
+              221.5,
+              239.5,
+              257.5,
+              282.5,
+              307.5,
+              325.5,
+              344.5,
+              362.5,
+              388.5
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 18",
+              "Track: Emilia Romagna<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 43",
+              "Track: Portugal<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 61",
+              "Track: Spain<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 80",
+              "Track: Monaco<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 105",
+              "Track: Azerbaijan<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 105",
+              "Track: France<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 131",
+              "Track: Styria<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 156",
+              "Track: Austria<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 182",
+              "Track: Great Britain<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 182",
+              "Track: Hungary<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 184",
+              "Track: Belgium<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 196.5",
+              "Track: Dutch<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 221.5",
+              "Track: Italy<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 221.5",
+              "Track: Russia<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 239.5",
+              "Track: Turkey<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 257.5",
+              "Track: United States<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 282.5",
+              "Track: Mexico<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 307.5",
+              "Track: Sao Paulo<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 325.5",
+              "Track: Qatar<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 344.5",
+              "Track: Saudi Arabia<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 362.5",
+              "Track: Abu Dhabi<br />Driver: Max Verstappen<br />Team: Red Bull Racing Honda <br />Cumulative Points: 388.5"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(6,0,239,1)",
+              "dash": "solid"
+            },
+            "hoveron": "points",
+            "name": "Max Verstappen",
+            "legendgroup": "Max Verstappen",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(6,0,239,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(6,0,239,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              16,
+              16,
+              32,
+              47,
+              47,
+              47,
+              59,
+              74,
+              92,
+              107,
+              107,
+              107,
+              122,
+              137,
+              147,
+              173,
+              181,
+              181,
+              196,
+              196,
+              211,
+              219
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 16",
+              "Track: Emilia Romagna<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 16",
+              "Track: Portugal<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 32",
+              "Track: Spain<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 47",
+              "Track: Monaco<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 47",
+              "Track: Azerbaijan<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 47",
+              "Track: France<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 59",
+              "Track: Styria<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 74",
+              "Track: Austria<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 92",
+              "Track: Great Britain<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 107",
+              "Track: Hungary<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 107",
+              "Track: Belgium<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 107",
+              "Track: Dutch<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 122",
+              "Track: Italy<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 137",
+              "Track: Russia<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 147",
+              "Track: Turkey<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 173",
+              "Track: United States<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 181",
+              "Track: Mexico<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 181",
+              "Track: Sao Paulo<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 196",
+              "Track: Qatar<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 196",
+              "Track: Saudi Arabia<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 211",
+              "Track: Abu Dhabi<br />Driver: Valtteri Bottas<br />Team: Mercedes <br />Cumulative Points: 219"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(0,210,190,1)",
+              "dash": "dot"
+            },
+            "hoveron": "points",
+            "name": "Valtteri Bottas",
+            "legendgroup": "Valtteri Bottas",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(0,210,190,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(0,210,190,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              12,
+              27,
+              37,
+              41,
+              56,
+              66,
+              76,
+              86,
+              101,
+              113,
+              113,
+              113,
+              114,
+              132,
+              139,
+              145,
+              149,
+              150,
+              151,
+              153,
+              154,
+              160
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 12",
+              "Track: Emilia Romagna<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 27",
+              "Track: Portugal<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 37",
+              "Track: Spain<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 41",
+              "Track: Monaco<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 56",
+              "Track: Azerbaijan<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 66",
+              "Track: France<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 76",
+              "Track: Styria<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 86",
+              "Track: Austria<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 101",
+              "Track: Great Britain<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 113",
+              "Track: Hungary<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 113",
+              "Track: Belgium<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 113",
+              "Track: Dutch<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 114",
+              "Track: Italy<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 132",
+              "Track: Russia<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 139",
+              "Track: Turkey<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 145",
+              "Track: United States<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 149",
+              "Track: Mexico<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 150",
+              "Track: Sao Paulo<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 151",
+              "Track: Qatar<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 153",
+              "Track: Saudi Arabia<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 154",
+              "Track: Abu Dhabi<br />Driver: Lando Norris<br />Team: McLaren Mercedes <br />Cumulative Points: 160"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(255,135,0,1)",
+              "dash": "solid"
+            },
+            "hoveron": "points",
+            "name": "Lando Norris",
+            "legendgroup": "Lando Norris",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(255,135,0,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(255,135,0,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              10,
+              10,
+              22,
+              32,
+              44,
+              69,
+              84,
+              96,
+              104,
+              104,
+              104,
+              104,
+              108,
+              118,
+              120,
+              135,
+              150,
+              165,
+              178,
+              190,
+              190,
+              190
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 10",
+              "Track: Emilia Romagna<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 10",
+              "Track: Portugal<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 22",
+              "Track: Spain<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 32",
+              "Track: Monaco<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 44",
+              "Track: Azerbaijan<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 69",
+              "Track: France<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 84",
+              "Track: Styria<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 96",
+              "Track: Austria<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 104",
+              "Track: Great Britain<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 104",
+              "Track: Hungary<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 104",
+              "Track: Belgium<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 104",
+              "Track: Dutch<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 108",
+              "Track: Italy<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 118",
+              "Track: Russia<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 120",
+              "Track: Turkey<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 135",
+              "Track: United States<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 150",
+              "Track: Mexico<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 165",
+              "Track: Sao Paulo<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 178",
+              "Track: Qatar<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 190",
+              "Track: Saudi Arabia<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 190",
+              "Track: Abu Dhabi<br />Driver: Sergio Perez<br />Team: Red Bull Racing Honda <br />Cumulative Points: 190"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(6,0,239,1)",
+              "dash": "dot"
+            },
+            "hoveron": "points",
+            "name": "Sergio Perez",
+            "legendgroup": "Sergio Perez",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(6,0,239,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(6,0,239,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              8,
+              20,
+              28,
+              40,
+              40,
+              52,
+              52,
+              58,
+              62,
+              80,
+              80,
+              82,
+              92,
+              104,
+              104,
+              116,
+              128,
+              138,
+              148,
+              152,
+              158,
+              159
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 8",
+              "Track: Emilia Romagna<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 20",
+              "Track: Portugal<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 28",
+              "Track: Spain<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 40",
+              "Track: Monaco<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 40",
+              "Track: Azerbaijan<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 52",
+              "Track: France<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 52",
+              "Track: Styria<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 58",
+              "Track: Austria<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 62",
+              "Track: Great Britain<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 80",
+              "Track: Hungary<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 80",
+              "Track: Belgium<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 82",
+              "Track: Dutch<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 92",
+              "Track: Italy<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 104",
+              "Track: Russia<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 104",
+              "Track: Turkey<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 116",
+              "Track: United States<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 128",
+              "Track: Mexico<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 138",
+              "Track: Sao Paulo<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 148",
+              "Track: Qatar<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 152",
+              "Track: Saudi Arabia<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 158",
+              "Track: Abu Dhabi<br />Driver: Charles Leclerc<br />Team: Ferrari <br />Cumulative Points: 159"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(220,0,0,1)",
+              "dash": "solid"
+            },
+            "hoveron": "points",
+            "name": "Charles Leclerc",
+            "legendgroup": "Charles Leclerc",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(220,0,0,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(220,0,0,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              6,
+              14,
+              16,
+              24,
+              24,
+              26,
+              34,
+              34,
+              40,
+              50,
+              50,
+              56,
+              56,
+              82,
+              94,
+              94,
+              104,
+              104,
+              104,
+              104,
+              114,
+              114
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 6",
+              "Track: Emilia Romagna<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 14",
+              "Track: Portugal<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 16",
+              "Track: Spain<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 24",
+              "Track: Monaco<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 24",
+              "Track: Azerbaijan<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 26",
+              "Track: France<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 34",
+              "Track: Styria<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 34",
+              "Track: Austria<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 40",
+              "Track: Great Britain<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 50",
+              "Track: Hungary<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 50",
+              "Track: Belgium<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 56",
+              "Track: Dutch<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 56",
+              "Track: Italy<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 82",
+              "Track: Russia<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 94",
+              "Track: Turkey<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 94",
+              "Track: United States<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 104",
+              "Track: Mexico<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 104",
+              "Track: Sao Paulo<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 104",
+              "Track: Qatar<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 104",
+              "Track: Saudi Arabia<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 114",
+              "Track: Abu Dhabi<br />Driver: Daniel Ricciardo<br />Team: McLaren Mercedes <br />Cumulative Points: 114"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(255,135,0,1)",
+              "dash": "dot"
+            },
+            "hoveron": "points",
+            "name": "Daniel Ricciardo",
+            "legendgroup": "Daniel Ricciardo",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(255,135,0,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(255,135,0,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              4,
+              14,
+              14,
+              20,
+              38,
+              42,
+              42,
+              50,
+              60,
+              68,
+              83,
+              83.5,
+              89.5,
+              97.5,
+              112.5,
+              116.5,
+              122.5,
+              130.5,
+              138.5,
+              144.5,
+              148.5,
+              163.5
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 4",
+              "Track: Emilia Romagna<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 14",
+              "Track: Portugal<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 14",
+              "Track: Spain<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 20",
+              "Track: Monaco<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 38",
+              "Track: Azerbaijan<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 42",
+              "Track: France<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 42",
+              "Track: Styria<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 50",
+              "Track: Austria<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 60",
+              "Track: Great Britain<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 68",
+              "Track: Hungary<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 83",
+              "Track: Belgium<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 83.5",
+              "Track: Dutch<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 89.5",
+              "Track: Italy<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 97.5",
+              "Track: Russia<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 112.5",
+              "Track: Turkey<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 116.5",
+              "Track: United States<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 122.5",
+              "Track: Mexico<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 130.5",
+              "Track: Sao Paulo<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 138.5",
+              "Track: Qatar<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 144.5",
+              "Track: Saudi Arabia<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 148.5",
+              "Track: Abu Dhabi<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 163.5"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(220,0,0,1)",
+              "dash": "dot"
+            },
+            "hoveron": "points",
+            "name": "Carlos Sainz",
+            "legendgroup": "Carlos Sainz",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(220,0,0,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(220,0,0,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              8,
+              8,
+              9,
+              9,
+              10,
+              18,
+              18,
+              18,
+              18,
+              18,
+              18,
+              20,
+              20,
+              20,
+              20,
+              20,
+              32
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 2",
+              "Track: Emilia Romagna<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 2",
+              "Track: Portugal<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 2",
+              "Track: Spain<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 2",
+              "Track: Monaco<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 2",
+              "Track: Azerbaijan<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 8",
+              "Track: France<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 8",
+              "Track: Styria<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 9",
+              "Track: Austria<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 9",
+              "Track: Great Britain<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 10",
+              "Track: Hungary<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 18",
+              "Track: Belgium<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 18",
+              "Track: Dutch<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 18",
+              "Track: Italy<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 18",
+              "Track: Russia<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 18",
+              "Track: Turkey<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 18",
+              "Track: United States<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 20",
+              "Track: Mexico<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 20",
+              "Track: Sao Paulo<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 20",
+              "Track: Qatar<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 20",
+              "Track: Saudi Arabia<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 20",
+              "Track: Abu Dhabi<br />Driver: Yuki Tsunoda<br />Team: AlphaTauri Honda <br />Cumulative Points: 32"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(43,69,98,1)",
+              "dash": "solid"
+            },
+            "hoveron": "points",
+            "name": "Yuki Tsunoda",
+            "legendgroup": "Yuki Tsunoda",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(43,69,98,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(43,69,98,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              1,
+              5,
+              5,
+              5,
+              9,
+              9,
+              10,
+              14,
+              14,
+              18,
+              18,
+              18,
+              18,
+              24,
+              24,
+              26,
+              26,
+              26,
+              26,
+              34,
+              34,
+              34
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 1",
+              "Track: Emilia Romagna<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 5",
+              "Track: Portugal<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 5",
+              "Track: Spain<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 5",
+              "Track: Monaco<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 9",
+              "Track: Azerbaijan<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 9",
+              "Track: France<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 10",
+              "Track: Styria<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 14",
+              "Track: Austria<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 14",
+              "Track: Great Britain<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 18",
+              "Track: Hungary<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 18",
+              "Track: Belgium<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 18",
+              "Track: Dutch<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 18",
+              "Track: Italy<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 24",
+              "Track: Russia<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 24",
+              "Track: Turkey<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 26",
+              "Track: United States<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 26",
+              "Track: Mexico<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 26",
+              "Track: Sao Paulo<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 26",
+              "Track: Qatar<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 34",
+              "Track: Saudi Arabia<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 34",
+              "Track: Abu Dhabi<br />Driver: Lance Stroll<br />Team: Aston Martin Mercedes <br />Cumulative Points: 34"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(0,111,98,1)",
+              "dash": "solid"
+            },
+            "hoveron": "points",
+            "name": "Lance Stroll",
+            "legendgroup": "Lance Stroll",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(0,111,98,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(0,111,98,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              1,
+              1,
+              1,
+              2,
+              2,
+              6,
+              6,
+              6,
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 0",
+              "Track: Emilia Romagna<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 0",
+              "Track: Portugal<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 0",
+              "Track: Spain<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 0",
+              "Track: Monaco<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 0",
+              "Track: Azerbaijan<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: France<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Styria<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Austria<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Great Britain<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Hungary<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 2",
+              "Track: Belgium<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 2",
+              "Track: Russia<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 6",
+              "Track: Turkey<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 6",
+              "Track: United States<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 6",
+              "Track: Mexico<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 10",
+              "Track: Sao Paulo<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 10",
+              "Track: Qatar<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 10",
+              "Track: Saudi Arabia<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 10",
+              "Track: Abu Dhabi<br />Driver: Kimi Raikkönen<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 10"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(144,0,0,1)",
+              "dash": "solid"
+            },
+            "hoveron": "points",
+            "name": "Kimi Raikkönen",
+            "legendgroup": "Kimi Raikkönen",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(144,0,0,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(144,0,0,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              3,
+              3
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 0",
+              "Track: Emilia Romagna<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 0",
+              "Track: Portugal<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 0",
+              "Track: Spain<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 0",
+              "Track: Monaco<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Azerbaijan<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: France<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Styria<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Austria<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Great Britain<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Hungary<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Belgium<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Dutch<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Italy<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Russia<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Turkey<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: United States<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Mexico<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Sao Paulo<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Qatar<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 1",
+              "Track: Saudi Arabia<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 3",
+              "Track: Abu Dhabi<br />Driver: Antonio Giovinazzi<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 3"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(144,0,0,1)",
+              "dash": "dot"
+            },
+            "hoveron": "points",
+            "name": "Antonio Giovinazzi",
+            "legendgroup": "Antonio Giovinazzi",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(144,0,0,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(144,0,0,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              0,
+              2,
+              8,
+              10,
+              12,
+              12,
+              12,
+              12,
+              12,
+              14,
+              39,
+              42,
+              44,
+              45,
+              45,
+              46,
+              46,
+              46,
+              50,
+              60,
+              72,
+              74
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 0",
+              "Track: Emilia Romagna<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 2",
+              "Track: Portugal<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 8",
+              "Track: Spain<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 10",
+              "Track: Monaco<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 12",
+              "Track: Azerbaijan<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 12",
+              "Track: France<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 12",
+              "Track: Styria<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 12",
+              "Track: Austria<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 12",
+              "Track: Great Britain<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 14",
+              "Track: Hungary<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 39",
+              "Track: Belgium<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 42",
+              "Track: Dutch<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 44",
+              "Track: Italy<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 45",
+              "Track: Russia<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 45",
+              "Track: Turkey<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 46",
+              "Track: United States<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 46",
+              "Track: Mexico<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 46",
+              "Track: Sao Paulo<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 50",
+              "Track: Qatar<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 60",
+              "Track: Saudi Arabia<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 72",
+              "Track: Abu Dhabi<br />Driver: Esteban Ocon<br />Team: Alpine Renault <br />Cumulative Points: 74"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(0,144,255,1)",
+              "dash": "solid"
+            },
+            "hoveron": "points",
+            "name": "Esteban Ocon",
+            "legendgroup": "Esteban Ocon",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(0,144,255,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(0,144,255,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              13,
+              13,
+              15,
+              16,
+              16,
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Emilia Romagna<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Portugal<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Spain<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Monaco<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Azerbaijan<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: France<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Styria<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Austria<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Great Britain<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Hungary<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 4",
+              "Track: Belgium<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 13",
+              "Track: Dutch<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 13",
+              "Track: Italy<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 15",
+              "Track: Russia<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 16",
+              "Track: Turkey<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 16",
+              "Track: United States<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 16",
+              "Track: Mexico<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 16",
+              "Track: Sao Paulo<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 16",
+              "Track: Qatar<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 16",
+              "Track: Saudi Arabia<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 16",
+              "Track: Abu Dhabi<br />Driver: George Russell<br />Team: Williams Mercedes <br />Cumulative Points: 16"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(0,90,255,1)",
+              "dash": "solid"
+            },
+            "hoveron": "points",
+            "name": "George Russell",
+            "legendgroup": "George Russell",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(0,90,255,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(0,90,255,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              0,
+              0,
+              0,
+              0,
+              10,
+              28,
+              30,
+              30,
+              30,
+              30,
+              30,
+              35,
+              35,
+              35,
+              35,
+              35,
+              36,
+              42,
+              42,
+              43,
+              43,
+              43
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 0",
+              "Track: Emilia Romagna<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 0",
+              "Track: Portugal<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 0",
+              "Track: Spain<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 0",
+              "Track: Monaco<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 10",
+              "Track: Azerbaijan<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 28",
+              "Track: France<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 30",
+              "Track: Styria<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 30",
+              "Track: Austria<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 30",
+              "Track: Great Britain<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 30",
+              "Track: Hungary<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 30",
+              "Track: Belgium<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 35",
+              "Track: Dutch<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 35",
+              "Track: Italy<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 35",
+              "Track: Russia<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 35",
+              "Track: Turkey<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 35",
+              "Track: United States<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 36",
+              "Track: Mexico<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 42",
+              "Track: Sao Paulo<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 42",
+              "Track: Qatar<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 43",
+              "Track: Saudi Arabia<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 43",
+              "Track: Abu Dhabi<br />Driver: Sebastian Vettel<br />Team: Aston Martin Mercedes <br />Cumulative Points: 43"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(0,111,98,1)",
+              "dash": "dot"
+            },
+            "hoveron": "points",
+            "name": "Sebastian Vettel",
+            "legendgroup": "Sebastian Vettel",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(0,111,98,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(0,111,98,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Emilia Romagna<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Portugal<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Spain<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Monaco<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Azerbaijan<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: France<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Styria<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Austria<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Great Britain<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Hungary<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Belgium<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Dutch<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Italy<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Russia<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Turkey<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: United States<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Mexico<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Sao Paulo<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Qatar<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Saudi Arabia<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Abu Dhabi<br />Driver: Mick Schumacher<br />Team: Haas Ferrari <br />Cumulative Points: 0"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(255,255,255,1)",
+              "dash": "dot"
+            },
+            "hoveron": "points",
+            "name": "Mick Schumacher",
+            "legendgroup": "Mick Schumacher",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(255,255,255,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(255,255,255,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              0,
+              6,
+              7,
+              8,
+              16,
+              31,
+              37,
+              37,
+              39,
+              39,
+              50,
+              54,
+              66,
+              66,
+              66,
+              74,
+              74,
+              86,
+              92,
+              92,
+              100,
+              110
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 0",
+              "Track: Emilia Romagna<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 6",
+              "Track: Portugal<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 7",
+              "Track: Spain<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 8",
+              "Track: Monaco<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 16",
+              "Track: Azerbaijan<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 31",
+              "Track: France<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 37",
+              "Track: Styria<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 37",
+              "Track: Austria<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 39",
+              "Track: Great Britain<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 39",
+              "Track: Hungary<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 50",
+              "Track: Belgium<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 54",
+              "Track: Dutch<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 66",
+              "Track: Italy<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 66",
+              "Track: Russia<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 66",
+              "Track: Turkey<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 74",
+              "Track: United States<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 74",
+              "Track: Mexico<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 86",
+              "Track: Sao Paulo<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 92",
+              "Track: Qatar<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 92",
+              "Track: Saudi Arabia<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 100",
+              "Track: Abu Dhabi<br />Driver: Pierre Gasly<br />Team: AlphaTauri Honda <br />Cumulative Points: 110"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(43,69,98,1)",
+              "dash": "dot"
+            },
+            "hoveron": "points",
+            "name": "Pierre Gasly",
+            "legendgroup": "Pierre Gasly",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(43,69,98,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(43,69,98,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              7,
+              7,
+              7,
+              7,
+              7,
+              7,
+              7,
+              7,
+              7,
+              7,
+              7
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Emilia Romagna<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Portugal<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Spain<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Monaco<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Azerbaijan<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: France<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Styria<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Austria<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Great Britain<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 0",
+              "Track: Hungary<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 6",
+              "Track: Belgium<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 7",
+              "Track: Dutch<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 7",
+              "Track: Italy<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 7",
+              "Track: Russia<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 7",
+              "Track: Turkey<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 7",
+              "Track: United States<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 7",
+              "Track: Mexico<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 7",
+              "Track: Sao Paulo<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 7",
+              "Track: Qatar<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 7",
+              "Track: Saudi Arabia<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 7",
+              "Track: Abu Dhabi<br />Driver: Nicholas Latifi<br />Team: Williams Mercedes <br />Cumulative Points: 7"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(0,90,255,1)",
+              "dash": "dot"
+            },
+            "hoveron": "points",
+            "name": "Nicholas Latifi",
+            "legendgroup": "Nicholas Latifi",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(0,90,255,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(0,90,255,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              0,
+              1,
+              5,
+              5,
+              5,
+              13,
+              17,
+              19,
+              20,
+              26,
+              38,
+              38,
+              46,
+              50,
+              58,
+              58,
+              58,
+              60,
+              62,
+              77,
+              77,
+              81
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 0",
+              "Track: Emilia Romagna<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 1",
+              "Track: Portugal<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 5",
+              "Track: Spain<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 5",
+              "Track: Monaco<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 5",
+              "Track: Azerbaijan<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 13",
+              "Track: France<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 17",
+              "Track: Styria<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 19",
+              "Track: Austria<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 20",
+              "Track: Great Britain<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 26",
+              "Track: Hungary<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 38",
+              "Track: Belgium<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 38",
+              "Track: Dutch<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 46",
+              "Track: Italy<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 50",
+              "Track: Russia<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 58",
+              "Track: Turkey<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 58",
+              "Track: United States<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 58",
+              "Track: Mexico<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 60",
+              "Track: Sao Paulo<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 62",
+              "Track: Qatar<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 77",
+              "Track: Saudi Arabia<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 77",
+              "Track: Abu Dhabi<br />Driver: Fernando Alonso<br />Team: Alpine Renault <br />Cumulative Points: 81"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(0,144,255,1)",
+              "dash": "dot"
+            },
+            "hoveron": "points",
+            "name": "Fernando Alonso",
+            "legendgroup": "Fernando Alonso",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(0,144,255,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(0,144,255,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Emilia Romagna<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Portugal<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Spain<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Monaco<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Azerbaijan<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: France<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Styria<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Austria<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Great Britain<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Hungary<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Belgium<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Dutch<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Italy<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Russia<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Turkey<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: United States<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Mexico<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Sao Paulo<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Qatar<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Saudi Arabia<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0",
+              "Track: Abu Dhabi<br />Driver: Nikita Mazepin<br />Team: Haas Ferrari <br />Cumulative Points: 0"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(255,255,255,1)",
+              "dash": "dot"
+            },
+            "hoveron": "points",
+            "name": "Nikita Mazepin",
+            "legendgroup": "Nikita Mazepin",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(255,255,255,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(255,255,255,1)"
+              }
+            },
+            "frame": null
+          },
+          {
+            "x": [
+              13,
+              14
+            ],
+            "y": [
+              0,
+              0
+            ],
+            "text": [
+              "Track: Dutch<br />Driver: Robert Kubica<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 0",
+              "Track: Italy<br />Driver: Robert Kubica<br />Team: Alfa Romeo Racing Ferrari <br />Cumulative Points: 0"
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "line": {
+              "width": 1.88976377952756,
+              "color": "rgba(144,0,0,1)",
+              "dash": "dash"
+            },
+            "hoveron": "points",
+            "name": "Robert Kubica",
+            "legendgroup": "Robert Kubica",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(144,0,0,1)",
+              "opacity": 1,
+              "size": 5.66929133858268,
+              "symbol": "circle",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "rgba(144,0,0,1)"
+              }
+            },
+            "frame": null
+          }
+        ],
+        "layout": {
+          "margin": {
+            "t": 58.9500484295005,
+            "r": 7.30593607305936,
+            "b": 92.8063278029146,
+            "l": 50.8094645080946
+          },
+          "plot_bgcolor": "rgba(0,0,0,1)",
+          "paper_bgcolor": "rgba(0,0,0,1)",
+          "font": {
+            "color": "rgba(255,255,255,1)",
+            "family": "",
+            "size": 14.6118721461187
+          },
+          "title": {
+            "text": "<b> Cumulative points gained over the season <\/b>",
+            "font": {
+              "color": "rgba(255,255,255,1)",
+              "family": "Prompt",
+              "size": 33.208800332088
+            },
+            "x": 0,
+            "xref": "paper"
+          },
+          "xaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "type": "linear",
+            "autorange": false,
+            "range": [
+              0.4,
+              22.6
+            ],
+            "tickmode": "array",
+            "ticktext": [
+              "Bahrain",
+              "Emilia Romagna",
+              "Portugal",
+              "Spain",
+              "Monaco",
+              "Azerbaijan",
+              "France",
+              "Styria",
+              "Austria",
+              "Great Britain",
+              "Hungary",
+              "Belgium",
+              "Dutch",
+              "Italy",
+              "Russia",
+              "Turkey",
+              "United States",
+              "Mexico",
+              "Sao Paulo",
+              "Qatar",
+              "Saudi Arabia",
+              "Abu Dhabi"
+            ],
+            "tickvals": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "categoryorder": "array",
+            "categoryarray": [
+              "Bahrain",
+              "Emilia Romagna",
+              "Portugal",
+              "Spain",
+              "Monaco",
+              "Azerbaijan",
+              "France",
+              "Styria",
+              "Austria",
+              "Great Britain",
+              "Hungary",
+              "Belgium",
+              "Dutch",
+              "Italy",
+              "Russia",
+              "Turkey",
+              "United States",
+              "Mexico",
+              "Sao Paulo",
+              "Qatar",
+              "Saudi Arabia",
+              "Abu Dhabi"
+            ],
+            "nticks": null,
+            "ticks": "outside",
+            "tickcolor": "rgba(204,204,204,1)",
+            "ticklen": 3.65296803652968,
+            "tickwidth": 0.66417600664176,
+            "showticklabels": true,
+            "tickfont": {
+              "color": "rgba(178,178,178,1)",
+              "family": "Prompt",
+              "size": 13.2835201328352
+            },
+            "tickangle": -20,
+            "showline": true,
+            "linecolor": "rgba(255,255,255,1)",
+            "linewidth": 0.66417600664176,
+            "showgrid": false,
+            "gridcolor": null,
+            "gridwidth": 0,
+            "zeroline": false,
+            "anchor": "y",
+            "title": {
+              "text": "<b> Race <\/b>",
+              "font": {
+                "color": "rgba(255,255,255,1)",
+                "family": "Prompt",
+                "size": 19.9252801992528
+              }
+            },
+            "hoverformat": ".2f"
+          },
+          "yaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "type": "linear",
+            "autorange": false,
+            "range": [
+              -20,
+              420
+            ],
+            "tickmode": "array",
+            "ticktext": [
+              "0",
+              "100",
+              "200",
+              "300",
+              "400"
+            ],
+            "tickvals": [
+              0,
+              100,
+              200,
+              300,
+              400
+            ],
+            "categoryorder": "array",
+            "categoryarray": [
+              "0",
+              "100",
+              "200",
+              "300",
+              "400"
+            ],
+            "nticks": null,
+            "ticks": "outside",
+            "tickcolor": "rgba(204,204,204,1)",
+            "ticklen": 3.65296803652968,
+            "tickwidth": 0.66417600664176,
+            "showticklabels": true,
+            "tickfont": {
+              "color": "rgba(178,178,178,1)",
+              "family": "Prompt",
+              "size": 13.2835201328352
+            },
+            "tickangle": 0,
+            "showline": true,
+            "linecolor": "rgba(255,255,255,1)",
+            "linewidth": 0.66417600664176,
+            "showgrid": false,
+            "gridcolor": null,
+            "gridwidth": 0,
+            "zeroline": false,
+            "anchor": "x",
+            "title": {
+              "text": "<b> Cumulative Points <\/b>",
+              "font": {
+                "color": "rgba(255,255,255,1)",
+                "family": "Prompt",
+                "size": 19.9252801992528
+              }
+            },
+            "hoverformat": ".2f"
+          },
+          "shapes": [
+            {
+              "type": "rect",
+              "fillcolor": null,
+              "line": {
+                "color": null,
+                "width": 0,
+                "linetype": [
+
+                ]
+              },
+              "yref": "paper",
+              "xref": "paper",
+              "x0": 0,
+              "x1": 1,
+              "y0": 0,
+              "y1": 1
+            }
+          ],
+          "showlegend": true,
+          "legend": {
+            "bgcolor": "rgba(0,0,0,1)",
+            "bordercolor": "transparent",
+            "borderwidth": 1.88976377952756,
+            "font": {
+              "color": "rgba(255,255,255,1)",
+              "family": "Prompt",
+              "size": 13.2835201328352
+            },
+            "title": {
+              "text": "Driver",
+              "font": {
+                "color": null,
+                "family": null,
+                "size": 0
+              }
+            },
+            "itemclick": false,
+            "itemdoubleclick": false,
+            "groupclick": false
+          },
+          "hovermode": "closest",
+          "barmode": "relative"
+        },
+        "config": {
+          "doubleClick": "reset",
+          "modeBarButtonsToAdd": [
+            "hoverclosest",
+            "hovercompare"
+          ],
+          "showSendToCloud": false
+        },
+        "source": "A",
+        "highlight": {
+          "on": "plotly_click",
+          "persistent": false,
+          "dynamic": false,
+          "selectize": false,
+          "opacityDim": 0.2,
+          "selected": {
+            "opacity": 1
+          },
+          "debounce": 0
+        },
+        "shinyEvents": [
+          "plotly_hover",
+          "plotly_click",
+          "plotly_selected",
+          "plotly_relayout",
+          "plotly_brushed",
+          "plotly_brushing",
+          "plotly_clickannotation",
+          "plotly_doubleclick",
+          "plotly_deselect",
+          "plotly_afterplot",
+          "plotly_sunburstclick"
+        ],
+        "base_url": "https://plot.ly"
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "setprototypeof",
+          "version": "0.1",
+          "src": {
+            "href": "setprototypeof-0.1"
+          },
+          "meta": null,
+          "script": "setprototypeof.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "typedarray",
+          "version": "0.1",
+          "src": {
+            "href": "typedarray-0.1"
+          },
+          "meta": null,
+          "script": "typedarray.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "jquery",
+          "version": "3.5.1",
+          "src": {
+            "href": "jquery-3.5.1"
+          },
+          "meta": null,
+          "script": "jquery.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "crosstalk",
+          "version": "1.2.0",
+          "src": {
+            "href": "crosstalk-1.2.0"
+          },
+          "meta": null,
+          "script": "js/crosstalk.min.js",
+          "stylesheet": "css/crosstalk.min.css",
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "plotly-htmlwidgets-css",
+          "version": "2.11.1",
+          "src": {
+            "href": "plotly-htmlwidgets-css-2.11.1"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "plotly-htmlwidgets.css",
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "plotly-main",
+          "version": "2.11.1",
+          "src": {
+            "href": "plotly-main-2.11.1"
+          },
+          "meta": null,
+          "script": "plotly-latest.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        }
+      ]
+    }
+  },
+  "export": {
+
+  }
+}
