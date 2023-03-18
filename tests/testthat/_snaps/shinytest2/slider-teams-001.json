@@ -26,8 +26,8 @@
       "Carlos Sainz"
     ],
     "plotly_afterplot-A": "\"distPlot\"",
-    "raceSliderDrivers": "Bahrain",
-    "raceSliderTeams": "Abu Dhabi",
+    "raceSliderDrivers": "Abu Dhabi",
+    "raceSliderTeams": "Bahrain",
     "selectalldrivers": 0,
     "selectallteams": 0,
     "teamSelect": "McLaren Mercedes"
@@ -244,7 +244,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -318,7 +318,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -392,7 +392,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -466,7 +466,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -540,7 +540,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -614,7 +614,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -688,7 +688,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -762,7 +762,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -836,7 +836,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -910,7 +910,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -984,7 +984,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -1058,7 +1058,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -1132,7 +1132,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -1206,7 +1206,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -1280,7 +1280,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -1354,7 +1354,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -1428,7 +1428,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -1502,7 +1502,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -1576,7 +1576,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -1650,7 +1650,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -1724,7 +1724,7 @@
                         "name": "div",
                         "attribs": {
                           "style": {
-                            "background": "white",
+                            "background": "pink",
                             "borderStyle": "solid",
                             "marginBottom": "0px",
                             "marginTop": "0px",
@@ -1780,7 +1780,7 @@
               "color": "hsl(0, 100%, 0%)",
               "backgroundColor": "hsl(233, 9%, 19%)"
             },
-            "dataKey": "f280728f7d66e196f1d0bb41c9ec2c4a",
+            "dataKey": "59c661b3aa852623210fa06243ea195f",
             "static": false
           },
           "children": [
@@ -1803,9 +1803,78 @@
       "x": {
         "data": [
           {
-            "x": 1,
-            "y": 25,
-            "text": "Track: Bahrain<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 25",
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              25,
+              44,
+              69,
+              94,
+              101,
+              101,
+              119,
+              138,
+              150,
+              175,
+              193,
+              200.5,
+              219.5,
+              219.5,
+              244.5,
+              254.5,
+              273.5,
+              291.5,
+              316.5,
+              341.5,
+              367.5,
+              385.5
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 25",
+              "Track: Emilia Romagna<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 44",
+              "Track: Portugal<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 69",
+              "Track: Spain<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 94",
+              "Track: Monaco<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 101",
+              "Track: Azerbaijan<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 101",
+              "Track: France<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 119",
+              "Track: Styria<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 138",
+              "Track: Austria<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 150",
+              "Track: Great Britain<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 175",
+              "Track: Hungary<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 193",
+              "Track: Belgium<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 200.5",
+              "Track: Dutch<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 219.5",
+              "Track: Italy<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 219.5",
+              "Track: Russia<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 244.5",
+              "Track: Turkey<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 254.5",
+              "Track: United States<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 273.5",
+              "Track: Mexico<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 291.5",
+              "Track: Sao Paulo<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 316.5",
+              "Track: Qatar<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 341.5",
+              "Track: Saudi Arabia<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 367.5",
+              "Track: Abu Dhabi<br />Driver: Lewis Hamilton<br />Team: Mercedes <br />Cumulative Points: 385.5"
+            ],
             "type": "scatter",
             "mode": "lines+markers",
             "line": {
@@ -1834,9 +1903,78 @@
             "frame": null
           },
           {
-            "x": 1,
-            "y": 4,
-            "text": "Track: Bahrain<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 4",
+            "x": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "y": [
+              4,
+              14,
+              14,
+              20,
+              38,
+              42,
+              42,
+              50,
+              60,
+              68,
+              83,
+              83.5,
+              89.5,
+              97.5,
+              112.5,
+              116.5,
+              122.5,
+              130.5,
+              138.5,
+              144.5,
+              148.5,
+              163.5
+            ],
+            "text": [
+              "Track: Bahrain<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 4",
+              "Track: Emilia Romagna<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 14",
+              "Track: Portugal<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 14",
+              "Track: Spain<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 20",
+              "Track: Monaco<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 38",
+              "Track: Azerbaijan<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 42",
+              "Track: France<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 42",
+              "Track: Styria<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 50",
+              "Track: Austria<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 60",
+              "Track: Great Britain<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 68",
+              "Track: Hungary<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 83",
+              "Track: Belgium<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 83.5",
+              "Track: Dutch<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 89.5",
+              "Track: Italy<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 97.5",
+              "Track: Russia<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 112.5",
+              "Track: Turkey<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 116.5",
+              "Track: United States<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 122.5",
+              "Track: Mexico<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 130.5",
+              "Track: Sao Paulo<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 138.5",
+              "Track: Qatar<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 144.5",
+              "Track: Saudi Arabia<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 148.5",
+              "Track: Abu Dhabi<br />Driver: Carlos Sainz<br />Team: Ferrari <br />Cumulative Points: 163.5"
+            ],
             "type": "scatter",
             "mode": "lines+markers",
             "line": {
@@ -1869,7 +2007,7 @@
           "margin": {
             "t": 58.9500484295005,
             "r": 7.30593607305936,
-            "b": 63.9422170867679,
+            "b": 92.8063278029146,
             "l": 50.8094645080946
           },
           "plot_bgcolor": "rgba(0,0,0,1)",
@@ -1899,13 +2037,82 @@
             "autorange": false,
             "range": [
               0.4,
-              1.6
+              22.6
             ],
             "tickmode": "array",
-            "ticktext": "Bahrain",
-            "tickvals": 1,
+            "ticktext": [
+              "Bahrain",
+              "Emilia Romagna",
+              "Portugal",
+              "Spain",
+              "Monaco",
+              "Azerbaijan",
+              "France",
+              "Styria",
+              "Austria",
+              "Great Britain",
+              "Hungary",
+              "Belgium",
+              "Dutch",
+              "Italy",
+              "Russia",
+              "Turkey",
+              "United States",
+              "Mexico",
+              "Sao Paulo",
+              "Qatar",
+              "Saudi Arabia",
+              "Abu Dhabi"
+            ],
+            "tickvals": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
             "categoryorder": "array",
-            "categoryarray": "Bahrain",
+            "categoryarray": [
+              "Bahrain",
+              "Emilia Romagna",
+              "Portugal",
+              "Spain",
+              "Monaco",
+              "Azerbaijan",
+              "France",
+              "Styria",
+              "Austria",
+              "Great Britain",
+              "Hungary",
+              "Belgium",
+              "Dutch",
+              "Italy",
+              "Russia",
+              "Turkey",
+              "United States",
+              "Mexico",
+              "Sao Paulo",
+              "Qatar",
+              "Saudi Arabia",
+              "Abu Dhabi"
+            ],
             "nticks": null,
             "ticks": "outside",
             "tickcolor": "rgba(204,204,204,1)",

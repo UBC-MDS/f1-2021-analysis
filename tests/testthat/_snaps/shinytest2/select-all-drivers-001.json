@@ -1998,7 +1998,7 @@
             "mode": "lines+markers",
             "line": {
               "width": 1.88976377952756,
-              "color": "rgba(6,0,239,1)",
+              "color": "rgba(25,63,191,1)",
               "dash": "solid"
             },
             "hoveron": "points",
@@ -2010,13 +2010,13 @@
             "hoverinfo": "text",
             "marker": {
               "autocolorscale": false,
-              "color": "rgba(6,0,239,1)",
+              "color": "rgba(25,63,191,1)",
               "opacity": 1,
               "size": 5.66929133858268,
               "symbol": "circle",
               "line": {
                 "width": 1.88976377952756,
-                "color": "rgba(6,0,239,1)"
+                "color": "rgba(25,63,191,1)"
               }
             },
             "frame": null
@@ -2298,7 +2298,7 @@
             "mode": "lines+markers",
             "line": {
               "width": 1.88976377952756,
-              "color": "rgba(6,0,239,1)",
+              "color": "rgba(25,63,191,1)",
               "dash": "dot"
             },
             "hoveron": "points",
@@ -2310,13 +2310,13 @@
             "hoverinfo": "text",
             "marker": {
               "autocolorscale": false,
-              "color": "rgba(6,0,239,1)",
+              "color": "rgba(25,63,191,1)",
               "opacity": 1,
               "size": 5.66929133858268,
               "symbol": "circle",
               "line": {
                 "width": 1.88976377952756,
-                "color": "rgba(6,0,239,1)"
+                "color": "rgba(25,63,191,1)"
               }
             },
             "frame": null
@@ -3092,7 +3092,7 @@
             "mode": "lines+markers",
             "line": {
               "width": 1.88976377952756,
-              "color": "rgba(0,144,255,1)",
+              "color": "rgba(117,195,255,1)",
               "dash": "solid"
             },
             "hoveron": "points",
@@ -3104,13 +3104,13 @@
             "hoverinfo": "text",
             "marker": {
               "autocolorscale": false,
-              "color": "rgba(0,144,255,1)",
+              "color": "rgba(117,195,255,1)",
               "opacity": 1,
               "size": 5.66929133858268,
               "symbol": "circle",
               "line": {
                 "width": 1.88976377952756,
-                "color": "rgba(0,144,255,1)"
+                "color": "rgba(117,195,255,1)"
               }
             },
             "frame": null
@@ -3692,7 +3692,7 @@
             "mode": "lines+markers",
             "line": {
               "width": 1.88976377952756,
-              "color": "rgba(0,144,255,1)",
+              "color": "rgba(117,195,255,1)",
               "dash": "dot"
             },
             "hoveron": "points",
@@ -3704,13 +3704,13 @@
             "hoverinfo": "text",
             "marker": {
               "autocolorscale": false,
-              "color": "rgba(0,144,255,1)",
+              "color": "rgba(117,195,255,1)",
               "opacity": 1,
               "size": 5.66929133858268,
               "symbol": "circle",
               "line": {
                 "width": 1.88976377952756,
-                "color": "rgba(0,144,255,1)"
+                "color": "rgba(117,195,255,1)"
               }
             },
             "frame": null
