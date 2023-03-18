@@ -11,8 +11,6 @@ library(ggdark)
 library(insight)
 library(plotly)
 
-
-
 options(shiny.autoreload = TRUE)
 
 # Loading the Race results data
@@ -22,8 +20,6 @@ race_results <- race_results |>
                                          Track == "Brazil" ~ "Sao Paulo",
                                          TRUE ~ Track))
 race_results$Track <- factor(race_results$Track, levels = unique(race_results$Track))
-# race_results$`Fastest Lap` = paste0('00:0', race_results$`Fastest Lap`)
-# race_results$`Fastest Lap` = lubridate::hms(race_results$`Fastest Lap`)
 race_results$flag <- ifelse(race_results$`+1 Pt` =='Yes', 1, 0)
 race_results$dnf <- ifelse(race_results$`Time/Retired`=='DNF' | race_results$`Time/Retired`=='DNS', 1, 0)
 race_results$Driver <- factor(race_results$Driver, levels = unique(race_results$Driver))
@@ -34,13 +30,13 @@ race_results <- race_results |>
   dplyr::mutate(
     team_color = dplyr::case_when(
       Team == "Mercedes" ~ "#00D2BE",
-      Team == "Red Bull Racing Honda" ~ "#0600EF",
+      Team == "Red Bull Racing Honda" ~ "#193fbf",
       Team == "McLaren Mercedes" ~ "#FF8700",
       Team == "Ferrari" ~ "#DC0000",
       Team == "AlphaTauri Honda" ~ "#2B4562",
       Team == "Aston Martin Mercedes" ~ "#006F62",
       Team == "Alfa Romeo Racing Ferrari" ~ "#900000",
-      Team == "Alpine Renault" ~ "#0090FF",
+      Team == "Alpine Renault" ~ "#75c3ff",
       Team == "Williams Mercedes" ~ "#005AFF",
       Team == "Haas Ferrari" ~ "#FFFFFF"),  
     line_type = dplyr::case_when(
@@ -122,7 +118,7 @@ tags$head(
                    primary = "#e00a07",
                    danger = "#ED79F9",
                    base_font = font_google("Prompt"),
-                   # secondary = "#101011",
+                   size = 10
                  ),
                  tabPanel(
                    "Season Highlights",
@@ -157,7 +153,11 @@ tags$head(
                                                        image = "UI/200w.gif"
                                                        ),
                                          fluidRow(
-                                           tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"), # to hide the minor ticks
+                                           tags$style(
+                                             type = "text/css", 
+                                             ".irs-grid-pol.small {height: 0px;}",
+                                             ".irs-grid-text {font-size: 8pt; !important; transform: rotate(-20deg) translate(-30px);"
+                                             ), # to hide the minor ticks
                                            sliderTextInput(
                                              inputId = "raceSliderDrivers", 
                                              label = "Select races:", 
@@ -251,31 +251,32 @@ tags$head(
                                      column(1),
                                      column(
                                      11,
-                                     tableOutput("gp_facts_table")
+                                     div(tableOutput("gp_facts_table"), style = "font-size:80%")
                                      )),
                                    ),
                             # Table output
                             column(8,
                                    fluidRow(column(
                                      12,
-                                     shinycssloaders::withSpinner(
-                                     DT::DTOutput(outputId = 'race_results_table'),
-                                     color="#FF0000", image = "UI/200w.gif")
-                                     )),
+                                     div(shinycssloaders::withSpinner(
+                                       DT::DTOutput(outputId = 'race_results_table'),
+                                       color="#FF0000", image = "UI/200w.gif")
+                                     )), style = "font-size:80%")
+                                     ,
                                    # Legend
                                    fluidRow(column(
                                      2, 
                                      align = "center",
-                                     style = "background-color:#A83349; padding: 10px; margin-top: 20px; margin-left: 12px;",
-                                     span(textOutput("legend1"), style = "color:black;")
-                                     ),
+                                     style = "background-color:#A83349; margin-top: 10px; margin-left: 12px;",
+                                     span(textOutput("legend1"), style = "color:black; font-size:80%;")
+                                   ),
                                    column(8),
                                    column(
                                      2,
                                      align = "center",
-                                     style = "background-color:#B138DD; margin-top: 20px; margin-left: -24px;",
-                                     span(textOutput("legend2"), style = "color:black;")
-                                     )), 
+                                     style = "background-color:#B138DD; margin-top: 10px; margin-left: -24px; ",
+                                     span(textOutput("legend2"), style = "color:black; font-size:80%;")
+                                   )), 
                                    style = "margin-left: 20px;"
                                    )
                             ))
