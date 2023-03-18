@@ -1,5 +1,10 @@
 # Visualising the Formula 1 2021 Season
 
+<!-- badges: start -->
+[![App Deploys](https://github.com/UBC-MDS/f1-2021-analysis/actions/workflows/deploy-app.yaml/badge.svg)](https://github.com/UBC-MDS/f1-2021-analysis/actions/workflows/deploy-app.yaml)
+[![App Deploys](https://github.com/UBC-MDS/f1-2021-analysis/actions/workflows/testing.yaml/badge.svg)](https://github.com/UBC-MDS/f1-2021-analysis/actions/workflows/testing.yaml)
+<!-- badges: end -->
+
 ## Welcome!
 
 Whether you consider yourself a true Formula 1 veteran, or this is the first time you've heard of the sport, we bid you welcome to: [our dashboard!](https://eric1208.shinyapps.io/f1-2021-analysis/)  
@@ -49,11 +54,11 @@ Then, once the 300 kilometers are up, the order in which the drivers cross the f
 
 ## The Description
 
-![Landing Page](/www/sketch/dashboard_demo_tab_1.gif)
+![Landing Page](/www/sketch/f1-dash-demo1.gif)
 
 Our app opens on the Season Highlights page. On the left hand side you can either select Drivers or Teams: this selections determines what is shown in the cumulative season points plot to its right. Underneath the plot is a slider with which you can adjust the number of races shown in the plot. On the right hand side is a table with all the races that happened in 2021, in order of which they took place. Adjusting the slider will highlight the races in the table that are currently included in the selection.
 
-![Race Page](/www/sketch/dashboard_demo_tab_2.gif)  
+![Race Page](/www/sketch/f1-dash-demo2.gif)  
 
 The second page is the Race Information tab. In the top left there is a dropdown selection box where you can select what race you'd like to have displayed, together with previous/next buttons to navigate race-by-race. Underneath this is a picture of the track layout, along with a table containing facts about the corresponding Grand Prix. To its right is the results table: this shows the order the race finished in, but can also be sorted by starting position, fastest lap, and any other column displayed. In the top right is a search bar in order to filter the table by a search query. The fastest lap driven is highlighted purple in this table.
 
