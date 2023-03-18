@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 [![App Deploys](https://github.com/UBC-MDS/f1-2021-analysis/actions/workflows/deploy-app.yaml/badge.svg)](https://github.com/UBC-MDS/f1-2021-analysis/actions/workflows/deploy-app.yaml)
-[![App Deploys](https://github.com/UBC-MDS/f1-2021-analysis/actions/workflows/testing.yaml/badge.svg)](https://github.com/UBC-MDS/f1-2021-analysis/actions/workflows/testing.yaml)
+[![Test app w/ {renv}](https://github.com/UBC-MDS/f1-2021-analysis/actions/workflows/testing.yml/badge.svg)](https://github.com/UBC-MDS/f1-2021-analysis/actions/workflows/testing.yml)
 <!-- badges: end -->
 
 ## Welcome!
